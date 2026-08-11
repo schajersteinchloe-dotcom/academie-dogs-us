@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check In Puppy · Dogs & Us</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1e3a5f;
+  --coral:#e05a3a;
+  --coral-light:#fdf0ec;
+  --cream:#faf9f5;
+  --green:#4a8c3f;
+  --green-light:#eaf4e8;
+  --gold:#f5a623;
+  --border-r:14px;
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cream);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--navy);min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:0 0 4rem}
+.hero{text-align:center;padding:2rem 1rem 1.25rem}
+.hero-brand{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1.5px solid #e8e4dc;border-radius:30px;padding:5px 14px 5px 10px;margin-bottom:14px}
+.hero-brand span{font-size:12px;font-weight:700;color:var(--navy);letter-spacing:.04em}
+.hero h1{font-size:clamp(20px,5vw,26px);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:8px}
+.hero h1 em{color:var(--coral);font-style:normal}
+.hero p{font-size:13px;color:#666;max-width:400px;margin:0 auto;line-height:1.6}
+.gpw{background:#fff;border:1.5px solid #e8e4dc;border-radius:var(--border-r);padding:.9rem 1.1rem;margin:0 1rem 1rem}
+.gpw-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;gap:8px}
+.gpw-top span{font-size:12px;color:var(--navy);font-weight:600;line-height:1.3}
+.gpw-top .xp{font-size:12px;color:var(--gold);font-weight:700;white-space:nowrap}
+.prog-track{background:#f0ede6;border-radius:20px;height:9px;overflow:hidden}
+.prog-fill{background:linear-gradient(90deg,var(--coral),var(--gold));height:9px;border-radius:20px;transition:width .5s cubic-bezier(.34,1.56,.64,1)}
+.prog-steps{display:flex;justify-content:space-between;margin-top:5px}
+.prog-dot{width:9px;height:9px;border-radius:50%;background:#e0dbd0;border:2px solid #fff;transition:background .3s}
+.prog-dot.done{background:var(--coral)}
+.step-nav{display:flex;gap:6px;padding:0 1rem 1.25rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.step-nav::-webkit-scrollbar{display:none}
+.spill{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:1.5px solid #e0dbd0;border-radius:12px;padding:7px 10px;cursor:pointer;transition:all .18s;min-width:64px;-webkit-tap-highlight-color:transparent;text-align:center}
+.spill .sem{font-size:16px}
+.spill .slbl{font-size:10px;font-weight:700;color:#999;white-space:nowrap;line-height:1.3}
+.spill.active{border-color:var(--navy);background:var(--navy)}
+.spill.active .slbl{color:#fff}
+.spill.done{border-color:var(--green)}
+.spill.done .slbl{color:var(--green)}
+.step-card{display:none;padding:0 1rem}
+.step-card.visible{display:block}
+.card{background:#fff;border-radius:var(--border-r);border:1.5px solid #e8e4dc;padding:1.25rem;margin-bottom:.875rem;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--coral)}
+.shero{display:flex;gap:11px;align-items:flex-start;margin-bottom:1rem}
+.shero-icon{width:46px;height:46px;min-width:46px;border-radius:12px;background:var(--coral-light);display:flex;align-items:center;justify-content:center;font-size:23px}
+.shero-text h2{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:3px;line-height:1.3}
+.stag{display:inline-block;background:var(--navy);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;margin-bottom:4px;letter-spacing:.05em}
+.shero-text p{font-size:12px;color:#666;line-height:1.5}
+.slabel{font-size:9px;font-weight:800;letter-spacing:.1em;color:#bbb;text-transform:uppercase;margin-bottom:7px;margin-top:1.1rem;display:flex;align-items:center;gap:6px}
+.slabel::after{content:'';flex:1;height:1px;background:#f0ede6}
+.info-box{background:#f0f4f8;border-left:3px solid var(--navy);border-radius:0 10px 10px 0;padding:.85rem 1rem;margin-bottom:.875rem;font-size:12px;color:var(--navy);line-height:1.6}
+.info-box.warn{background:#fff8ec;border-left-color:var(--gold)}
+.info-box.good{background:var(--green-light);border-left-color:var(--green)}
+.check-list{display:flex;flex-direction:column;gap:6px}
+.check-item{display:flex;gap:10px;align-items:flex-start;background:#f9f8f4;border:1.5px solid #ece9e1;border-radius:11px;padding:10px 12px;cursor:pointer;transition:all .18s;-webkit-tap-highlight-color:transparent;min-height:44px}
+.check-item.checked{background:var(--green-light);border-color:#b8d4b5}
+.check-box{width:22px;height:22px;min-width:22px;border-radius:6px;border:2px solid #ccc;background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s;flex-shrink:0;margin-top:1px}
+.check-item.checked .check-box{background:var(--green);border-color:var(--green);color:#fff}
+.check-text{flex:1}
+.check-title{font-size:12px;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:2px}
+.check-item.checked .check-title{color:var(--green);text-decoration:line-through}
+.check-desc{font-size:11px;color:#888;line-height:1.5}
+.check-item.checked .check-desc{color:#aaa}
+.local-prog{margin-top:10px}
+.lp-bar{background:#f0ede6;border-radius:20px;height:6px;overflow:hidden}
+.lp-fill{height:6px;border-radius:20px;background:var(--green);transition:width .4s}
+.lp-label{display:flex;justify-content:space-between;margin-top:4px}
+.lp-label span{font-size:10px;color:#aaa}
+.lp-label strong{font-size:10px;color:var(--green);font-weight:700}
+.nav-row{display:flex;gap:8px;margin-top:.875rem}
+.nbtn{flex:1;padding:12px 12px;border-radius:11px;border:1.5px solid #e0dbd0;background:#fff;color:var(--navy);font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;min-height:44px}
+.nbtn:active{background:#f5f3ef}
+.nbtn:disabled{opacity:.3;cursor:default}
+.nbtn.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+.confetti-wrap{text-align:center;padding:2rem 1rem;display:none}
+.confetti-wrap.visible{display:block}
+.confetti-big{font-size:48px;margin-bottom:10px}
+.confetti-wrap h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.confetti-wrap p{font-size:13px;color:#666;max-width:340px;margin:0 auto 1.25rem;line-height:1.6}
+.final-cta{display:inline-block;background:var(--coral);color:#fff;border:none;padding:13px 26px;border-radius:30px;font-size:14px;font-weight:800;cursor:pointer;text-decoration:none;-webkit-tap-highlight-color:transparent}
+@media(min-width:480px){
+  .hero{padding:2.5rem 1.5rem 1.5rem}
+  .card{padding:1.5rem}
+  .shero-icon{width:50px;height:50px;font-size:25px}
+  .shero-text h2{font-size:17px}
+  .shero-text p,.check-desc{font-size:13px}
+  .check-title{font-size:13px}
+  .step-nav{justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="hero-brand">
+    <span style="font-size:17px">🐾</span>
+    <span>DOGS &amp; US · L'Académie</span>
+  </div>
+  <h1>Check In <em>Puppy</em> 🐶</h1>
+  <p>Tout ce qu'il faut préparer, faire et mettre en place pour accueillir ton chiot dans les meilleures conditions.</p>
+</div>
+
+<div class="gpw">
+  <div class="gpw-top">
+    <span id="gp-label">Progression · 0 / 0 étapes</span>
+    <span class="xp" id="gp-xp">⭐ 0 XP</span>
+  </div>
+  <div class="prog-track"><div class="prog-fill" id="gp-bar" style="width:0%"></div></div>
+  <div class="prog-steps" id="gp-dots"></div>
+</div>
+
+<div class="step-nav" id="snav"></div>
+<div id="scards"></div>
+
+<div class="confetti-wrap" id="celebration">
+  <div class="confetti-big">🎉🐾🎊</div>
+  <h2>Check In Puppy complété !</h2>
+  <p>Ton chiot a toutes les chances d'une belle première semaine. La suite de la formation t'attend dans l'Académie !</p>
+  <a class="final-cta" href="https://www.skool.com/lacademie-dogs-us-8505/classroom" target="_blank">🚀 Retour à l'Académie</a>
+</div>
+
+</div>
+
+<script>
+const steps=[
+  {
+    id:'avant',label:"Avant J-1",emoji:"📦",tag:"AVANT L'ARRIVÉE",
+    title:"Préparer la maison",
+    intro:"Avant que ton chiot pose une patte chez toi, tout doit être prêt. Une maison bien préparée = moins de stress pour lui ET pour toi dès le premier soir.",
+    infoBox:{type:'info',text:"⏱️ À faire <strong>au moins 2-3 jours avant</strong> l'arrivée du chiot. Ne laisse rien au hasard le jour J."},
+    sections:[
+      {
+        label:"Équipements à acheter",
+        items:[
+          {id:'e1',title:"Harnais en Y adapté à sa taille (ou collier si pas encore de harnais adapté)",desc:"Le harnais en Y reste l'idéal car il répartit la pression et respecte la physiologie du chiot. Si tu ne l'as pas encore, un collier plat peut dépanner le temps de trouver le bon harnais."},
+          {id:'e2',title:"Laisse courte (1,5 à 2m) + longe (5 à 10m)",desc:"La laisse courte pour le quotidien, la longe pour les premières balades où il aura plus de liberté pour explorer."},
+          {id:'e3',title:"Panier ou coussin confortable",desc:"Placé dans un coin calme, hors passage. C'est sa zone safe, tout le monde doit la respecter."},
+          {id:'e4',title:"Gamelle eau + gamelle nourriture",desc:"Lourdes pour éviter qu'il les renverse. L'eau doit être accessible en permanence."},
+          {id:'e5',title:"Jouets d'occupation (pour lui tout seul)",desc:"Ce sont les jouets qu'il utilise seul : bois de cerf tendre, corne, jouets en caoutchouc à garnir, kong congelé. Matières variées pour répondre au besoin de mastication et faire les dents. À avoir plusieurs en rotation."},
+          {id:'e6',title:"Jouets d'interaction (pour jouer avec toi)",desc:"Cordes, balles, peluches résistantes. Ces jouets servent à créer du lien et à dépenser l'énergie ensemble. Ne les laisse pas accessibles en permanence pour qu'ils gardent leur valeur."},
+          {id:'e7',title:"Produit nettoyant spécial accidents",desc:"Un produit enzymatique détruit les molécules odorantes en profondeur, là où un nettoyant classique les masque juste en surface. Si l'odeur reste, le chiot reviendra exactement au même endroit. C'est chimique, pas éducatif."},
+        ]
+      }
+    ]
+  },
+  {
+    id:'securiser',label:"Sécuriser",emoji:"🏠",tag:"AVANT L'ARRIVÉE",
+    title:"Sécuriser la maison",
+    intro:"Un chiot explore tout avec sa bouche. Avant son arrivée, fais le tour de chaque pièce avec un regard de détective.",
+    infoBox:{type:'warn',text:"⚠️ Un seul accident peut être grave. Prends 30 minutes pour faire ce tour de maison avant le jour J."},
+    sections:[
+      {
+        label:"Dangers à éliminer",
+        items:[
+          {id:'s1',title:"Câbles électriques accessibles",desc:"Ranger derrière les meubles ou protéger avec des gaines. Un câble mâché peut être fatal."},
+          {id:'s2',title:"Plantes toxiques",desc:"Pothos, philodendron, aloé vera, ficus... De nombreuses plantes d'intérieur sont toxiques pour les chiens. Vérifie et mets hors de portée."},
+          {id:'s3',title:"Produits ménagers et médicaments",desc:"Placards bas dans la cuisine et la salle de bain à fermer ou sécuriser. Un chiot est plus curieux qu'on ne le pense."},
+          {id:'s4',title:"Escaliers non sécurisés",desc:"Installe une barrière le temps que le chiot soit à l'aise. Les chutes sont fréquentes chez les très jeunes chiots."},
+          {id:'s5',title:"Petits objets au sol (chaussures, jouets d'enfants...)",desc:"Tout ce qui traîne sera mâché ou avalé. Cultive le réflexe de ranger avant son arrivée."},
+          {id:'s6',title:"Jardin / balcon sécurisé",desc:"Vérifie les trous dans les clôtures, les espaces sous les portails, les plantes du jardin toxiques."},
+        ]
+      },
+      {
+        label:"Zones à définir",
+        items:[
+          {id:'z1',title:"Sa zone de repos installée et accessible",desc:"Coin calme, hors des passages, à l'abri des courants d'air. Ni trop isolé, ni en plein milieu du salon."},
+          {id:'z2',title:"Sa zone de repas définie",desc:"Toujours au même endroit. Calme, sans passage constant. Ne pas le déranger quand il mange."},
+          {id:'z3',title:"Les zones interdites définies en famille",desc:"Canapé oui ou non ? Chambre oui ou non ? Décidez AVANT et tenez-vous y dès le premier jour, sans exception."},
+        ]
+      }
+    ]
+  },
+  {
+    id:'jour1',label:"Jour J",emoji:"🚗",tag:"LE GRAND JOUR",
+    title:"Le jour de l'arrivée",
+    intro:"Moins tu en fais, mieux tu fais. Ce jour-là, ton chiot n'a pas besoin de stimulation. Il a besoin de sécurité et de calme.",
+    infoBox:{type:'warn',text:"🚫 Évite d'inviter famille et amis le jour J. L'enthousiasme est compréhensible mais c'est exactement ce qu'il ne faut pas faire."},
+    sections:[
+      {
+        label:"Le trajet éleveur vers la maison",
+        items:[
+          {id:'t1',title:"Prends une couverture avec l'odeur de la portée",desc:"Demande à l'éleveur de garder un tissu avec l'odeur de la mère et des frères et sœurs. C'est un puissant outil de réassurance pour les premiers jours."},
+          {id:'t2',title:"Voyage au calme, voix douce, conduite souple",desc:"Pas de musique forte. Si le chiot est sur les genoux de quelqu'un c'est bien. S'il est dans une caisse, la couverture odorante à l'intérieur."},
+          {id:'t3',title:"Prévois des alèses pour les accidents",desc:"Vomissements, pipi, caca... le stress du trajet peut tout déclencher. Alèses sous lui et dans la caisse si tu en utilises une. Prévoir de quoi nettoyer dans le sac."},
+          {id:'t4',title:"Prévois un arrêt propreté si le trajet dépasse 1h",desc:"Laisse + quelques friandises dans le sac. S'il fait ses besoins dehors dès le trajet, c'est une victoire."},
+        ]
+      },
+      {
+        label:"Les premières heures à la maison",
+        items:[
+          {id:'h1',title:"Sortie propreté dès l'arrivée, avant d'entrer",desc:"Pose-le directement dans le jardin ou emmène-le à l'endroit où tu veux qu'il fasse ses besoins. Attends. Récompense chaudement s'il fait quelque chose."},
+          {id:'h2',title:"Laisse-le explorer librement, sans le forcer",desc:"Recule. Observe. Ne le prends pas dans les bras toutes les deux minutes. Il a besoin de renifler et d'apprivoiser son environnement à son rythme."},
+          {id:'h3',title:"Pas de câlins forcés, pas de bruit excessif",desc:"Les enfants doivent rester calmes. Personne ne court, ne crie, ne force l'interaction. Le chiot vient quand il est prêt."},
+          {id:'h4',title:"Premier repas dans sa zone, au calme",desc:"Donne-lui son premier repas chez toi dans sa zone de repas. Il n'aura peut-être pas beaucoup d'appétit les premiers jours, c'est normal. Ne le force pas."},
+          {id:'h5',title:"Sieste après la première exploration",desc:"Un chiot a besoin de 16 à 18h de sommeil par jour. Après l'excitation de l'arrivée, il doit se reposer. Laisse-le dormir, ne le réveille jamais."},
+        ]
+      },
+      {
+        label:"Ce qu'il ne faut PAS faire le jour J",
+        items:[
+          {id:'n1',title:"❌ Inviter du monde",desc:"La fête peut attendre. Le chiot ne doit rencontrer que les membres du foyer le premier jour."},
+          {id:'n2',title:"❌ Le laisser explorer seul sans surveillance",desc:"Pas de liberté totale avant que la maison soit maîtrisée. Supervision constante les premiers jours."},
+          {id:'n3',title:"❌ Punir les accidents ou les pleurs",desc:"Il est perdu, il ne comprend rien encore. Les accidents et les pleurs sont normaux. Nettoie, adapte, recommence."},
+          {id:'n4',title:"❌ Changer son alimentation brutalement",desc:"Si l'éleveur te donne des croquettes, garde-les au moins 1 semaine. Un changement brutal = diarrhée garantie."},
+        ]
+      }
+    ]
+  },
+  {
+    id:'routine',label:"Routine",emoji:"🔄",tag:"PREMIÈRE SEMAINE",
+    title:"La routine à mettre en place",
+    intro:"La routine est la meilleure chose que tu puisses offrir à ton chiot. Elle lui donne de la prévisibilité, et la prévisibilité crée la sécurité.",
+    infoBox:{type:'good',text:"✅ Une bonne routine ne doit pas être rigide à la minute près, mais les grandes séquences doivent toujours se ressembler : réveil, sortie, repas, jeu, sieste, sortie..."},
+    sections:[
+      {
+        label:"Les sorties propreté : quand sortir ?",
+        items:[
+          {id:'p1',title:"Après chaque réveil (nuit ou sieste)",desc:"Dès qu'il ouvre les yeux, avant même le câlin du matin. Le chiot ne peut pas se retenir longtemps au réveil."},
+          {id:'p2',title:"Après chaque repas",desc:"Dans les 15 à 20 minutes suivant le repas. C'est mécanique, la digestion déclenche le besoin."},
+          {id:'p3',title:"Après chaque session de jeu ou émotion forte",desc:"L'excitation et le stress provoquent aussi le besoin. Après un jeu intense, une visite, une émotion : sortie."},
+          {id:'p4',title:"Toutes les 2 à 3h dans la journée",desc:"À cet âge le chiot ne peut pas se retenir plus de 2 à 3h. Plus tu anticipes, moins il y a d'accidents."},
+          {id:'p5',title:"Toutes les 2 à 3h la nuit également (premières semaines)",desc:"Oui, même la nuit. C'est temporaire. Le réveil nocturne pour une sortie propreté rapide aide le chiot à comprendre que dehors = le bon endroit, y compris la nuit."},
+        ]
+      },
+      {
+        label:"La journée type du chiot (8-12 semaines)",
+        items:[
+          {id:'r2',title:"Repas 3 fois par jour à horaires fixes",desc:"Matin, midi, soir. Ramasse la gamelle après 15 minutes qu'il ait fini ou non. Il n'aura peut-être pas grand appétit les premiers jours, c'est normal. Les horaires fixes régulent le transit et facilitent la propreté."},
+          {id:'r4',title:"Siestes régulières dans sa zone",desc:"Après chaque session de jeu ou d'exploration. Ne le stimule pas quand il montre des signes de fatigue (bâillements, s'allonge seul)."},
+          {id:'r5',title:"Sessions d'apprentissage courtes 2-3x par jour",desc:"3 minutes maximum. Prénom, assis, regard. Dans le calme, idéalement avant les repas pour maximiser la motivation."},
+        ]
+      },
+      {
+        label:"La nuit",
+        items:[
+          {id:'nu1',title:"Zone de couchage installée avec la couverture odorante",desc:"L'odeur de la portée aide énormément les premiers soirs. Garde-la dans son panier tant qu'il en a besoin."},
+          {id:'nu2',title:"Kong congelé pour faciliter l'endormissement",desc:"Un chiot occupé s'endort plus facilement. Le kong congelé peut l'occuper 20 à 30 minutes."},
+          {id:'nu3',title:"Si le chiot pleure : le rapprocher plutôt que l'ignorer",desc:"Un chiot qui pleure cherche la sécurité et la proximité, c'est un besoin naturel. Mieux vaut le mettre près de toi, par terre dans ta chambre par exemple, que de le laisser en détresse. Répondre à ce besoin dès le début crée de la confiance, pas de la dépendance."},
+          {id:'nu4',title:"Sortie nocturne rapide et neutre",desc:"Sans jeu, sans lumière forte, sans interaction. Sortie, il fait ses besoins, récompense discrète, retour direct au lit."},
+        ]
+      }
+    ]
+  },
+  {
+    id:'regles',label:"Les règles",emoji:"📋",tag:"PREMIÈRE SEMAINE",
+    title:"Les règles de vie à poser dès le début",
+    intro:"Les règles ne sont pas rigides, elles sont claires. Un chiot a besoin de savoir ce qui est autorisé et ce qui ne l'est pas. L'incohérence est sa plus grande source de confusion.",
+    infoBox:{type:'warn',text:"⚠️ Une règle qui existe parfois n'existe pas. Si le canapé est interdit, il est interdit le lundi ET le dimanche, même quand tu es fatigué·e."},
+    sections:[
+      {
+        label:"Les décisions à prendre en famille avant l'arrivée",
+        items:[
+          {id:'reg1',title:"Le canapé : autorisé ou interdit ?",desc:"Pas de jugement, mais décidez et tenez-vous y. Si c'est interdit, redirigez toujours vers son panier sans vous énerver."},
+          {id:'reg2',title:"La chambre : il dort où ?",desc:"Dans votre chambre les premières semaines, c'est souvent plus rassurant pour lui et pour vous. Décidez où il sera à terme."},
+          {id:'reg3',title:"Les horaires de repas définis",desc:"À quelle heure il mange le matin, le midi, le soir. Tenez-vous y même le week-end pour réguler son transit."},
+          {id:'reg4',title:"Qui s'occupe de quoi au quotidien",desc:"Qui donne les repas ? Qui fait les sorties propreté du matin ? Qui gère les séances d'apprentissage ? Répartir clairement évite que certaines choses ne soient jamais faites."},
+          {id:'reg5',title:"Les enfants : quelles interactions sont autorisées ?",desc:"Définissez clairement : pas de course vers lui, pas de cri, pas de forcer l'interaction. Les enfants doivent apprendre aussi."},
+        ]
+      },
+      {
+        label:"Les règles du quotidien",
+        items:[
+          {id:'q1',title:"On ne réveille jamais un chiot qui dort",desc:"Le sommeil est sacré. Un chiot fatigué = un chiot qui s'agite, mord et n'apprend pas. C'est la règle n°1."},
+          {id:'q2',title:"On ne punit jamais les émotions",desc:"S'il a peur, on l'éloigne et on le rassure. S'il fait une erreur, on redirige. Jamais de violence, jamais de cri, jamais de contrainte physique."},
+          {id:'q3',title:"On récompense dans la seconde",desc:"Le chiot ne fait pas le lien entre une action et une récompense donnée 30 secondes plus tard. Le timing est tout."},
+          {id:'q4',title:"On termine toujours les séances sur une réussite",desc:"Si l'exercice est trop difficile, reviens à quelque chose de facile avant d'arrêter. Le chiot doit associer les séances à la réussite."},
+          {id:'q5',title:"On ignore ce qu'on ne veut pas voir répéter",desc:"L'attention, même négative, est une récompense pour le chiot. Ce que tu ignores disparaît. Ce que tu réagis se renforce."},
+        ]
+      },
+      {
+        label:"Les signaux à apprendre à lire dès maintenant",
+        items:[
+          {id:'sig1',title:"Bâillement, léchage de truffe, détournement du regard",desc:"Signaux d'apaisement. Il essaie de désamorcer une situation ou montre qu'il est légèrement stressé. Réduis la pression."},
+          {id:'sig2',title:"Renifle le sol en cercles ou s'accroupit",desc:"Il cherche où faire ses besoins. Sortez-le immédiatement."},
+          {id:'sig3',title:"S'allonge pendant une séance ou détourne la tête",desc:"Il est fatigué ou surchargé mentalement. Stop. Laisse-le se reposer."},
+          {id:'sig4',title:"Grogne",desc:"Ne jamais punir un grognement. C'est un avertissement. S'il grogne, il communique. Identifie pourquoi et réduis la pression."},
+        ]
+      }
+    ]
+  }
+];
+
+const checked={};
+steps.forEach(s=>s.sections.forEach(sec=>sec.items.forEach(it=>{checked[it.id]=false;})));
+let current=0;
+
+function totalItems(){return steps.flatMap(s=>s.sections.flatMap(sec=>sec.items)).length}
+function totalChecked(){return Object.values(checked).filter(Boolean).length}
+function stepItems(s){return s.sections.flatMap(sec=>sec.items)}
+function stepCheckedCount(s){return stepItems(s).filter(it=>checked[it.id]).length}
+
+function updateGlobal(){
+  const done=totalChecked(),total=totalItems();
+  const pct=total>0?Math.round(done/total*100):0;
+  document.getElementById('gp-bar').style.width=pct+'%';
+  document.getElementById('gp-label').textContent='Progression · '+done+' / '+total+' étapes';
+  document.getElementById('gp-xp').textContent='⭐ '+(done*10)+' XP';
+  const dots=document.getElementById('gp-dots');
+  dots.innerHTML='';
+  steps.forEach(s=>{
+    const d=document.createElement('div');
+    const allDone=stepCheckedCount(s)===stepItems(s).length&&stepItems(s).length>0;
+    d.className='prog-dot'+(allDone?' done':'');
+    dots.appendChild(d);
+  });
+  if(done===total&&total>0) document.getElementById('celebration').classList.add('visible');
+}
+
+function renderNav(){
+  const nav=document.getElementById('snav');
+  nav.innerHTML='';
+  steps.forEach((s,i)=>{
+    const allDone=stepCheckedCount(s)===stepItems(s).length&&stepItems(s).length>0;
+    const el=document.createElement('div');
+    el.className='spill'+(i===current?' active':'')+(allDone?' done':'');
+    el.innerHTML=`<span class="sem">${s.emoji}</span><span class="slbl">${s.label}</span>`;
+    el.onclick=()=>{current=i;render();};
+    nav.appendChild(el);
+  });
+  setTimeout(()=>{
+    const active=nav.querySelector('.active');
+    if(active) active.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  },50);
+}
+
+function renderCards(){
+  const wrap=document.getElementById('scards');
+  wrap.innerHTML='';
+  steps.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='step-card'+(i===current?' visible':'');
+
+    const items=stepItems(s);
+    const done=stepCheckedCount(s);
+    const total=items.length;
+    const pct=total>0?Math.round(done/total*100):0;
+
+    const infoBoxHtml=s.infoBox
+      ?`<div class="info-box ${s.infoBox.type==='warn'?'warn':s.infoBox.type==='good'?'good':''}">${s.infoBox.text}</div>`:'';
+
+    let sectionsHtml='';
+    s.sections.forEach(sec=>{
+      sectionsHtml+=`<div class="slabel">${sec.label}</div><div class="check-list">`;
+      sec.items.forEach(it=>{
+        sectionsHtml+=`
+          <div class="check-item${checked[it.id]?' checked':''}" data-id="${it.id}">
+            <div class="check-box">${checked[it.id]?'✓':''}</div>
+            <div class="check-text">
+              <div class="check-title">${it.title}</div>
+              <div class="check-desc">${it.desc}</div>
+            </div>
+          </div>`;
+      });
+      sectionsHtml+='</div>';
+    });
+
+    div.innerHTML=`<div class="card">
+      <div class="shero">
+        <div class="shero-icon">${s.emoji}</div>
+        <div class="shero-text">
+          <span class="stag">${s.tag}</span>
+          <h2>${s.title}</h2>
+          <p>${s.intro}</p>
+        </div>
+      </div>
+      ${infoBoxHtml}
+      ${sectionsHtml}
+      <div class="local-prog">
+        <div class="lp-bar"><div class="lp-fill" style="width:${pct}%"></div></div>
+        <div class="lp-label"><span>${done}/${total} étapes complétées</span><strong>${pct}%</strong></div>
+      </div>
+      <div class="nav-row">
+        <button class="nbtn" id="prev-${i}" ${i===0?'disabled':''}>← Précédent</button>
+        <button class="nbtn next" id="next-${i}" ${i===steps.length-1?'disabled':''}>Suivant →</button>
+      </div>
+    </div>`;
+
+    wrap.appendChild(div);
+  });
+
+  document.querySelectorAll('.check-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const id=item.dataset.id;
+      const scrollY=window.scrollY;
+      checked[id]=!checked[id];
+      updateCheck(id);
+      updateGlobal();
+      updateNav();
+      requestAnimationFrame(()=>window.scrollTo(0,scrollY));
+    });
+  });
+
+  for(let i=0;i<steps.length;i++){
+    const p=document.getElementById('prev-'+i);
+    const n=document.getElementById('next-'+i);
+    if(p&&!p.disabled) p.onclick=()=>{current--;render();window.scrollTo({top:0,behavior:'smooth'});};
+    if(n&&!n.disabled) n.onclick=()=>{current++;render();window.scrollTo({top:0,behavior:'smooth'});};
+  }
+}
+
+function updateCheck(id){
+  const item=document.querySelector(`.check-item[data-id="${id}"]`);
+  if(!item) return;
+  if(checked[id]){
+    item.classList.add('checked');
+    item.querySelector('.check-box').textContent='✓';
+    item.querySelector('.check-title').style.textDecoration='line-through';
+    item.querySelector('.check-title').style.color='var(--green)';
+  } else {
+    item.classList.remove('checked');
+    item.querySelector('.check-box').textContent='';
+    item.querySelector('.check-title').style.textDecoration='';
+    item.querySelector('.check-title').style.color='';
+  }
+  const s=steps[current];
+  const items=stepItems(s);
+  const done=stepCheckedCount(s);
+  const total=items.length;
+  const pct=total>0?Math.round(done/total*100):0;
+  const card=document.querySelector('.step-card.visible');
+  if(card){
+    const fill=card.querySelector('.lp-fill');
+    const label=card.querySelector('.lp-label span');
+    const strong=card.querySelector('.lp-label strong');
+    if(fill) fill.style.width=pct+'%';
+    if(label) label.textContent=done+'/'+total+' étapes complétées';
+    if(strong) strong.textContent=pct+'%';
+  }
+}
+
+function updateNav(){
+  const nav=document.getElementById('snav');
+  steps.forEach((s,i)=>{
+    const allDone=stepCheckedCount(s)===stepItems(s).length&&stepItems(s).length>0;
+    const el=nav.children[i];
+    if(!el) return;
+    el.className='spill'+(i===current?' active':'')+(allDone?' done':'');
+  });
+}
+
+function render(){renderNav();renderCards();updateGlobal();}
+render();
+</script>
+</body>
+</html>
