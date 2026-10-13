@@ -39,6 +39,13 @@ if "reel-kit/silero-vad" not in src:
 print("silero local ok")
 EOF
 
+# Decoupage des phrases pour l'alignement WhisperX (NLTK refuse de telecharger a travers le proxy du conteneur)
+if [ ! -d ~/nltk_data/tokenizers/punkt_tab ]; then
+  mkdir -p ~/nltk_data/tokenizers
+  curl -sS --fail -o /tmp/punkt_tab.zip https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/tokenizers/punkt_tab.zip
+  unzip -q -o /tmp/punkt_tab.zip -d ~/nltk_data/tokenizers && rm /tmp/punkt_tab.zip
+fi
+
 # Modeles Whisper + alignement francais (besoin de huggingface.co et download.pytorch.org)
 ~/.reel-kit/venv/bin/python - <<'EOF' || echo "reel-kit: modeles non telecharges, verifier les domaines autorises"
 import whisperx

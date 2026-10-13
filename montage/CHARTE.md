@@ -42,17 +42,30 @@ Un empilement aligné à gauche, dans le coin haut gauche (marge d'environ 80 px
   à côté d'elle. Exemple à 167 s : des bâtons et bois à mâcher pendant « comme ceci, ceci, ceci ».
 - Seulement des vrais produits, jamais d'image inventée.
 
-## Couleurs
+## Mesures exactes (relevées en pleine résolution, 1920×1080)
 
-- Noir `#111111` (étiquettes), blanc `#FFFFFF` (cartes et sous-titres), rouge alerte proche de `#E53935`.
-- Valeurs exactes, police, tailles et marges : à relever sur une image en pleine résolution de la référence.
+| Élément | Valeur |
+|---|---|
+| Police | **Archivo** partout (fichiers dans `kit/fonts/`) |
+| Étiquette de chapitre | x 70, y 52, hauteur 75, rayon 12, fond `#0E0C0D`, Archivo 800, 47 px, majuscules, interlettrage +0,02 em |
+| Cartes | x 70, première à y 140, une tous les 78 px, hauteur 59, rayon 10, Archivo 700, 37 px, interlettrage −0,02 em |
+| Carte blanche | fond `#FFFFFF`, texte `#0E0C0D` |
+| Carte d'alerte | fond `#E8462A`, texte blanc, symbole `×` |
+| Ombre | `0 6px 18px rgba(0,0,0,.16)` |
+| Sous-titres | Archivo 700, 57 px, blanc, ombre douce, une ligne centrée, haut du texte vers y 937 ; 6 mots / 36 caractères au plus |
+| Animations | entrée : fondu et montée de 10 px en 0,2 s ; changement de partie : la colonne part vers le haut, floutée, 0,4 s avant la nouvelle étiquette |
 
-## Méthode (reel-kit + WhisperX)
+Ces valeurs sont codées dans `kit/build-lesson.py` : un rendu de contrôle posé sur une image de la Leçon 2 la recouvre exactement.
 
-1. Récupérer le rush depuis la bibliothèque PlugKit (`list_media`), le copier, ne jamais le modifier.
-2. Transcrire avec WhisperX (`scripts/takes.py`), proposer la liste des prises gardées et coupées, et faire valider.
-3. Proposer le **plan de la leçon** : un tableau avec chapitre, cartes et mot déclencheur, et faire valider.
-4. Brouillon en 16:9, puis retours, puis rendu final en 1920×1080.
+## Méthode (reel-kit + WhisperX, dans une session cloud)
 
-Réglages réseau nécessaires pour la session cloud : `api.plugkit.co` (vidéos PlugKit), `huggingface.co`,
-`*.huggingface.co`, `*.hf.co` (modèle Whisper), `download.pytorch.org` (alignement des mots en français).
+1. Réseau de l'environnement : **Full** (ou au minimum `api.plugkit.co`, `huggingface.co`, `*.huggingface.co`, `*.hf.co`,
+   `download.pytorch.org`). Installation : `montage/setup-cloud.sh` (reel-kit, HyperFrames, WhisperX, Silero, NLTK).
+2. Récupérer le rush dans la bibliothèque PlugKit (`list_media`, puis `curl` sur son `url`). Ne jamais le modifier.
+3. Un rush iPhone 4K/60 se convertit d'abord en 1080p/30 (`ffmpeg … -vf scale=1920:1080 -r 30 -c:v libx264 -crf 18`).
+   La transcription peut démarrer en parallèle sur un proxy « image noire + son d'origine » : mêmes minutages.
+4. `python3 scripts/takes.py <rush>` (prises, reprises, faux départs), puis `python3 scripts/stage.py`.
+5. Copier `kit/build-lesson.py` dans `scripts/` et `kit/fonts/*` dans `assets/fonts/`, écrire `lesson.json`
+   (parties, cartes, mots déclencheurs), `python3 scripts/build-lesson.py`, contrôler des images, puis
+   `npx hyperframes@0.8.42 render --sdr` avec `HYPERFRAMES_BROWSER_PATH` pointé sur le Chrome du conteneur.
+6. Déposer le rendu final dans la bibliothèque PlugKit (`create_media_upload` puis `curl -T`).
