@@ -64,8 +64,21 @@ Ces valeurs sont codées dans `kit/build-lesson.py` : un rendu de contrôle pos�
 2. Récupérer le rush dans la bibliothèque PlugKit (`list_media`, puis `curl` sur son `url`). Ne jamais le modifier.
 3. Un rush iPhone 4K/60 se convertit d'abord en 1080p/30 (`ffmpeg … -vf scale=1920:1080 -r 30 -c:v libx264 -crf 18`).
    La transcription peut démarrer en parallèle sur un proxy « image noire + son d'origine » : mêmes minutages.
-4. `python3 scripts/takes.py <rush>` (prises, reprises, faux départs), puis `python3 scripts/stage.py`.
-5. Copier `kit/build-lesson.py` dans `scripts/` et `kit/fonts/*` dans `assets/fonts/`, écrire `lesson.json`
-   (parties, cartes, mots déclencheurs), `python3 scripts/build-lesson.py`, contrôler des images, puis
-   `npx hyperframes@0.8.42 render --sdr` avec `HYPERFRAMES_BROWSER_PATH` pointé sur le Chrome du conteneur.
-6. Déposer le rendu final dans la bibliothèque PlugKit (`create_media_upload` puis `curl -T`).
+4. `python3 scripts/takes.py <rush>` liste les prises. **Relire chaque prise en entier** : le détecteur laisse passer
+   des reprises (phrase redite, « Non… », « Ok super… »). Écrire la découpe dans un `derush_plan.py` (voir
+   `lecons/lecon-1-besoins-du-chiot/`) : prises gardées, mots de début et de fin, coupe des pauses sur l'énergie de la voix.
+5. Assembler avec `kit/stage_lowmem.py` (même résultat que `stage.py`, sans manquer de mémoire sur un long rush).
+6. **Contrôle** : retranscrire `assets/reel-audio.wav` et comparer au texte voulu. Les écarts réels (fin de phrase coupée,
+   faux départ resté) viennent d'un mot mal placé par WhisperX : retranscrire le passage seul et corriger ses minutages.
+7. Copier `kit/build-lesson.py` dans `scripts/` et `kit/fonts/*` dans `assets/fonts/`, écrire `lesson.json`, puis
+   `python3 scripts/build-lesson.py`, contrôler des images (`npx hyperframes@0.8.42 snapshot --at …`) et rendre avec
+   `npx hyperframes@0.8.42 render --sdr`. `HYPERFRAMES_BROWSER_PATH` doit pointer sur le Chrome du conteneur.
+8. Déposer le rendu dans la bibliothèque PlugKit (`create_media_upload` puis `curl -T`).
+
+## Le plan d'une leçon
+
+- **Ouverture** : `Leçon N`, la carte titre (« Les besoins de ton chiot »), puis 1 ou 2 cartes qui posent l'enjeu.
+- **Une partie par point annoncé**, `N · NOM` en un ou deux mots (`1 · Sommeil`, `4 · Propreté`).
+- **Cartes** : 3 à 7 par partie, 30 caractères environ, en style prise de notes, chacune sur le mot où elle en parle.
+  Les « à ne pas faire » en rouge (`alert`), les conséquences et conseils en `→` (`arrow`).
+- **Récap** quand elle énumère les points à la fin (« Les 5 piliers »), puis rien pendant le mot de la fin.

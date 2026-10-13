@@ -1,0 +1,63 @@
+{
+  "id": "lecon-1-besoins",
+  "title": "Leçon 1 · Les besoins de ton chiot",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "end_at": "w:Et du coup",
+  "chapters": [
+    { "tag": "Leçon 1", "at": 0.4, "cards": [
+      { "text": "Les besoins de ton chiot", "at": 0.6 },
+      { "text": "De 2 à 4 mois", "at": "w:quatre mois" },
+      { "text": "Sommeil, repas, jeu, propreté…", "at": "w:aborder" }
+    ] },
+    { "tag": "1 · Sommeil", "at": "w:Premier point", "cards": [
+      { "text": "16 à 18 h par jour", "at": "w:16 à 18" },
+      { "text": "C'est là qu'il apprend le plus", "at": "w:apprend le plus" },
+      { "text": "Ne jamais le réveiller", "kind": "alert", "at": "w:réveiller" },
+      { "text": "Épuisé = agité", "at": "w:épuisé" },
+      { "text": "A-t-il assez dormi ?", "kind": "arrow", "at": "w:assez dormi" },
+      { "text": "Un coin calme, à l'écart", "at": "w:Aménage" }
+    ] },
+    { "tag": "2 · Nourriture", "at": "w:Deuxième besoin", "cards": [
+      { "text": "2 à 3 repas par jour", "at": "w:2 à 3 fois" },
+      { "text": "Des horaires fixes", "at": "w:horaires fixes" },
+      { "text": "Propreté plus facile", "kind": "arrow", "at": "w:facilite" },
+      { "text": "Les croquettes de l'élevage", "at": "w:poursuivre" },
+      { "text": "Changer petit à petit", "at": "w:petit par petit" },
+      { "text": "Adaptées : taille, poids, énergie", "at": "w:taille" },
+      { "text": "Pas que de l'industriel", "kind": "alert", "at": "w:l'industriel" }
+    ] },
+    { "tag": "3 · Jeu", "at": "w:Maintenant troisième point", "cards": [
+      { "text": "10 à 15 min maximum", "at": "w:10 à 15" },
+      { "text": "Pas 45 min de course", "kind": "alert", "at": "w:45" },
+      { "text": "Stop quand l'excitation monte", "at": "w:l'excitation" },
+      { "text": "C'est toi qui gères le rythme", "at": "w:contrôler" },
+      { "text": "Lui apprendre à se calmer", "at": "w:se calmer" },
+      { "text": "Une corde, une balle : c'est tout", "at": "w:une corde" },
+      { "text": "100 % avec lui, sans téléphone", "at": "w:100%" }
+    ] },
+    { "tag": "4 · Propreté", "at": "w:Quatrième point", "cards": [
+      { "text": "Il ne peut pas se retenir", "at": "w:physiquement" },
+      { "text": "Sphincter pas encore mature", "at": "w:sphincter" },
+      { "text": "Pas de la mauvaise volonté", "kind": "alert", "at": "w:mauvaise volonté" },
+      { "text": "Sortir après chaque repas", "at": "w:après chaque repas" },
+      { "text": "Après chaque sieste et jeu", "at": "w:après chaque sieste" },
+      { "text": "Et toutes les 2-3 h", "at": "w:toutes les 2-3" },
+      { "text": "Tout est dans l'anticipation", "kind": "arrow", "at": "w:retiens" }
+    ] },
+    { "tag": "5 · Socialisation", "at": "w:Et dernier point", "cards": [
+      { "text": "Le laisser observer", "at": "w:observer" },
+      { "text": "Sur un banc, au calme", "at": "w:sur un banc" },
+      { "text": "Voitures, vélos, bruits, gens", "at": "w:les voitures" },
+      { "text": "Regarder sans interagir", "at": "w:regarder" },
+      { "text": "Sinon : peurs, réactivité", "kind": "alert", "at": "w:peurs" }
+    ] },
+    { "tag": "Les 5 piliers", "at": "w:Donc voici", "cards": [
+      { "text": "Sommeil", "at": "w:sommeil" },
+      { "text": "Repas", "at": "w:repas" },
+      { "text": "Jeu", "at": "w:jeu" },
+      { "text": "Hygiène", "at": "w:l'hygiène" },
+      { "text": "Découverte du monde", "at": "w:découverte" }
+    ] }
+  ]
+}

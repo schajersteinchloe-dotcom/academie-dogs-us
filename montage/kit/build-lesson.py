@@ -49,6 +49,9 @@ CAP_MAX_CHARS = int(lesson.get("caption_max_chars", 36))
 COL_X, TAG_Y, CARD_Y, CARD_PITCH = 70, 52, 140, 78
 ENTER, EXIT, EXIT_LEAD = 0.2, 0.2, 0.4      # a part's column starts leaving EXIT_LEAD before the next tag
 MAX_CARDS = 8
+# Archivo has no arrow: the reference's long thin one, drawn
+ARROW_SVG = ('<svg width="36" height="18" viewBox="0 0 36 18"><path d="M2 9H33M26 2.5l7 6.5-7 6.5" fill="none" stroke="currentColor" '
+             'stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
 def r3(x):
@@ -126,7 +129,8 @@ for n, ch in enumerate(chapters):
         kid = f"{cid}-c{k + 1}"
         body = esc(text)
         if text[:1] in "×→":  # the reference sets its symbol a little apart from the words
-            body = f'<span class="sym">{esc(text[0])}</span>{esc(text[1:].lstrip())}'
+            sym = ARROW_SVG if text[0] == "→" else esc(text[0])
+            body = f'<span class="sym{" arrow" if text[0] == "→" else ""}">{sym}</span>{esc(text[1:].lstrip())}'
         items.append(f'<div class="card{" alert" if kind == "alert" else ""}" id="{kid}" style="top:{CARD_Y - TAG_Y + CARD_PITCH * k}px">{body}</div>')
         col_tl.append(f'tl.from("#{kid}", {{ opacity: 0, y: 10, duration: {ENTER}, ease: "power2.out" }}, {r3(t)});')
         plan.append(f"{t:7.2f}s     {text}")
@@ -226,6 +230,7 @@ index = f"""<!doctype html>
                font-weight: 700; font-size: 37px; letter-spacing: -.02em; }}
       .card.alert {{ background: #E8462A; color: #fff; }}
       .card .sym {{ margin-right: .22em; font-size: 1.25em; line-height: 1; }}
+      .card .sym.arrow {{ display: inline-flex; margin-right: .14em; position: relative; top: -1px; }}
       .photo {{ position: absolute; z-index: 3; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, .28)); }}
       .cap {{ position: absolute; left: 160px; right: 160px; top: 922px; z-index: 5; text-align: center; color: #fff;
               font-weight: 700; font-size: 57px; line-height: 1.1; letter-spacing: -.015em;
