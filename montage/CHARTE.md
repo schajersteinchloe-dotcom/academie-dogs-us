@@ -72,7 +72,9 @@ Ces valeurs sont codées dans `kit/build-lesson.py` : un rendu de contrôle pos�
    faux départ resté) viennent d'un mot mal placé par WhisperX : retranscrire le passage seul et corriger ses minutages.
 7. Copier `kit/build-lesson.py` dans `scripts/` et `kit/fonts/*` dans `assets/fonts/`, écrire `lesson.json`, puis
    `python3 scripts/build-lesson.py`, contrôler des images (`npx hyperframes@0.8.42 snapshot --at …`) et rendre avec
-   `npx hyperframes@0.8.42 render --sdr`. `HYPERFRAMES_BROWSER_PATH` doit pointer sur le Chrome du conteneur.
+   `npx hyperframes@0.8.42 render --sdr`. `HYPERFRAMES_BROWSER_PATH` doit pointer sur le Chrome du conteneur, et
+   `PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=1200` fait encoder au fil de la capture : sans lui, une leçon de
+   6 minutes demande environ 86 Go d'images temporaires et le rendu s'arrête faute de disque.
 8. Déposer le rendu dans la bibliothèque PlugKit (`create_media_upload` puis `curl -T`).
 
 ## Le plan d'une leçon
