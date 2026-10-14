@@ -78,7 +78,8 @@ Ces valeurs sont codées dans `kit/build-lesson.py` : un rendu de contrôle pos�
 2. Récupérer le rush dans la bibliothèque PlugKit (`list_media`, puis `curl` sur son `url`). Ne jamais le modifier.
 3. Un rush iPhone 4K/60 se convertit d'abord en 1080p/30 (`ffmpeg … -vf scale=1920:1080 -r 30 -c:v libx264 -crf 18`).
    La transcription peut démarrer en parallèle sur un proxy « image noire + son d'origine » : mêmes minutages.
-4. `python3 scripts/takes.py <rush>` liste les prises. **Relire chaque prise en entier** : le détecteur laisse passer
+4. `python3 scripts/takes.py <rush> --transcribe "python3 scripts/transcribe.py --lang fr"` liste les prises (forcer le
+   français : la langue est sinon devinée sur les 30 premières secondes, souvent du bavardage, et WhisperX « traduit » en anglais). **Relire chaque prise en entier** : le détecteur laisse passer
    des reprises (phrase redite, « Non… », « Ok super… »). Écrire la découpe dans un `derush_plan.py` (voir
    `lecons/lecon-1-besoins-du-chiot/`) : prises gardées, mots de début et de fin, coupe des pauses sur l'énergie de la voix.
 5. Assembler avec `kit/stage_lowmem.py` (même résultat que `stage.py`, sans manquer de mémoire sur un long rush).

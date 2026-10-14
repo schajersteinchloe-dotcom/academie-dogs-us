@@ -1,0 +1,50 @@
+{
+  "id": "lecon-3-premier-jour",
+  "title": "Leçon 3 · Le premier jour",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "end_at": "w:Donc voilà pour le premier jour",
+  "chapters": [
+    { "tag": "Leçon 3", "at": 0.4, "cards": [
+      { "text": "Le premier jour", "at": 0.6 },
+      { "text": "Le trajet, la maison, l'arrivée", "at": "w:arriver" }
+    ] },
+    { "tag": "1 · Le trajet", "at": "w:On va commencer", "cards": [
+      { "text": "En voiture, à deux", "at": "w:deux" },
+      { "text": "Des arrêts pipi", "at": "w:arrêts" },
+      { "text": "Sac de transport, alèses", "at": "w:sac" },
+      { "text": "Un linge à l'odeur de sa fratrie", "at": "w:linge" },
+      { "text": "Sur vos genoux, il est rassuré", "at": "w:genou" },
+      { "text": "Musique forte, trop chaud ou froid", "kind": "alert", "at": "w:musique" },
+      { "text": "Accident ? Pas de panique", "at": "w:s'affoler" }
+    ] },
+    { "tag": "2 · La maison", "at": "w:Avant l'arrivée", "cards": [
+      { "text": "Définir ses zones", "at": "w:définir" },
+      { "text": "Couchage, gamelle, jeux", "at": "w:couchage" },
+      { "text": "Où il a le droit d'aller", "at": "w:droit" },
+      { "text": "Ranger ce qu'il peut mâcher", "at": "w:range" },
+      { "text": "Cacher les câbles", "at": "w:câbles" },
+      { "text": "Eau fraîche et doudous", "at": "w:fraîche" },
+      { "text": "Son coin avec ses affaires", "at": "w:affaires" }
+    ] },
+    { "tag": "3 · L'arrivée", "at": "w:Donc maintenant c'est bon", "cards": [
+      { "text": "Le laisser explorer", "at": "w:explorer" },
+      { "text": "Accident ? Nettoyer sans rien dire", "at": "w:nettoyez" },
+      { "text": "Repérer ses signaux", "at": "w:comportements" },
+      { "text": "Trop de visites", "kind": "alert", "at": "w:trop de gens" },
+      { "text": "Le laisser prendre ses marques", "at": "w:marques" }
+    ] },
+    { "tag": "4 · Les autres chiens", "at": "w:Si vous êtes dans le cas", "cards": [
+      { "text": "Présentations dehors, en balade", "at": "w:l'extérieur" },
+      { "text": "Puis rentrer à la maison", "at": "w:rentrer" },
+      { "text": "L'autre chien en balade au début", "at": "w:garder" },
+      { "text": "Il découvre son espace au calme", "at": "w:découvrir" }
+    ] },
+    { "tag": "5 · Les règles", "at": "w:Et bien évidemment les règles", "cards": [
+      { "text": "Pas de canapé, pas de lit…", "at": "w:canapé" },
+      { "text": "Appliquées dès le 1er jour", "at": "w:appliquez" },
+      { "text": "Limiter les espaces", "at": "w:limitez" },
+      { "text": "Explorer, mais encadré", "at": "w:maîtriser" }
+    ] }
+  ]
+}
