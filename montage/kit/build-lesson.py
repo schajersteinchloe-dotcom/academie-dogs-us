@@ -12,7 +12,9 @@ The look is measured on the reference, « Leçon 2 · L'équipement de ton chiot
   - a tag or a card fades in rising 10 px in 0.2 s on its word; at a new part the whole column leaves upwards,
     blurred, then the next tag comes in; nothing on screen after `end_at` (the outro);
   - captions: one centred white line, words revealed as they are spoken, the line keeps its final layout;
-  - optional cut-out product photos (`images`) on the left while she names them.
+  - optional cut-out product photos (`images`) on the left while she names them;
+  - sound (assets/sfx-events.json, mixed by mix-sfx.py): a double tick on each card of a numbered part, a swish
+    before the first tag and when a column leaves, never on the opening cards (`"ticks": true` on a part forces them).
 
 lesson.json:
   { "id": "lecon-3", "title": "…", "caption_max_words": 7, "lexicon": {"cong": "Kong"}, "end_at": "w:à bientôt",
@@ -99,6 +101,9 @@ for ch in lesson["chapters"]:
 end_at = at_time(lesson["end_at"], chapters[-1]["at"]) if lesson.get("end_at") is not None else DURATION
 
 col_html, col_tl, plan = [], [], []
+# sound effects, as in the reference: a double tick on every card of a numbered part (not the opening ones),
+# a swish just before the first tag and each time a column has left; times are the sound's peak
+sfx = []
 for n, ch in enumerate(chapters):
     if ch["at"] >= DURATION:  # a draft cut short with --until
         break
@@ -110,6 +115,7 @@ for n, ch in enumerate(chapters):
     stop = min(leave + EXIT, DURATION)
     items = [f'<div class="tag" id="{cid}-tag">{esc(ch["tag"])}</div>']
     col_tl.append(f'tl.from("#{cid}-tag", {{ opacity: 0, y: 10, duration: {ENTER}, ease: "power2.out" }}, {r3(ch["at"])});')
+    sfx.append({"t": r3(max(0.05, ch["at"] - (0.10 if n == 0 else EXIT_LEAD - EXIT / 2))), "sound": "swish"})
     plan.append(f"{ch['at']:7.2f}s  [{ch['tag']}]")
     if len(ch["cards"]) > MAX_CARDS:
         raise SystemExit(f"part « {ch['tag']} »: {len(ch['cards'])} cards, {MAX_CARDS} at most fit above the captions")
@@ -134,8 +140,12 @@ for n, ch in enumerate(chapters):
         items.append(f'<div class="card{" alert" if kind == "alert" else ""}" id="{kid}" style="top:{CARD_Y - TAG_Y + CARD_PITCH * k}px">{body}</div>')
         col_tl.append(f'tl.from("#{kid}", {{ opacity: 0, y: 10, duration: {ENTER}, ease: "power2.out" }}, {r3(t)});')
         plan.append(f"{t:7.2f}s     {text}")
+        if lesson["chapters"][n].get("ticks", n > 0):
+            sfx.append({"t": r3(t), "sound": "tick"})
         clo = t
     col_tl.append(f'tl.to("#{cid}", {{ opacity: 0, y: -12, filter: "blur(8px)", duration: {EXIT}, ease: "power2.in" }}, {r3(leave)});')
+    if nxt is None:
+        sfx.append({"t": r3(leave + EXIT / 2), "sound": "swish"})
     col_html.append(f'<div id="{cid}" class="col clip" data-start="{r3(ch["at"])}" data-duration="{r3(stop - ch["at"])}" data-track-index="{2 + n % 2}">'
                     + "".join(items) + "</div>")
 
@@ -258,5 +268,6 @@ index = f"""<!doctype html>
 </html>
 """
 (ROOT / "index.html").write_text(index)
+(ROOT / "assets" / "sfx-events.json").write_text(json.dumps([e for e in sfx if e["t"] < DURATION - 0.3], indent=1))
 print("\n".join(plan))
 print(f"{len(chapters)} parts, {sum(len(c['cards']) for c in chapters)} cards, {len(chunks)} captions, {DURATION:.1f} s → index.html")

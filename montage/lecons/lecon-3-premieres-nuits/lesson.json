@@ -1,0 +1,47 @@
+{
+  "id": "lecon-3-premieres-nuits",
+  "title": "Leçon 3 · Les premières nuits",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "chapters": [
+    { "tag": "Leçon 3", "at": 0.4, "cards": [
+      { "text": "Les premières nuits", "at": 0.6 },
+      { "text": "Peu de sommeil, des pleurs…", "at": "w:pleurs" },
+      { "text": "Comment bien les gérer", "kind": "arrow", "at": "w:expliquer" }
+    ] },
+    { "tag": "1 · Le couchage", "at": "w:Alors déjà", "cards": [
+      { "text": "Limiter l'espace", "at": "w:limiter" },
+      { "text": "Il cherche la proximité", "at": "w:proximité" },
+      { "text": "Pas besoin du lit", "at": "w:Pas besoin" },
+      { "text": "Son panier dans la chambre", "at": "w:mettez" },
+      { "text": "Il s'y sent en sécurité", "at": "w:sentira" },
+      { "text": "Indépendant ? Ailleurs, c'est ok", "at": "w:indépendant" }
+    ] },
+    { "tag": "2 · Les pleurs", "at": "w:Pour les premières nuits", "cards": [
+      { "text": "Peut-être des pleurs", "at": "w:pleurs" },
+      { "text": "Le laisser pleurer seul", "kind": "alert", "at": "w:laisser" },
+      { "text": "Le prendre avec vous", "at": "w:Prenez-le" },
+      { "text": "Au calme, dans son panier", "at": "w:au calme" },
+      { "text": "Une caresse, il s'endort", "at": "w:caresse" }
+    ] },
+    { "tag": "3 · La propreté", "at": "w:Ensuite pourquoi", "cards": [
+      { "text": "Vous l'entendez s'agiter", "at": "w:l'entendre" },
+      { "text": "Propreté plus simple à gérer", "at": "w:la propreté" },
+      { "text": "Détails dans la leçon propreté", "kind": "arrow", "at": "w:autre leçon" }
+    ] },
+    { "tag": "En résumé", "at": "w:Donc en gros", "cards": [
+      { "text": "Le garder près de soi", "at": "w:garder" },
+      { "text": "S'endormir au calme", "at": "w:s'endormir" },
+      { "text": "Des caresses si besoin", "at": "w:caresses" },
+      { "text": "Alarme ou réveil", "at": "w:alarmes" },
+      { "text": "Le sortir faire ses besoins", "kind": "arrow", "at": "w:sortir" }
+    ] },
+    { "tag": "4 · Plus tard", "at": "w:Si vous vous demandez", "cards": [
+      { "text": "Dormir au salon ensuite ?", "at": "w:salon" },
+      { "text": "Décaler le panier petit à petit", "at": "w:décalerez" },
+      { "text": "Porte ouverte, puis fermée", "at": "w:ouverte" },
+      { "text": "Sur plusieurs semaines", "at": "w:semaines" },
+      { "text": "1re semaine : sécurité et lien", "at": "w:première semaine" }
+    ] }
+  ]
+}

@@ -42,6 +42,20 @@ Un empilement aligné à gauche, dans le coin haut gauche (marge d'environ 80 px
   à côté d'elle. Exemple à 167 s : des bâtons et bois à mâcher pendant « comme ceci, ceci, ceci ».
 - Seulement des vrais produits, jamais d'image inventée.
 
+## Effets sonores
+
+Relevés sur la Leçon 2 (voix séparée du reste avec Demucs, puis chaque son cherché dans toute la piste) :
+
+- **Double « tic »** (`kit/sfx/tick.wav`) : deux clics brefs et aigus, le second 111 ms après le premier et 1,5 dB plus
+  doux. Un sur **chaque carte** d'une partie numérotée, au moment où elle apparaît. Jamais sur les cartes d'ouverture
+  (titre, enjeu), jamais sur les étiquettes.
+- **Swish** (`kit/sfx/swish.wav`) : un souffle court (environ 150 ms). Un juste avant la première étiquette, puis à
+  chaque changement de partie, quand l'ancienne colonne vient de partir.
+- Pas de musique. Volume des effets : celui de la référence, calé sur la voix (`mix-sfx.py` mesure la voix et ajuste).
+
+`build-lesson.py` écrit `assets/sfx-events.json`. Après le rendu, `python3 scripts/mix-sfx.py renders/<leçon>.mp4`
+pose les effets sous la voix (copier `kit/sfx/*.wav` dans `assets/sfx/`). La vidéo n'est pas réencodée.
+
 ## Mesures exactes (relevées en pleine résolution, 1920×1080)
 
 | Élément | Valeur |
@@ -75,7 +89,8 @@ Ces valeurs sont codées dans `kit/build-lesson.py` : un rendu de contrôle pos�
    `npx hyperframes@0.8.42 render --sdr`. `HYPERFRAMES_BROWSER_PATH` doit pointer sur le Chrome du conteneur, et
    `PRODUCER_STREAMING_ENCODE_MAX_DURATION_SECONDS=1200` fait encoder au fil de la capture : sans lui, une leçon de
    6 minutes demande environ 86 Go d'images temporaires et le rendu s'arrête faute de disque.
-8. Déposer le rendu dans la bibliothèque PlugKit (`create_media_upload` puis `curl -T`).
+8. Effets sonores : `python3 scripts/mix-sfx.py renders/<leçon>.mp4` (voir « Effets sonores »).
+9. Déposer le rendu dans la Médiathèque PlugKit (`create_media_upload` puis `curl -T`).
 
 ## Le plan d'une leçon
 
