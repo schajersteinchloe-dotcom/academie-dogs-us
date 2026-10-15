@@ -1,0 +1,67 @@
+{
+  "id": "lecon-5-balades",
+  "title": "Leçon 5 · Les balades",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "end_at": "w:Donc dès maintenant",
+  "chapters": [
+    { "tag": "Leçon 5", "at": 0.4, "cards": [
+      { "text": "Les balades", "at": 0.6 },
+      { "text": "Oubliez les 5 min par mois", "kind": "alert", "at": "w:oublier" },
+      { "text": "3 types de balades", "at": "w:types" }
+    ] },
+    { "tag": "1 · L'essentiel", "at": "w:Pourquoi est-ce", "cards": [
+      { "text": "Tous les chiens, chaque jour", "at": "w:quotidiennes" },
+      { "text": "1 h en laisse ne suffit pas", "kind": "alert", "at": "w:suffisant" },
+      { "text": "Son moment d'exploration", "at": "w:d'exploration" },
+      { "text": "De bonnes expériences", "at": "w:expériences" },
+      { "text": "Aller vite d'un point A à B", "kind": "alert", "at": "w:point" },
+      { "text": "Renifler le dépense", "at": "w:reniflent" }
+    ] },
+    { "tag": "2 · L'hygiénique", "at": "w:La première balade", "cards": [
+      { "text": "5 à 15 minutes", "at": "w:15" },
+      { "text": "Après repas, jeu, sieste", "at": "w:repas" },
+      { "text": "Ses besoins dehors", "at": "w:l'extérieur" },
+      { "text": "Herbe, buissons", "at": "w:petits coins" },
+      { "text": "Rentrer après chaque pipi", "kind": "alert", "at": "w:rentrer" },
+      { "text": "Sinon il retarde son pipi", "kind": "arrow", "at": "w:45" }
+    ] },
+    { "tag": "3 · La socialisation", "at": "w:Ensuite on va aborder", "cards": [
+      { "text": "Observer le monde", "at": "w:observer" },
+      { "text": "Joggers, vélos, enfants…", "at": "w:joggers" },
+      { "text": "Dans un état calme", "at": "w:calme" },
+      { "text": "Dire oui à tout", "kind": "alert", "at": "w:tendance" },
+      { "text": "La qualité avant la quantité", "at": "w:qualité" },
+      { "text": "30 à 40 minutes", "at": "w:30" },
+      { "text": "Il a peur ? Prendre de la distance", "at": "w:distance" }
+    ] },
+    { "tag": "4 · L'exploration", "at": "w:Et ensuite en troisième", "cards": [
+      { "text": "Forêt, parcs : il est libre", "at": "w:forêt" },
+      { "text": "Longe ou détaché", "at": "w:longe" },
+      { "text": "Sans regarder l'heure", "at": "w:l'heure" },
+      { "text": "1 h vers 3-4 mois", "at": "w:3-4" },
+      { "text": "20 min de flair = 1 h en laisse", "at": "w:reniflement" },
+      { "text": "La plus fatigante", "at": "w:fatigant" }
+    ] },
+    { "tag": "5 · Sa semaine", "at": "w:Comment est-ce qu'on organise", "cards": [
+      { "text": "Hygiénique : 4 à 5 fois par jour", "at": "w:4 à 5" },
+      { "text": "1 h balade + 30 min socialisation", "at": "w:bonne heure" },
+      { "text": "Pas forcément chaque jour", "at": "w:tous les jours" },
+      { "text": "Le week-end : la forêt", "at": "w:week-end" }
+    ] },
+    { "tag": "6 · Les erreurs", "at": "w:Les erreurs courantes", "cards": [
+      { "text": "Tirer quand il renifle", "kind": "alert", "at": "w:tirer" },
+      { "text": "20 min sur une rue, ça suffit", "at": "w:Vaut" },
+      { "text": "Varier les itinéraires", "at": "w:varier" },
+      { "text": "Peureux ? Même routine", "at": "w:peureux" },
+      { "text": "Forcer les rencontres", "kind": "alert", "at": "w:forcer" },
+      { "text": "Lui apprendre à se détourner", "at": "w:détourner" }
+    ] },
+    { "tag": "7 · Son énergie", "at": "w:Donc il n'y a pas de balade", "cards": [
+      { "text": "Adapter à son énergie", "at": "w:s'adapte" },
+      { "text": "Il renifle, avance : tout va bien", "at": "w:renifle" },
+      { "text": "Il se fige ? Reculer", "at": "w:figer" },
+      { "text": "Le laisser gérer l'émotion", "at": "w:émotion" }
+    ] }
+  ]
+}
