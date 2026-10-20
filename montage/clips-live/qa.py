@@ -2,7 +2,7 @@
 """qa.py — what is heard in each rendered clip (WhisperX on the clip, padded) against the words the clip should hold."""
 import json, difflib, re, glob, sys
 def norm(s): return re.sub(r"[^\w'%]", "", s.lower().replace("’", "'"))
-for f in sorted(glob.glob("out/0*.words.json")):
+for f in sorted(glob.glob("out/*.words.json")):
     name = f.split("/")[-1][:-11]
     exp = json.load(open(f))
     got = json.load(open(f"qa/audio/pad-{name}.json"))["words"]
