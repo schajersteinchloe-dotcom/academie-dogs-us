@@ -23,11 +23,13 @@ ap.add_argument("--src", default=str(ROOT / "src" / "live.mp4"))
 ap.add_argument("--transcript", default=str(ROOT / "transcript-full.json"))
 ap.add_argument("--out", default=str(ROOT / "out"))
 ap.add_argument("--preview", action="store_true", help="fast encode")
+ap.add_argument("--top", type=int, default=384, help="source rows kept above the band (the webcam)")
+ap.add_argument("--band", type=int, default=52, help="source rows replaced by the caption band (sticker, toolbar, divider)")
 args = ap.parse_args()
 
 MAX_GAP, PRE, POST = 0.50, 0.10, 0.16
 VOICE_DB = -42
-TOP, BAND = 384, 52                    # source rows: webcam 0..TOP, band TOP..TOP+BAND, chart below
+TOP, BAND = args.top, args.band        # source rows: webcam 0..TOP, band TOP..TOP+BAND, chart below
 BAND_Y = (TOP + BAND / 2) * 1.5        # caption center in the 1080x1920 frame
 CAP_MAX_WORDS, CAP_MAX_CHARS = 4, 20
 NOTE_Y = 740                           # notes sit at the top of the chart
