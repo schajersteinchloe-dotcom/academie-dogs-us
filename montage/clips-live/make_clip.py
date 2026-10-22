@@ -7,6 +7,7 @@ clips.json: [{ "id": "01-...", "keep": [[a, b], ...], "drop": [[a, b], ...], "fi
   keep  source ranges in seconds (word starts inside a range are kept)
   drop  source ranges removed from inside the keeps (asides, chat reading, retakes)
   fix   token replacements for the captions (transcription errors)
+  solid ranges played whole: their words are never split at a pause (fast speech the aligner spread out)
 
 Layout (source 720x1280): webcam rows 0-384, the live's own « Rejoins mon lien en bio » sticker and the divider
 (384-436) are replaced by a black band, chart rows 436-1280 below. Scaled to 1080x1920; captions centered on the band.
@@ -79,7 +80,8 @@ if not ws:
 # pieces of speech: consecutive words of the live closer than MAX_GAP stay together (a skipped word always cuts)
 pieces = []
 for w in ws:
-    if pieces and w["idx"] == pieces[-1][-1]["idx"] + 1 and w["start"] - pieces[-1][-1]["end"] <= MAX_GAP:
+    solid = any(a <= pieces[-1][-1]["start"] and w["start"] < b for a, b in clip.get("solid", [])) if pieces else False
+    if pieces and w["idx"] == pieces[-1][-1]["idx"] + 1 and (solid or w["start"] - pieces[-1][-1]["end"] <= MAX_GAP):
         pieces[-1].append(w)
     else:
         pieces.append([w])
