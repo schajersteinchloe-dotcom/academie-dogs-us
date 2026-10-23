@@ -4,7 +4,8 @@
 Usage: python3 tools/make_clip.py clips.json <id> [--preview]
 
 clips.json: [{ "id": "01-...", "keep": [[a, b], ...], "drop": [[a, b], ...], "fix": {"old": "new"}, "words": {...} }]
-  keep  source ranges in seconds (word starts inside a range are kept)
+  keep  source ranges in seconds (word starts inside a range are kept); [a, b, "raw"] plays the range whole,
+        silences included (music, dance), its words still captioned
   drop  source ranges removed from inside the keeps (asides, chat reading, retakes)
   fix   token replacements for the captions (transcription errors)
   solid ranges played whole: their words are never split at a pause (fast speech the aligner spread out)
@@ -53,7 +54,9 @@ for i, w in enumerate(words):
     else:
         _pw.append(dict(w, idx=len(_pw)))
 words = _pw
-ws = [dict(w) for a, b in clip["keep"] for w in words if a - 0.02 <= w["start"] < b - 0.02 and not inside(w["start"], clip.get("drop", []))]
+keeps = [(k[0], k[1], k[2:] == ["raw"]) for k in clip["keep"]]
+ws = [dict(w, keep=ki) for ki, (a, b, _) in enumerate(keeps) for w in words
+      if a - 0.02 <= w["start"] < b - 0.02 and not inside(w["start"], clip.get("drop", []))]
 for k, v in clip.get("words", {}).items():          # "start": "new text" (or "" to remove that word)
     for w in ws:
         if abs(w["start"] - float(k)) < 0.02:
@@ -77,18 +80,31 @@ for w in ws:
 if not ws:
     sys.exit("no words in this clip")
 
-# pieces of speech: consecutive words of the live closer than MAX_GAP stay together (a skipped word always cuts)
-pieces = []
-for w in ws:
-    solid = any(a <= pieces[-1][-1]["start"] and w["start"] < b for a, b in clip.get("solid", [])) if pieces else False
-    if pieces and w["idx"] == pieces[-1][-1]["idx"] + 1 and (solid or w["start"] - pieces[-1][-1]["end"] <= MAX_GAP):
-        pieces[-1].append(w)
-    else:
-        pieces.append([w])
+# pieces of speech: consecutive words of the live closer than MAX_GAP stay together (a skipped word always cuts);
+# a raw keep is one piece of its own, played from its first to its last second (raws[i] holds its range)
+pieces, raws = [], []
+for ki, (ka, kb, raw) in enumerate(keeps):
+    kw = [w for w in ws if w["keep"] == ki]
+    if raw:
+        pieces.append(kw)
+        raws.append((ka, kb))
+        continue
+    for w in kw:
+        prev = pieces[-1] if pieces and not raws[-1] else None
+        solid = bool(prev) and any(a <= prev[-1]["start"] and w["start"] < b for a, b in clip.get("solid", []))
+        if prev and w["idx"] == prev[-1]["idx"] + 1 and (solid or w["start"] - prev[-1]["end"] <= MAX_GAP):
+            prev.append(w)
+        else:
+            pieces.append([w])
+            raws.append(None)
 segs = []
-pieces = [[w for w in p if w["text"]] for p in pieces]
-pieces = [p for p in pieces if p]
-for p in pieces:
+kept = [([w for w in p if w["text"]], r) for p, r in zip(pieces, raws)]
+kept = [(p, r) for p, r in kept if p or r]
+pieces, raws = [p for p, _ in kept], [r for _, r in kept]
+for p, r in zip(pieces, raws):
+    if r:
+        segs.append(list(r))
+        continue
     a, b = p[0]["start"] - PRE, p[-1]["end"] + POST
     # the air around a piece never reaches into the neighbouring words of the live that are not in it
     i0, i1 = p[0]["idx"], p[-1]["idx"]
@@ -108,8 +124,9 @@ OFFSET = float(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a:0
 segs = [[int((a + OFFSET) * 30) / 30, -int(-(b + OFFSET) * 30) / 30] for a, b in segs]
 
 # output timeline: word times shifted into their segment
-out_t, t0 = [], 0.0
+out_t, t0, seg_t = [], 0.0, []
 for (a, b), p in zip(segs, pieces):
+    seg_t.append(t0)
     for w in p:
         out_t.append({"text": w["text"], "start": t0 + w["start"] + OFFSET - a, "end": t0 + w["end"] + OFFSET - a})
     t0 += b - a
@@ -174,9 +191,14 @@ for gi, g in enumerate(groups):
         ev.append(f"Dialogue: 0,{ts(a)},{ts(b)},Cap,,0,0,0,,{{\\pos(540,{BAND_Y:.0f})}}{pop}{' '.join(parts)}")
 
 for note in clip.get("notes", []):
-    first = min(((w["start"], o) for w, o in zip([w for p in pieces for w in p], out_t) if w["start"] >= note["src"] - 0.02),
-                key=lambda x: x[0])[1]                    # the kept word closest after the note's source time
-    a = max(0.0, first["start"] - 0.15)
+    src = note["src"] + OFFSET
+    in_raw = [t + src - a for (a, b), r, t in zip(segs, raws, seg_t) if r and a <= src < b]
+    if in_raw:                                            # inside a raw piece: at its own second
+        a = in_raw[0]
+    else:
+        first = min(((w["start"], o) for w, o in zip([w for p in pieces for w in p], out_t) if w["start"] >= note["src"] - 0.02),
+                    key=lambda x: x[0])[1]                # the kept word closest after the note's source time
+        a = max(0.0, first["start"] - 0.15)
     ev.append(f"Dialogue: 1,{ts(a)},{ts(a + note.get('dur', 1.6))},Note,,0,0,0,,{{\\pos(540,{NOTE_Y})\\fad(120,180)}}{note['text']}")
 
 out = Path(args.out)
@@ -202,10 +224,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 fc, n, inputs = [], len(segs), []
 for i, (a, b) in enumerate(segs):
     nf = round((b - a) * 30)                               # exact frame and sample counts: no drift over many cuts
+    fi, fo = (0.08, 0.4) if raws[i] else (0.012, 0.012)    # music cut mid-song comes in and goes out softly
     inputs += ["-ss", f"{a:.4f}", "-t", f"{b - a + 0.3:.3f}", "-i", args.src]
     fc.append(f"[{i}:v]setpts=PTS-STARTPTS,fps=30,trim=end_frame={nf},setpts=PTS-STARTPTS[v{i}]")
     fc.append(f"[{i}:a]asetpts=PTS-STARTPTS,aresample=48000,atrim=end_sample={nf * 1600},asetpts=PTS-STARTPTS,"
-              f"afade=t=in:d=0.012,afade=t=out:st={nf / 30 - 0.012:.4f}:d=0.012[a{i}]")
+              f"afade=t=in:d={fi},afade=t=out:st={nf / 30 - fo:.4f}:d={fo}[a{i}]")
 fc.append("".join(f"[v{i}][a{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=1[cv][ca]")
 fc.append(f"[cv]split[t][c];[t]crop=720:{TOP}:0:0[top];[c]crop=720:{1280 - TOP - BAND}:0:{TOP + BAND}[bot];"
           f"color=black:s=720x{BAND}:r=30[band];[top][band][bot]vstack=3:shortest=1,scale=1080:1920:flags=lanczos,"
