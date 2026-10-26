@@ -1,0 +1,38 @@
+{
+  "id": "exercice-pas-bouger",
+  "title": "Exercice · Le pas bouger",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "chapters": [
+    { "tag": "Exercice", "at": 0.4, "cards": [
+      { "text": "Le pas bouger", "at": 0.6 },
+      { "text": "D'abord à la maison", "at": "w:commence par la maison" },
+      { "text": "Puis dehors, au calme", "at": "w:extérieur neutre" },
+      { "text": "Puis dans l'agitation", "at": "w:environnement stimulant" }
+    ] },
+    { "tag": "1 · La distance", "at": "w:Vous prenez votre chiot", "cards": [
+      { "text": "Chiot en position assise", "at": "w:position assise" },
+      { "text": "Tout près de lui au début", "at": "w:proche" },
+      { "text": "1 pas en arrière", "at": "w:un pas en arrière" },
+      { "text": "Puis 2 pas", "at": "w:deux pas" },
+      { "text": "Toujours plus de distance", "kind": "arrow", "at": "w:mettre plus de distance" }
+    ] },
+    { "tag": "2 · La durée", "at": "w:Le pas bouger peut aussi", "cards": [
+      { "text": "Vous vous écartez", "at": "w:écarter" },
+      { "text": "Il patiente longtemps", "at": "w:patienter" },
+      { "text": "Pas besoin d'aller loin", "kind": "arrow", "at": "w:sans être forcément" }
+    ] },
+    { "tag": "3 · La distraction", "at": "w:Mais du coup", "cards": [
+      { "text": "Durée, distance, distraction", "at": "w:en durée en distance" },
+      { "text": "Un cran plus difficile", "at": "w:compliqué" },
+      { "text": "Aidez-vous d'une laisse", "at": "w:laisse" },
+      { "text": "Ou tenez-le au collier", "at": "w:au collier" }
+    ] },
+    { "tag": "4 · Au quotidien", "at": "w:Je précise", "cards": [
+      { "text": "Un peu chaque jour", "at": "w:tous les jours" },
+      { "text": "Intérieur, puis extérieur calme", "at": "w:intérieur" },
+      { "text": "Augmenter petit à petit", "at": "w:pousser" },
+      { "text": "Des défis dans la communauté", "at": "w:challenges" }
+    ] }
+  ]
+}
