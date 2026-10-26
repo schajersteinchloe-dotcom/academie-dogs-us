@@ -1,0 +1,40 @@
+{
+  "id": "exercice-le-cherche",
+  "title": "Exercice · Le cherche",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "chapters": [
+    { "tag": "Exercice", "at": 0.4, "cards": [
+      { "text": "Le cherche", "at": 0.6 },
+      { "text": "Les jeux de flair", "at": "w:jeux de flair" },
+      { "text": "En intérieur, en extérieur", "at": "w:en intérieur" },
+      { "text": "Son meilleur atout", "at": "w:meilleur atout" }
+    ] },
+    { "tag": "1 · Faire tomber", "at": "w:La première chose", "cards": [
+      { "text": "Faire tomber une friandise", "at": "w:tomber" },
+      { "text": "Dire « cherche »", "at": "w:dire cherche" },
+      { "text": "Plusieurs fois", "at": "w:plusieurs fois" },
+      { "text": "Ça tombe : il va chercher", "kind": "arrow", "at": "w:quelque chose tombe" }
+    ] },
+    { "tag": "2 · Cacher", "at": "w:Ensuite vous allez pouvoir", "cards": [
+      { "text": "Cacher la friandise", "at": "w:le cacher" },
+      { "text": "Tout près de vous", "at": "w:ici" }
+    ] },
+    { "tag": "3 · Derrière un objet", "at": "w:Ensuite qu'est-ce que", "cards": [
+      { "text": "Ex. : un plot", "at": "w:plot" },
+      { "text": "Il s'assoit d'abord", "at": "w:un assis" },
+      { "text": "La friandise derrière", "at": "w:derrière" },
+      { "text": "Puis « cherche »", "at": "w:je dis cherche" },
+      { "text": "Il trouve : bravo !", "at": "w:Bravo" }
+    ] },
+    { "tag": "4 · Partout", "at": "w:Vous allez pouvoir commencer à faire ça", "cards": [
+      { "text": "Partout dans la maison", "at": "w:tous les endroits" },
+      { "text": "Derrière un meuble", "at": "w:meuble" },
+      { "text": "Sous une chaise, un plaid", "at": "w:chaise" },
+      { "text": "Il développe sa stratégie", "at": "w:stratégie" },
+      { "text": "Le flair, son atout n°1", "at": "w:le flair" },
+      { "text": "Un jeu à faire ensemble", "at": "w:jeu super" },
+      { "text": "Il retrouvera ce qu'il a senti", "kind": "arrow", "at": "w:au bout d'un moment" }
+    ] }
+  ]
+}
