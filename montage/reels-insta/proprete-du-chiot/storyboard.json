@@ -1,0 +1,171 @@
+{
+ "id": "proprete-du-chiot",
+ "title": "Propreté du chiot",
+ "duration": 28.3,
+ "fps": 30,
+ "speaker": "assets/speaker.mp4",
+ "audio": "assets/reel-audio.wav",
+ "caption_style": "pop",
+ "caption_font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif",
+ "caption_size": 66,
+ "caption_max_words": 3,
+ "caption_accent": "#E8462A",
+ "keywords": [
+  "grondant",
+  "pipi",
+  "faute",
+  "anticipation",
+  "observer",
+  "semaines"
+ ],
+ "locale": "fr-FR",
+ "brand": {
+  "bg": "#F3F1EE",
+  "ink": "#0E0C0D",
+  "accent": "#E8462A",
+  "font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif"
+ },
+ "scenes": [
+  {
+   "layout": "F",
+   "start": 0,
+   "end": 8.04,
+   "cap_top": 1360,
+   "holdReason": "the hook stays while she states the myth",
+   "overlay": {
+    "out": 7.75,
+    "items": [
+     {
+      "text": "PROPRETÉ DU CHIOT",
+      "size": 84,
+      "weight": 800,
+      "top": 280,
+      "at": 0.1,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "On arrête de le gronder",
+      "size": 58,
+      "weight": 700,
+      "top": 410,
+      "at": "w:grondant",
+      "pop": "rise",
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 8.04,
+   "end": 13.59,
+   "cap_top": 1360,
+   "holdReason": "the two things not to do, struck out on her words",
+   "overlay": {
+    "out": 13.3,
+    "items": [
+     {
+      "text": "Le nez dans le pipi",
+      "size": 66,
+      "weight": 700,
+      "top": 290,
+      "at": "w:nez",
+      "strike_at": "w:pipi",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     },
+     {
+      "text": "L'enfermer, le punir",
+      "size": 66,
+      "weight": 700,
+      "top": 410,
+      "at": "w:l'enferme",
+      "strike_at": "w:punit",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 13.59,
+   "end": 20.61,
+   "cap_top": 1360,
+   "holdReason": "what works, ticked on her words",
+   "overlay": {
+    "out": 20.3,
+    "items": [
+     {
+      "text": "Anticiper",
+      "check": true,
+      "size": 70,
+      "weight": 700,
+      "top": 290,
+      "at": "w:l'anticipation",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     },
+     {
+      "text": "Observer son chiot",
+      "check": true,
+      "size": 70,
+      "weight": 700,
+      "top": 415,
+      "at": "w:observer",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 20.61,
+   "end": 28.3,
+   "cap_top": 1360,
+   "holdReason": "the payoff number stays to the end",
+   "overlay": {
+    "items": [
+     {
+      "text": "2 à 3 semaines",
+      "size": 100,
+      "weight": 800,
+      "top": 270,
+      "at": "w:deux",
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "en anticipant ses besoins",
+      "size": 56,
+      "weight": 700,
+      "top": 430,
+      "at": "w:anticipez",
+      "pop": "rise",
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

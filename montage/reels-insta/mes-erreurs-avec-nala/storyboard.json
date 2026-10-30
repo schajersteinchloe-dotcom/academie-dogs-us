@@ -1,0 +1,258 @@
+{
+ "id": "mes-erreurs-avec-mon-chiot",
+ "title": "Mes erreurs avec mon chiot",
+ "duration": 44.167,
+ "fps": 30,
+ "speaker": "assets/speaker.mp4",
+ "audio": "assets/reel-audio.wav",
+ "caption_style": "pop",
+ "caption_font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif",
+ "caption_size": 66,
+ "caption_max_words": 3,
+ "caption_accent": "#E8462A",
+ "keywords": [
+  "erreurs",
+  "grondais",
+  "Nala",
+  "violence",
+  "rancunière",
+  "coopération",
+  "bienveillante",
+  "craintif",
+  "équilibré",
+  "jamais"
+ ],
+ "locale": "fr-FR",
+ "brand": {
+  "bg": "#F3F1EE",
+  "ink": "#0E0C0D",
+  "accent": "#E8462A",
+  "font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif"
+ },
+ "scenes": [
+  {
+   "layout": "F",
+   "start": 0,
+   "end": 6.4,
+   "cap_top": 1360,
+   "holdReason": "the hook stays while she confesses",
+   "overlay": {
+    "out": 6.15,
+    "items": [
+     {
+      "text": "MOI AUSSI, J'AI FAIT<br>DES ERREURS",
+      "size": 76,
+      "weight": 800,
+      "top": 250,
+      "at": 0.1,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "Je le grondais",
+      "size": 60,
+      "weight": 700,
+      "top": 480,
+      "at": "w:grondais",
+      "pop": "rise",
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 6.4,
+   "end": 11.49,
+   "cap_top": 1360,
+   "holdReason": "Nala, then what she taught her",
+   "overlay": {
+    "out": 11.25,
+    "items": [
+     {
+      "text": "Nala",
+      "size": 96,
+      "weight": 800,
+      "top": 280,
+      "at": "w:Nala",
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "La violence",
+      "size": 66,
+      "weight": 700,
+      "top": 430,
+      "at": "w:violence",
+      "strike_at": "w:rien",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 11.49,
+   "end": 15.99,
+   "cap_top": 1360,
+   "holdReason": "she shows Nala",
+   "overlay": {
+    "out": 15.75,
+    "items": [
+     {
+      "text": "La voici",
+      "size": 76,
+      "weight": 800,
+      "top": 290,
+      "at": "w:petite",
+      "out_at": "w:regretter",
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "Très rancunière",
+      "size": 66,
+      "weight": 700,
+      "top": 290,
+      "at": "w:rancunière",
+      "pop": "rise",
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 15.99,
+   "end": 28.56,
+   "cap_top": 1360,
+   "holdReason": "the methods she learned, ticked on her words",
+   "overlay": {
+    "out": 28.3,
+    "items": [
+     {
+      "text": "D'autres méthodes",
+      "size": 72,
+      "weight": 800,
+      "top": 270,
+      "at": "w:méthodes",
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "Coopération",
+      "check": true,
+      "size": 64,
+      "weight": 700,
+      "top": 400,
+      "at": "w:coopération",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     },
+     {
+      "text": "Bienveillance",
+      "check": true,
+      "size": 64,
+      "weight": 700,
+      "top": 510,
+      "at": "w:bienveillante",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 28.56,
+   "end": 36.55,
+   "cap_top": 1360,
+   "holdReason": "what Nala is today",
+   "overlay": {
+    "out": 36.3,
+    "items": [
+     {
+      "text": "Très adaptable",
+      "check": true,
+      "size": 68,
+      "weight": 700,
+      "top": 290,
+      "at": "w:adaptable",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     },
+     {
+      "text": "Un caractère craintif",
+      "size": 60,
+      "weight": 700,
+      "top": 410,
+      "at": "w:craintif",
+      "pop": "rise",
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 36.55,
+   "end": 44.167,
+   "cap_top": 1360,
+   "holdReason": "the payoff stays to the end",
+   "overlay": {
+    "items": [
+     {
+      "text": "Stable et équilibrée",
+      "check": true,
+      "size": 68,
+      "weight": 700,
+      "top": 290,
+      "at": "w:stable",
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      }
+     },
+     {
+      "text": "Jamais punie, jamais grondée",
+      "size": 58,
+      "weight": 700,
+      "top": 410,
+      "at": "w:jamais",
+      "pop": "rise",
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

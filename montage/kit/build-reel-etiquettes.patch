@@ -1,0 +1,13 @@
+--- a/scripts/build-reel.py	2026-10-13 19:28:47.306863333 +0000
++++ b/scripts/build-reel.py	2026-10-30 21:13:35.797644053 +0000
+@@ -574,7 +574,9 @@
+                     deco += f'<span class="ul" id="{iid}-ul"></span>'
+                 label = f'<span class="lab">{esc(it["label"])}</span>' if it.get("label") else ""
+                 pad = f'padding-left:{it["left"]}px;' if it.get("left") else ""
+-                html.append(f'<div class="ov" id="{iid}" style="top:{it.get("top", 300)}px;text-align:{it.get("align", "center")};{style}{pad}"><span class="it inline">{inner}{deco}</span>{label}</div>')
++                box = it.get("box")   # a label like the lessons' tags and cards: {"bg", "fg"}
++                boxed = f' style="background:{box.get("bg", "#0E0C0D")};color:{box.get("fg", "#fff")};padding:{box.get("pad", ".1em .38em .16em")};border-radius:{box.get("radius", 16)}px;text-shadow:none;box-shadow:0 10px 30px rgba(0,0,0,.28)"' if box else ""
++                html.append(f'<div class="ov" id="{iid}" style="top:{it.get("top", 300)}px;text-align:{it.get("align", "center")};{style}{pad}"><span class="it inline"{boxed}>{inner}{deco}</span>{label}</div>')
+                 pop = it.get("pop", "scale")
+                 if pop == "scale":
+                     tl.append(f'tl.from("#{iid}", {{ opacity: 0, scale: 0.6, duration: 0.32, ease: "back.out(2.2)", transformOrigin: "50% 50%" }}, {r3(max(0, at))});')
