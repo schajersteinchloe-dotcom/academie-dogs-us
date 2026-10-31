@@ -1,0 +1,381 @@
+{
+  "id": "lecon-6-socialisation",
+  "title": "Leçon 6 · La socialisation",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "end_at": "w:On se retrouve",
+  "chapters": [
+    {
+      "tag": "Leçon 6",
+      "at": 0.4,
+      "cards": [
+        {
+          "text": "La socialisation",
+          "at": 0.6
+        },
+        {
+          "text": "Ta priorité n°1",
+          "at": "w:la plus importante"
+        },
+        {
+          "text": "Un chiot bien dans ses pattes",
+          "at": "w:bien dans ses pattes"
+        }
+      ]
+    },
+    {
+      "tag": "1 · Le principe",
+      "at": "w:Donc déjà",
+      "cards": [
+        {
+          "text": "Pas juste le promener partout",
+          "kind": "alert",
+          "at": "w:amener"
+        },
+        {
+          "text": "Son cerveau enregistre tout",
+          "at": "w:enregistre"
+        },
+        {
+          "text": "Chaque sortie = une émotion",
+          "at": "w:une émotion"
+        },
+        {
+          "text": "Joie ou neutre : banal",
+          "kind": "arrow",
+          "at": "w:banal"
+        },
+        {
+          "text": "Le stress peut devenir une peur",
+          "kind": "alert",
+          "at": "w:devenir une peur"
+        },
+        {
+          "text": "Ex. : un trajet en voiture raté",
+          "at": "w:trajet"
+        },
+        {
+          "text": "Les trajets, un calvaire",
+          "kind": "arrow",
+          "at": "w:calvaire"
+        }
+      ]
+    },
+    {
+      "tag": "2 · La fenêtre d'or",
+      "at": "w:Donc il y a une fenêtre",
+      "cards": [
+        {
+          "text": "De 6 à 12 semaines",
+          "at": "w:6 à 12"
+        },
+        {
+          "text": "Le chiot est une éponge",
+          "at": "w:éponge"
+        },
+        {
+          "text": "Après 4 mois, ça disparaît",
+          "kind": "alert",
+          "at": "w:disparaître"
+        },
+        {
+          "text": "Ça se travaille toujours",
+          "at": "w:se travaille"
+        },
+        {
+          "text": "Bien socialisé = adulte équilibré",
+          "at": "w:bien socialisé"
+        },
+        {
+          "text": "À 3 mois, une fenêtre reste",
+          "at": "w:trois mois"
+        }
+      ]
+    },
+    {
+      "tag": "3 · Les surfaces",
+      "at": "w:Alors évidemment les surfaces",
+      "cards": [
+        {
+          "text": "Herbe, carrelage, béton",
+          "at": "w:l'herbe"
+        },
+        {
+          "text": "Sable, gravier…",
+          "at": "w:sable"
+        },
+        {
+          "text": "Marcher partout sans crainte",
+          "kind": "arrow",
+          "at": "w:nouvelle surface"
+        }
+      ]
+    },
+    {
+      "tag": "4 · Les bruits",
+      "at": "w:Ensuite on va avoir les bruits",
+      "cards": [
+        {
+          "text": "Vélos, poussettes, trottinettes",
+          "at": "w:vélos"
+        },
+        {
+          "text": "Klaxons, sonnettes, travaux",
+          "at": "w:klaxonnent"
+        },
+        {
+          "text": "À la maison : l'aspirateur",
+          "at": "w:l'aspirateur"
+        },
+        {
+          "text": "Les bruits de bébé",
+          "at": "w:bébé"
+        },
+        {
+          "text": "Jamais forcé",
+          "kind": "alert",
+          "at": "w:on ne force pas"
+        },
+        {
+          "text": "Écouter à distance",
+          "at": "w:à distance"
+        },
+        {
+          "text": "Un bruit banal plus tard",
+          "kind": "arrow",
+          "at": "w:banal"
+        }
+      ]
+    },
+    {
+      "tag": "5 · Les humains",
+      "at": "w:Ensuite évidemment le plus important",
+      "cards": [
+        {
+          "text": "Pas besoin de saluer tout le monde",
+          "at": "w:dire bonjour"
+        },
+        {
+          "text": "Pas obligé d'accepter les caresses",
+          "at": "w:caresse"
+        },
+        {
+          "text": "Sinon : un chiot frustré",
+          "kind": "arrow",
+          "at": "w:frustrer"
+        },
+        {
+          "text": "Des interactions de qualité",
+          "at": "w:interactions de qualité"
+        },
+        {
+          "text": "Casques, chapeaux, sacs…",
+          "at": "w:casques"
+        }
+      ]
+    },
+    {
+      "tag": "6 · Les chiens",
+      "at": "w:Ensuite très important aussi",
+      "cards": [
+        {
+          "text": "Contents de voir leurs congénères",
+          "at": "w:congénères"
+        },
+        {
+          "text": "La qualité avant la quantité",
+          "at": "w:qualité"
+        },
+        {
+          "text": "Des chiens calmes et équilibrés",
+          "at": "w:calmes"
+        },
+        {
+          "text": "Des chiens que vous connaissez",
+          "at": "w:connaître"
+        },
+        {
+          "text": "Sinon, demander au maître",
+          "at": "w:demander"
+        },
+        {
+          "text": "Le parc canin : trop tôt",
+          "kind": "alert",
+          "at": "w:parc canin"
+        },
+        {
+          "text": "Les vaccins entre 2 et 3 mois",
+          "at": "w:vaccins"
+        }
+      ]
+    },
+    {
+      "tag": "7 · Les autres espèces",
+      "at": "w:Une autre chose aussi",
+      "cards": [
+        {
+          "text": "Chats, poules, lapins…",
+          "at": "w:chats"
+        },
+        {
+          "text": "Une période de tolérance",
+          "at": "w:tolérant"
+        },
+        {
+          "text": "Lui présenter vos animaux",
+          "at": "w:présenter"
+        }
+      ]
+    },
+    {
+      "tag": "8 · Sans forcer",
+      "at": "w:Donc on va vraiment faire en sorte",
+      "cards": [
+        {
+          "text": "Le plus de choses possible",
+          "at": "w:le plus de choses"
+        },
+        {
+          "text": "La qualité de chaque expérience",
+          "at": "w:qualité"
+        },
+        {
+          "text": "Forcer le chiot",
+          "kind": "alert",
+          "at": "w:sans jamais forcer"
+        },
+        {
+          "text": "Il a peur ? Prendre de la distance",
+          "at": "w:distance"
+        },
+        {
+          "text": "Le laisser observer",
+          "at": "w:d'observer"
+        },
+        {
+          "text": "Récompenser quand ça va",
+          "at": "w:on récompense"
+        },
+        {
+          "text": "Forcer crée un trouble",
+          "kind": "arrow",
+          "at": "w:le meilleur moyen"
+        }
+      ]
+    },
+    {
+      "tag": "9 · La période de peur",
+      "at": "w:Ensuite il peut y avoir",
+      "cards": [
+        {
+          "text": "Vers 9 semaines",
+          "at": "w:9"
+        },
+        {
+          "text": "Normal et temporaire",
+          "at": "w:temporaire"
+        },
+        {
+          "text": "Dramatiser, le porter",
+          "kind": "alert",
+          "at": "w:dramatise"
+        },
+        {
+          "text": "Rester calme",
+          "at": "w:reste calme"
+        },
+        {
+          "text": "À son rythme",
+          "at": "w:son rythme"
+        },
+        {
+          "text": "Récompenser chaque réussite",
+          "at": "w:récompense"
+        }
+      ]
+    },
+    {
+      "tag": "10 · Les règles d'or",
+      "at": "w:Donc les règles d'or",
+      "cards": [
+        {
+          "text": "3 bonnes expériences > 10 moyennes",
+          "at": "w:3 bonnes"
+        },
+        {
+          "text": "On ne force jamais",
+          "at": "w:force jamais"
+        },
+        {
+          "text": "On accompagne",
+          "at": "w:accompagne"
+        },
+        {
+          "text": "On récompense le calme",
+          "at": "w:récompense le calme"
+        },
+        {
+          "text": "Distance si besoin",
+          "at": "w:distance"
+        }
+      ]
+    },
+    {
+      "tag": "11 · Les signaux",
+      "at": "w:Et on observe aussi",
+      "cards": [
+        {
+          "text": "Les signaux d'apaisement",
+          "at": "w:d'apaisement"
+        },
+        {
+          "text": "Il bâille",
+          "at": "w:baille"
+        },
+        {
+          "text": "Il se lèche le museau",
+          "at": "w:lèche"
+        },
+        {
+          "text": "Il détourne le regard",
+          "at": "w:détourne"
+        },
+        {
+          "text": "Ex. : « Qu'il est mignon ! »",
+          "at": "w:mignon"
+        },
+        {
+          "text": "Il se détourne ? On arrête",
+          "kind": "arrow",
+          "at": "w:se détourner"
+        }
+      ]
+    },
+    {
+      "tag": "12 · Dès aujourd'hui",
+      "at": "w:Donc pour finir",
+      "cards": [
+        {
+          "text": "Ces semaines décident de tout",
+          "at": "w:déterminer"
+        },
+        {
+          "text": "Un banc, à l'écart",
+          "at": "w:banc"
+        },
+        {
+          "text": "Le prendre sur toi",
+          "at": "w:le prendre peut-être"
+        },
+        {
+          "text": "Le laisser observer",
+          "at": "w:observer"
+        },
+        {
+          "text": "Récompenser son calme",
+          "at": "w:calme"
+        }
+      ]
+    }
+  ]
+}
