@@ -1,0 +1,80 @@
+{
+  "id": "lecon-8-solitude",
+  "title": "Leçon 8 · La solitude",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "end_at": "w:Dans les prochaines leçons",
+  "chapters": [
+    { "tag": "Leçon 8", "at": 0.4, "cards": [
+      { "text": "La solitude", "at": 0.6 },
+      { "text": "Très oubliée au début", "at": "w:très oublié" },
+      { "text": "Sinon : la reprise du travail", "kind": "alert", "at": "w:reprendre le travail" }
+    ] },
+    { "tag": "1 · Pourquoi", "at": "w:Donc évidemment il y a", "cards": [
+      { "text": "Étape par étape", "at": "w:étape par étape" },
+      { "text": "4 h seul d'un coup", "kind": "alert", "at": "w:4 heures" },
+      { "text": "Anxiété de séparation, peurs", "at": "w:l'anxiété" },
+      { "text": "Aboiements, destructions", "at": "w:aboiements" },
+      { "text": "Une raison d'abandon en refuge", "kind": "arrow", "at": "w:refuge" }
+    ] },
+    { "tag": "2 · Préparer le terrain", "at": "w:Donc on va préparer", "cards": [
+      { "text": "Ses besoins comblés avant", "at": "w:besoins" },
+      { "text": "Dépense physique et mentale", "at": "w:dépenses physiques" },
+      { "text": "Il a mangé", "at": "w:mangé" },
+      { "text": "Un endroit calme et familier", "at": "w:calme et familier" },
+      { "text": "L'enfermer dans une pièce", "kind": "alert", "at": "w:l'enferme" },
+      { "text": "Parc ou cage : son endroit safe", "at": "w:cage" }
+    ] },
+    { "tag": "3 · Jours 1 à 3", "at": "w:Alors maintenant on va faire", "cards": [
+      { "text": "Un protocole en 2 semaines", "at": "w:protocole" },
+      { "text": "Toilettes, douche, autre pièce", "at": "w:toilettes" },
+      { "text": "Porte fermée, quelques secondes", "at": "w:fermer la porte" },
+      { "text": "Tu reviens : tout est banal", "at": "w:banal" },
+      { "text": "Plusieurs fois par jour", "at": "w:plusieurs fois" }
+    ] },
+    { "tag": "4 · Jours 4 à 7", "at": "w:Ensuite jour 4", "cards": [
+      { "text": "Sortir de chez toi", "at": "w:sortir de chez" },
+      { "text": "Le palier, 1 à 2 minutes", "at": "w:palier" },
+      { "text": "2, puis 5, puis 10 min", "at": "w:deux minutes puis" },
+      { "text": "Sous son seuil de stress", "at": "w:seuil de stress" },
+      { "text": "Des jouets d'occupation", "at": "w:jouet d'occupation" }
+    ] },
+    { "tag": "5 · Jours 8 à 14", "at": "w:Et ensuite évidemment", "cards": [
+      { "text": "On allonge petit à petit", "at": "w:augmenter" },
+      { "text": "Un Kong au Kiri congelé", "at": "w:Kong" },
+      { "text": "Il se dépense, puis dort", "kind": "arrow", "at": "w:dormir" },
+      { "text": "Installer une caméra", "at": "w:caméra" },
+      { "text": "Ça te déstresse aussi", "at": "w:déstresser" }
+    ] },
+    { "tag": "6 · Départs et retours", "at": "w:Donc il y a un point crucial", "cards": [
+      { "text": "Des départs et retours neutres", "at": "w:neutres" },
+      { "text": "« Je pars mon chéri… »", "kind": "alert", "at": "w:je pars" },
+      { "text": "Attendre qu'il se pose", "at": "w:se pose" },
+      { "text": "Puis les câlins", "at": "w:câlins" },
+      { "text": "Il gère mieux ses émotions", "kind": "arrow", "at": "w:contrôler" },
+      { "text": "Sinon il guette ton retour", "at": "w:dernière heure" }
+    ] },
+    { "tag": "7 · S'il pleure", "at": "w:Ensuite on va avoir le cas", "cards": [
+      { "text": "Revenir avant qu'il pleure", "at": "w:avant qu'il pleure" },
+      { "text": "Ou au premier calme", "at": "w:calme" },
+      { "text": "Il hurle ? On régresse", "at": "w:régresser" },
+      { "text": "Trop vite : une étape en arrière", "kind": "arrow", "at": "w:trop vite" }
+    ] },
+    { "tag": "8 · Le retour au travail", "at": "w:Ensuite les mois vont avancer", "cards": [
+      { "text": "Revenir à midi", "at": "w:midi" },
+      { "text": "Ou quelqu'un qui passe", "at": "w:quelqu'un passe" },
+      { "text": "9 h-17 h, trop long à 4-5 mois", "kind": "alert", "at": "w:9h" },
+      { "text": "Ça persiste ? Un professionnel", "at": "w:professionnel" }
+    ] },
+    { "tag": "9 · À retenir", "at": "w:Mais donc pour conclure", "cards": [
+      { "text": "2 semaines suffisent", "at": "w:ça suffit" },
+      { "text": "Des années de sérénité", "at": "w:sérénité" },
+      { "text": "Le protocole dans ta liste", "at": "w:la liste" }
+    ] },
+    { "tag": "10 · Ton exercice", "at": "w:Petit exercice", "cards": [
+      { "text": "Une autre pièce, porte fermée", "at": "w:fermes la porte" },
+      { "text": "30 secondes", "at": "w:30 secondes" },
+      { "text": "Retour tout à fait banal", "at": "w:banale" }
+    ] }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "lecon-7-proprete",
+  "title": "Leçon 7 · La propreté",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "end_at": "w:Eh bien maintenant",
+  "chapters": [
+    {
+      "tag": "Leçon 7",
+      "at": 0.4,
+      "cards": [
+        {
+          "text": "La propreté",
+          "at": 0.6
+        },
+        {
+          "text": "Étape par étape",
+          "at": "w:étape par étape"
+        },
+        {
+          "text": "Propre en 2 à 3 semaines",
+          "at": "w:deux semaines"
+        }
+      ]
+    },
+    {
+      "tag": "1 · Le principe",
+      "at": "w:la première chose",
+      "cards": [
+        {
+          "text": "Il ne peut pas encore se retenir",
+          "at": "w:se retenir"
+        },
+        {
+          "text": "Sphincter pas encore mature",
+          "at": "w:sphincter"
+        },
+        {
+          "text": "Aucun contrôle musculaire",
+          "at": "w:contrôle"
+        },
+        {
+          "text": "Ça se renforce avec les semaines",
+          "at": "w:renforce"
+        },
+        {
+          "text": "Un pipi juste après une sortie",
+          "kind": "arrow",
+          "at": "w:refaire"
+        }
+      ]
+    },
+    {
+      "tag": "2 · Les alèses",
+      "at": "w:Alors première erreur",
+      "cards": [
+        {
+          "text": "Pas d'alèses",
+          "kind": "alert",
+          "at": "w:d'alèses"
+        },
+        {
+          "text": "Le but : pipi dehors",
+          "at": "w:l'extérieur"
+        },
+        {
+          "text": "Jardin ou rue",
+          "at": "w:jardin"
+        },
+        {
+          "text": "Mon 1er chiot : propre à 7 mois",
+          "at": "w:7 mois"
+        },
+        {
+          "text": "Sortir plus souvent",
+          "kind": "arrow",
+          "at": "w:sortir plus souvent"
+        }
+      ]
+    },
+    {
+      "tag": "3 · Les sorties",
+      "at": "w:Maintenant on va parler",
+      "cards": [
+        {
+          "text": "Le secret : l'anticipation",
+          "at": "w:l'anticipation"
+        },
+        {
+          "text": "Après repas, sieste, jeu",
+          "at": "w:repas"
+        },
+        {
+          "text": "Toutes les 2-3 h en journée",
+          "at": "w:toutes les"
+        },
+        {
+          "text": "La nuit aussi, toutes les 2-3 h",
+          "at": "w:la nuit"
+        },
+        {
+          "text": "Ex. : minuit, 3 h, 6 h, 9 h",
+          "at": "w:minuit"
+        }
+      ]
+    },
+    {
+      "tag": "4 · Dehors",
+      "at": "w:Quand il fait dehors",
+      "cards": [
+        {
+          "text": "On le félicite tout de suite",
+          "at": "w:félicite"
+        },
+        {
+          "text": "De l'herbe, des odeurs de chiens",
+          "at": "w:l'herbe"
+        },
+        {
+          "text": "Un petit coin safe",
+          "at": "w:safe"
+        },
+        {
+          "text": "Dans les 2 secondes",
+          "at": "w:deux secondes"
+        },
+        {
+          "text": "Rester dehors après",
+          "at": "w:rester dehors"
+        },
+        {
+          "text": "Rentrer aussitôt",
+          "kind": "alert",
+          "at": "w:instantanément"
+        },
+        {
+          "text": "Il traîne ? Rester jusqu'au pipi",
+          "at": "w:45 minutes"
+        }
+      ]
+    },
+    {
+      "tag": "5 · Les pipis d'émotion",
+      "at": "w:Tu as peut-être aussi",
+      "cards": [
+        {
+          "text": "Un pipi 5 min après la sortie",
+          "at": "w:cinq minutes"
+        },
+        {
+          "text": "Pas un accident de propreté",
+          "at": "w:accident"
+        },
+        {
+          "text": "Trop-plein de joie",
+          "at": "w:joie"
+        },
+        {
+          "text": "Ou la peur, le stress",
+          "at": "w:la peur"
+        },
+        {
+          "text": "Gronder",
+          "kind": "alert",
+          "at": "w:on ne gronde pas"
+        }
+      ]
+    },
+    {
+      "tag": "6 · Sur le fait",
+      "at": "w:Alors maintenant",
+      "cards": [
+        {
+          "text": "Il commence à tourner",
+          "at": "w:tourner"
+        },
+        {
+          "text": "On attend qu'il finisse",
+          "at": "w:finisse"
+        },
+        {
+          "text": "Puis il finit dehors",
+          "at": "w:à l'extérieur"
+        },
+        {
+          "text": "Plus tard : un stop immédiat",
+          "at": "w:stop instantané"
+        },
+        {
+          "text": "Cris, punition, nez dans le pipi",
+          "kind": "alert",
+          "at": "w:pas de cri"
+        },
+        {
+          "text": "Le mieux : anticiper",
+          "at": "w:d'anticiper"
+        },
+        {
+          "text": "Il tourne, rase les murs, renifle",
+          "at": "w:raser"
+        }
+      ]
+    },
+    {
+      "tag": "7 · Trop tard",
+      "at": "w:Et maintenant sur le principe",
+      "cards": [
+        {
+          "text": "Une flaque au salon ?",
+          "at": "w:flaque"
+        },
+        {
+          "text": "On dédramatise",
+          "at": "w:dédramatise"
+        },
+        {
+          "text": "Il ne fera pas le lien",
+          "at": "w:le lien"
+        },
+        {
+          "text": "Le chiot dans une autre pièce",
+          "at": "w:autre pièce"
+        },
+        {
+          "text": "Produits enzymatiques",
+          "at": "w:enzymatiques"
+        },
+        {
+          "text": "Javel",
+          "kind": "alert",
+          "at": "w:Javel"
+        },
+        {
+          "text": "Augmenter les sorties",
+          "kind": "arrow",
+          "at": "w:d'augmenter"
+        }
+      ]
+    },
+    {
+      "tag": "8 · À retenir",
+      "at": "w:Donc vraiment la propreté",
+      "cards": [
+        {
+          "text": "Quelques semaines si régulier",
+          "at": "w:quelques semaines"
+        },
+        {
+          "text": "La punition retarde tout",
+          "kind": "alert",
+          "at": "w:punition"
+        },
+        {
+          "text": "Il se cache pour faire",
+          "kind": "arrow",
+          "at": "w:cacher"
+        }
+      ]
+    },
+    {
+      "tag": "9 · Ton exercice",
+      "at": "w:Donc le petit exercice",
+      "cards": [
+        {
+          "text": "Repérer son comportement",
+          "at": "w:repérer"
+        },
+        {
+          "text": "Fixer des horaires de sortie",
+          "at": "w:plusieurs heures"
+        },
+        {
+          "text": "Il mange, on sort",
+          "at": "w:il mange"
+        },
+        {
+          "text": "S'adapter à ses siestes",
+          "at": "w:siestes"
+        }
+      ]
+    }
+  ]
+}
