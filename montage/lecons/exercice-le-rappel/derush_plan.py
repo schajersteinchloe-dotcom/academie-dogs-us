@@ -7,7 +7,8 @@ qu'il passe », another dog, « Excuse-moi… », « Cut. »). The lesson takes 
   1 the intro and the long line (rappel1)
   2 the recall on a walk: what to do (rappel1), the two demos (rappel2)
   3 with a distraction: treats on the ground, the demo, why, the second try (rappel2)
-  4 from further away, 5 the ultimate test: off the line it fails, back on the line it works (rappel3)
+  4 from further away, 5 two more recalls on the line (rappel3). The failed off-line test (« Woody, au pied ! Non, tu
+    vois, pas encore… il faudrait le faire avec une longe ») is left out: the lesson shows the exercise, not the misses
 Raw timeline = the three rushes joined (src/raw-offsets.json). In each block:
   KEEP  ranges whose words are kept; pauses longer than MAX_GAP are cut on the voice
   SOLID ranges played whole: the demos (Woody comes back, the treats, the praise)
@@ -42,11 +43,7 @@ BLOCKS = [
      (2, 100.60, 101.30, "k"),                                # « On recommence. »
      (2, 127.80, 136.60, "s")],                               # far: « Woody, au pied. Oui, super, c'est bien. Vas-y, vas-y, vas-y. »
     [(3, 35.80, 41.50, "s")],                                 # from far away: « Woody, au pied ! Oui, super ! »
-    [(3, 48.45, 51.50, "k"),                                  # « On va tester un truc. Ça, c'est le test ultime. »
-     (3, 53.80, 58.00, "s"),                                  # « Woody, au pied ! Non, tu vois, pas encore. »
-     (3, 60.50, 66.80, "s"),                                  # « Woody, au pied ! Ok, ok… Allez, allez, allez ! »
-     (3, 74.05, 77.00, "k"),                                  # « C'est juste pour tester… il faudrait le faire avec une longe. »
-     (3, 120.60, 124.60, "s"),                                # on the line: « Woody ? Ok. Oui, super. »
+    [(3, 120.60, 124.60, "s"),                                # on the line: « Woody ? Ok. Oui, super. »
      (3, 133.20, 145.20, "s")],                               # « Woody ? Au pied. Oui. Très bien. »
 ]
 # (rush, start): the transcript hears the name wrong; "" keeps the sound, no caption

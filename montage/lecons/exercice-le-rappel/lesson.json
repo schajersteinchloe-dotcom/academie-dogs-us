@@ -90,11 +90,11 @@
     },
     {
       "tag": "3 · De plus loin",
-      "at": 106.75,
+      "at": 106.5,
       "cards": [
         {
           "text": "Il est loin de toi",
-          "at": 107.0
+          "at": 106.75
         },
         {
           "text": "« Woody, au pied ! »",
@@ -103,61 +103,41 @@
         {
           "text": "Il court vers toi : bravo",
           "at": "w:Oui"
+        },
+        {
+          "text": "Encore en longe",
+          "at": 112.4
+        },
+        {
+          "text": "Son nom, il revient",
+          "at": "w:Ok"
         }
       ]
     },
     {
-      "tag": "4 · Le test ultime",
-      "at": "w:On va tester",
-      "cards": [
-        {
-          "text": "Sans longe, avec une distraction",
-          "at": "w:test ultime"
-        },
-        {
-          "text": "Il ne revient pas",
-          "kind": "alert",
-          "at": "w:pas encore"
-        },
-        {
-          "text": "Pas encore prêt : c'est normal",
-          "at": "w:pas à ce moment-là"
-        },
-        {
-          "text": "On le refait en longe",
-          "kind": "arrow",
-          "at": "w:avec une longe"
-        },
-        {
-          "text": "En longe : réussi !",
-          "at": 129.3
-        }
-      ]
-    },
-    {
-      "tag": "5 · À retenir",
-      "at": 132.75,
+      "tag": "4 · À retenir",
+      "at": 116.25,
       "cards": [
         {
           "text": "Toujours en longe au début",
-          "at": 133.3
+          "at": 116.8
         },
         {
           "text": "Son nom + « au pied »",
-          "at": 135.3
+          "at": 118.8
         },
         {
           "text": "On félicite chaque retour",
-          "at": 137.3
+          "at": 120.8
         },
         {
           "text": "Puis des distractions",
-          "at": 139.3
+          "at": 122.8
         },
         {
           "text": "Sans longe : quand il est prêt",
           "kind": "arrow",
-          "at": 141.3
+          "at": 124.8
         }
       ]
     }
