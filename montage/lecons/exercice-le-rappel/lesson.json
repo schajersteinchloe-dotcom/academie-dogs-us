@@ -1,0 +1,165 @@
+{
+  "id": "exercice-le-rappel",
+  "title": "Exercice · Le rappel",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "chapters": [
+    {
+      "tag": "Exercice",
+      "at": 0.4,
+      "cards": [
+        {
+          "text": "Le rappel",
+          "at": 0.6
+        },
+        {
+          "text": "Avec une longe au début",
+          "at": "w:avec une longe"
+        },
+        {
+          "text": "Démo avec Woody",
+          "at": "w:appel à Woody"
+        },
+        {
+          "text": "Matériel : une longe",
+          "at": "w:munit"
+        }
+      ]
+    },
+    {
+      "tag": "1 · En balade",
+      "at": "w:Donc ce qu'on va faire maintenant",
+      "cards": [
+        {
+          "text": "Marcher tranquillement",
+          "at": "w:marcher"
+        },
+        {
+          "text": "Lui laisser de la longe",
+          "at": "w:petit peu de longe"
+        },
+        {
+          "text": "Son nom + « au pied »",
+          "at": "w:au pied"
+        },
+        {
+          "text": "Il revient : on félicite",
+          "at": "w:super"
+        },
+        {
+          "text": "La manière la plus simple",
+          "kind": "arrow",
+          "at": "w:plus simple"
+        }
+      ]
+    },
+    {
+      "tag": "2 · Avec une distraction",
+      "at": "w:Maintenant si vous êtes seul",
+      "cards": [
+        {
+          "text": "À deux : l'un montre une friandise",
+          "at": "w:à deux"
+        },
+        {
+          "text": "Seul : poser des friandises",
+          "at": "w:ceci sont des friandises"
+        },
+        {
+          "text": "Les lui montrer, puis reculer",
+          "at": "w:le tenant"
+        },
+        {
+          "text": "Rappeler : « Woody, au pied ! »",
+          "at": "w:je rappelle"
+        },
+        {
+          "text": "Il revient, puis va les manger",
+          "at": "w:vas-y"
+        },
+        {
+          "text": "Il se détourne de la distraction",
+          "kind": "arrow",
+          "at": "w:détourne"
+        },
+        {
+          "text": "Du mal ? Petites tensions de laisse",
+          "at": "w:tensions"
+        }
+      ]
+    },
+    {
+      "tag": "3 · De plus loin",
+      "at": 106.75,
+      "cards": [
+        {
+          "text": "Il est loin de toi",
+          "at": 107.0
+        },
+        {
+          "text": "« Woody, au pied ! »",
+          "at": "w:Woody au pied"
+        },
+        {
+          "text": "Il court vers toi : bravo",
+          "at": "w:Oui"
+        }
+      ]
+    },
+    {
+      "tag": "4 · Le test ultime",
+      "at": "w:On va tester",
+      "cards": [
+        {
+          "text": "Sans longe, avec une distraction",
+          "at": "w:test ultime"
+        },
+        {
+          "text": "Il ne revient pas",
+          "kind": "alert",
+          "at": "w:pas encore"
+        },
+        {
+          "text": "Pas encore prêt : c'est normal",
+          "at": "w:pas à ce moment-là"
+        },
+        {
+          "text": "On le refait en longe",
+          "kind": "arrow",
+          "at": "w:avec une longe"
+        },
+        {
+          "text": "En longe : réussi !",
+          "at": 129.3
+        }
+      ]
+    },
+    {
+      "tag": "5 · À retenir",
+      "at": 132.75,
+      "cards": [
+        {
+          "text": "Toujours en longe au début",
+          "at": 133.3
+        },
+        {
+          "text": "Son nom + « au pied »",
+          "at": 135.3
+        },
+        {
+          "text": "On félicite chaque retour",
+          "at": 137.3
+        },
+        {
+          "text": "Puis des distractions",
+          "at": 139.3
+        },
+        {
+          "text": "Sans longe : quand il est prêt",
+          "kind": "arrow",
+          "at": 141.3
+        }
+      ]
+    }
+  ]
+}
