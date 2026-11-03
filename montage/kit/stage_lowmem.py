@@ -53,6 +53,8 @@ for i, p in enumerate(plan):
 (tmpd / "list.txt").write_text("".join(f"file 'v{i:03d}.mp4'\n" for i in range(len(plan))))
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(tmpd / "list.txt"), "-c", "copy",
                 "-movflags", "+faststart", str(ASSETS / "speaker.mp4")], check=True)
+import shutil
+shutil.rmtree(tmpd, ignore_errors=True)   # the per-segment encodes weigh as much as the cut: never leave them in /tmp
 atrims = ";".join(f"[0:a]atrim=start={p['fa'] / FPS}:end={p['fb'] / FPS},asetpts=PTS-STARTPTS[a{i}]" for i, p in enumerate(plan))
 aconcat = "".join(f"[a{i}]" for i in range(len(plan))) + f"concat=n={len(plan)}:v=0:a=1[a0];[a0]loudnorm=I=-16:TP=-1.5:LRA=11[a]"
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-filter_complex", f"{atrims};{aconcat}", "-map", "[a]",
