@@ -1,0 +1,161 @@
+{
+  "id": "exercice-la-marche-en-laisse",
+  "title": "Exercice · La marche en laisse",
+  "caption_max_words": 6,
+  "caption_max_chars": 36,
+  "chapters": [
+    {
+      "tag": "Exercice",
+      "at": 0.4,
+      "cards": [
+        {
+          "text": "La marche en laisse",
+          "at": 0.6
+        },
+        {
+          "text": "Avec un chiot : une longe",
+          "at": "w:une longe"
+        },
+        {
+          "text": "Ici, 5 mètres",
+          "at": "w:5 mètres"
+        },
+        {
+          "text": "« Je tire = je gagne »",
+          "kind": "alert",
+          "at": "w:je tire"
+        },
+        {
+          "text": "Rester à nos côtés",
+          "at": "w:à nos côtés"
+        },
+        {
+          "text": "Au bout de la longe, il revient",
+          "at": "w:qu'il faut revenir"
+        },
+        {
+          "text": "Voir la cession à la pression",
+          "at": "w:cession",
+          "kind": "arrow"
+        }
+      ]
+    },
+    {
+      "tag": "1 · Longe longue",
+      "at": "w:C'est parti",
+      "cards": [
+        {
+          "text": "Il fait sa vie",
+          "at": "w:faire sa vie"
+        },
+        {
+          "text": "Des changements de direction",
+          "at": "w:changements"
+        },
+        {
+          "text": "Il revient vers toi : récompense",
+          "at": "w:reviendra"
+        },
+        {
+          "text": "Il marche à tes côtés : récompense",
+          "at": "w:marchera"
+        },
+        {
+          "text": "Un regard : récompense",
+          "at": "w:regards"
+        },
+        {
+          "text": "La longe t'embête ? Tu peux la lâcher",
+          "at": "w:lâcher"
+        },
+        {
+          "text": "Longe en PVC ou biotane",
+          "at": "w:PVC"
+        }
+      ]
+    },
+    {
+      "tag": "2 · Laisse courte",
+      "at": "w:Ce qu'on va faire maintenant",
+      "cards": [
+        {
+          "text": "On raccourcit la longe",
+          "at": "w:réduire"
+        },
+        {
+          "text": "Comme une laisse courte",
+          "at": "w:laisse courte"
+        },
+        {
+          "text": "Il doit suivre",
+          "at": "w:suivre"
+        },
+        {
+          "text": "On félicite",
+          "at": "w:c'est bien"
+        },
+        {
+          "text": "Il cède à la pression",
+          "kind": "note",
+          "at": "w:il cède"
+        },
+        {
+          "text": "En bout de laisse, il se retourne",
+          "at": "w:bout de laisse",
+          "kind": "arrow"
+        }
+      ]
+    },
+    {
+      "tag": "3 · Changer de direction",
+      "at": "w:Allez on se balade",
+      "cards": [
+        {
+          "text": "On change de direction",
+          "at": "w:change"
+        },
+        {
+          "text": "Il tire sur le côté",
+          "at": "w:tire"
+        },
+        {
+          "text": "La laisse reste tendue",
+          "at": "w:tendu"
+        },
+        {
+          "text": "Il n'obtient pas ce qu'il veut",
+          "kind": "arrow",
+          "at": "w:donne"
+        }
+      ]
+    },
+    {
+      "tag": "4 · À retenir",
+      "at": "w:Donc ça c'est vraiment les débuts",
+      "cards": [
+        {
+          "text": "D'abord au calme",
+          "at": "w:calme"
+        },
+        {
+          "text": "Ville, trottoirs, chemin du parc…",
+          "at": "w:trottoirs"
+        },
+        {
+          "text": "Sinon il prend l'habitude de tirer",
+          "kind": "alert",
+          "at": "w:l'habitude de tirer"
+        },
+        {
+          "text": "Adulte, il tirera de tout son poids",
+          "kind": "arrow",
+          "at": "w:poids adulte"
+        },
+        {
+          "text": "Commencer tôt : il ne tirera pas",
+          "at": "w:tirera"
+        }
+      ]
+    }
+  ]
+}
