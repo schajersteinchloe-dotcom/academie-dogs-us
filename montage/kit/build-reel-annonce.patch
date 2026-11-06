@@ -1,0 +1,88 @@
+--- a/scripts/build-reel.py
++++ b/scripts/build-reel.py
+@@ -121,6 +121,11 @@
+ .ov .chev { display: block; font-size: 120px; line-height: .9; color: var(--ov-accent, #D40F30); font-weight: 900; }
+ .ovimg { position: absolute; left: 0; width: 1080px; height: auto; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+ .ovbg { position: absolute; inset: 0; background: #0F0D0D; }
++.ovnotif { position: absolute; z-index: 3; }
++.ovnotif img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: 30px; box-shadow: 0 18px 50px rgba(0,0,0,.35), 0 4px 12px rgba(0,0,0,.2); }
++.ov .it[style] .check { color: inherit; }
++.ovnotif .badge { z-index: 2; position: absolute; right: -26px; top: -26px; min-width: 76px; height: 76px; padding: 0 14px; border-radius: 38px; background: var(--ov-accent, #D40F30); color: #fff; font: 800 36px/76px var(--ov-font, "Helvetica Neue"); text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,.3); }
++.ovnotif .ghost { z-index: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 30px; background: #e9e9ef; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+ /* layout S : zone écran 0→980, marque via variables --z-* */
+ #zone { position: absolute; left: 0; top: 0; width: 1080px; height: 880px; overflow: hidden; background: var(--z-bg, #F3F1EE); font-family: var(--z-font, "Helvetica Neue", Helvetica, Arial, sans-serif); color: var(--z-ink, #0F0D0D); }
+ #zone::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.55), transparent 60%); pointer-events: none; }
+@@ -553,6 +558,23 @@
+             for j, it in enumerate(ov.get("items", [])):
+                 iid = f"{sid}-ov{j}"
+                 at = resolve_at(it.get("at", t0), t0, float(sc["end"])) - t0
++                if "image" in it and it.get("anim") == "notif":
++                    w_, top_, left_ = it.get("w", 420), it.get("top", 60), it.get("left", 330)
++                    ghosts = "".join(f'<div class="ghost" id="{iid}-g{g}" style="transform: translate({10 * (g + 1)}px, {-14 * (g + 1)}px) rotate({3 * (g + 1)}deg); opacity: {0.7 - 0.25 * g}"></div>' for g in range(it.get("stack", 0)))
++                    badge = f'<span class="badge" id="{iid}-badge">{esc(str(it["badge"]))}</span>' if it.get("badge") else ""
++                    html.append(f'<div class="ovnotif" id="{iid}" style="top:{top_}px;left:{left_}px;width:{w_}px;transform:rotate({it.get("tilt", -4)}deg)">{ghosts}<img src="{esc(it["image"])}">{badge}</div>')
++                    a0 = r3(max(0, at))
++                    tl.append(f'tl.from("#{iid}", {{ y: -260, opacity: 0, scale: 0.7, rotation: -14, duration: 0.55, ease: "back.out(1.9)", transformOrigin: "50% 0%" }}, {a0});')
++                    for g in range(it.get("stack", 0)):
++                        tl.append(f'tl.from("#{iid}-g{g}", {{ x: 0, y: 0, rotation: 0, opacity: 0, duration: 0.3, ease: "power2.out" }}, {r3(at + 0.45 + 0.12 * g)});')
++                    if badge:
++                        tl.append(f'tl.from("#{iid}-badge", {{ scale: 0, duration: 0.35, ease: "back.out(3)" }}, {r3(at + 0.5)});')
++                        tl.append(f'tl.to("#{iid}-badge", {{ scale: 1.18, duration: 0.18, yoyo: true, repeat: 3, ease: "sine.inOut" }}, {r3(at + 1.0)});')
++                    tl.append(f'tl.to("#{iid}", {{ y: 12, rotation: {it.get("tilt", -4) + 2}, duration: 0.9, yoyo: true, repeat: {int(it.get("float", 3))}, ease: "sine.inOut" }}, {r3(at + 0.6)});')
++                    if it.get("out_at") is not None:
++                        oa = r3(max(0, resolve_at(it["out_at"], t0, float(sc["end"])) - t0))
++                        tl.append(f'tl.to("#{iid}", {{ y: -320, opacity: 0, scale: 0.8, duration: 0.4, ease: "power3.in" }}, {oa});')
++                    continue
+                 if "image" in it:
+                     html.append(f'<img class="ovimg" id="{iid}" src="{esc(it["image"])}" style="top:{it.get("top", 380)}px;{"left:" + str(it["left"]) + "px;width:" + str(it["w"]) + "px;box-shadow:none;" if it.get("w") else ""}">')
+                     tl.append(f'tl.from("#{iid}", {{ opacity: 0, y: 60, duration: 0.4, ease: "power3.out" }}, {r3(max(0, at))});')
+@@ -587,6 +609,8 @@
+                         tl.append(f'tl.from("#{iid}{sel}", {anim}, {r3(max(0, resolve_at(it[key], t0, float(sc["end"])) - t0))});')
+                 if it.get("dim_at") is not None:
+                     tl.append(f'tl.to("#{iid}", {{ opacity: {it.get("dim_to", 0.55)}, scale: {it.get("dim_scale", 0.72)}, y: {it.get("dim_y", 0)}, duration: 0.4, ease: "power2.inOut", transformOrigin: "50% 50%" }}, {r3(max(0, resolve_at(it["dim_at"], t0, float(sc["end"])) - t0))});')
++                if it.get("pulse_at") is not None:
++                    tl.append(f'tl.to("#{iid}", {{ scale: 1.07, duration: 0.32, yoyo: true, repeat: {int(it.get("pulse", 5))}, ease: "sine.inOut", transformOrigin: "50% 50%" }}, {r3(max(0, resolve_at(it["pulse_at"], t0, float(sc["end"])) - t0))});')
+                 if it.get("out_at") is not None:
+                     tl.append(f'tl.to("#{iid}", {{ opacity: 0, duration: 0.25 }}, {r3(max(0, resolve_at(it["out_at"], t0, float(sc["end"])) - t0))});')
+             body += html
+@@ -729,7 +753,7 @@
+     comp_dir.mkdir(exist_ok=True)
+     for old in comp_dir.glob("s[0-9][0-9]-*.html"):
+         old.unlink()
+-    scene_clips, face_clips, face_css = [], [], []
++    scene_clips, face_clips, face_css, face_tl = [], [], [], []
+     last_wrap, last_pos = "face-f", "50% 50%"
+     for n, sc in enumerate(sb["scenes"], 1):
+         sc["start"], sc["end"] = snap(sc["start"]), snap(sc["end"])
+@@ -750,7 +774,14 @@
+                 continue
+             default_pos = {"C": sb.get("face_pos_c", "50% 62%"), "B": sb.get("face_pos_b", "50% 45%"), "F": sb.get("face_pos_f", "50% 50%"), "S": sb.get("face_pos_s", "50% 50%")}[lay]
+             pos = sc.get("face_pos", default_pos)
+-            face_clips.append(f'<div class="{wrap}" id="{sid}-face-wrap"><video id="{sid}-face" class="clip" src="{esc(SPEAKER)}" data-start="{r3(start)}" data-duration="{r3(dur)}" data-media-start="{r3(start)}" data-track-index="0" muted playsinline style="object-position:{pos}"></video></div>')
++            fs, org = float(sc.get("face_scale", 1.0)), sc.get("face_origin", sb.get("face_origin", "50% 30%"))
++            face_clips.append(f'<div class="{wrap}" id="{sid}-face-wrap" style="transform:scale({fs});transform-origin:{org}"><div class="zin" id="{sid}-face-z" style="transform-origin:{org}"><video id="{sid}-face" class="clip" src="{esc(SPEAKER)}" data-start="{r3(start)}" data-duration="{r3(dur)}" data-media-start="{r3(start)}" data-track-index="0" muted playsinline style="object-position:{pos}"></video></div></div>')
++            drift = float(sc.get("face_drift", sb.get("face_drift", 0.03)))
++            if drift:
++                face_tl.append(f'tl.fromTo("#{sid}-face-wrap", {{ scale: {fs} }}, {{ scale: {r3(fs * (1 + drift))}, duration: {r3(dur)}, ease: "none" }}, {r3(start)});')
++            for zm in sc.get("zoom", []):
++                za = resolve_at(zm["at"], start, start + dur)
++                face_tl.append(f'tl.to("#{sid}-face-z", {{ scale: {zm.get("to", 1.12)}, duration: {zm.get("dur", 0.35)}, ease: "{zm.get("ease", "power3.out")}" }}, {r3(za)});')
+             last_wrap, last_pos = wrap, pos
+     tail = float(sb.get("freeze_tail", 0))
+     if tail > 0:
+@@ -788,6 +819,7 @@
+       .face-s video {{ width: 100%; height: 100%; object-fit: cover; }}
+       .face-b {{ position: absolute; left: 90px; top: 1030px; width: 900px; height: 780px; z-index: 3; }}
+       .face-c video, .face-f video, .face-b video {{ width: 100%; height: 100%; object-fit: cover; }}
++      .zin {{ position: absolute; inset: 0; }}
+       /* rayon et ombre sur la vidéo (un clip, donc cachée hors de sa fenêtre), jamais sur le wrapper non timé */
+       .face-b video {{ border-radius: var(--radius-face); box-shadow: var(--shadow-face); }}
+       .scene {{ position: absolute; inset: 0; z-index: 1; }}
+@@ -809,6 +841,7 @@
+       window.__timelines = window.__timelines || {{}};
+       const tl = gsap.timeline({{ paused: true }});
+       document.querySelectorAll(".face-c").forEach((el) => tl.fromTo(el, {{ scale: 1.0 }}, {{ scale: 1.04, duration: 4, ease: "none", transformOrigin: "50% 40%" }}, 0));
++      {chr(10).join("      " + x for x in face_tl)}
+       {CAP_TL}
+       tl.to({{}}, {{ duration: {r3(DURATION)} }}, 0);
+       window.__timelines["{esc(sb.get("id", "reel"))}"] = tl;

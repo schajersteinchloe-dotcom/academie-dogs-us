@@ -1,0 +1,787 @@
+{
+ "id": "annonce-academie-v3",
+ "title": "Annonce Académie Dogs & Us (v3)",
+ "duration": 80.1,
+ "fps": 30,
+ "speaker": "assets/speaker.mp4",
+ "audio": "assets/reel-audio.wav",
+ "caption_style": "pop",
+ "caption_font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif",
+ "caption_size": 66,
+ "caption_max_words": 3,
+ "caption_accent": "#E8462A",
+ "keywords": [
+  "message",
+  "annonce",
+  "gratuite",
+  "galères",
+  "Académie",
+  "Dogs",
+  "Us",
+  "guides",
+  "formations",
+  "live",
+  "entraider",
+  "douce",
+  "commente",
+  "abonnés",
+  "comment",
+  "erreurs",
+  "éducateur",
+  "2022",
+  "comprennes",
+  "solution"
+ ],
+ "locale": "fr-FR",
+ "face_origin": "50% 30%",
+ "face_drift": 0.025,
+ "brand": {
+  "bg": "#F3F1EE",
+  "ink": "#0E0C0D",
+  "accent": "#E8462A",
+  "font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif"
+ },
+ "scenes": [
+  {
+   "layout": "F",
+   "start": 0.0,
+   "end": 8.313,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "H3: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:éducateur",
+     "to": 1.1,
+     "dur": 0.3
+    }
+   ],
+   "overlay": {
+    "out": 8.093,
+    "items": [
+     {
+      "text": "JE VAIS PERDRE DES ABONNÉS…",
+      "at": "w:perdre",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 140
+     },
+     {
+      "text": "CHAQUE MAÎTRE DEVRAIT ÊTRE",
+      "at": "w:chaque",
+      "size": 50,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 244
+     },
+     {
+      "text": "L'ÉDUCATEUR DE SON CHIEN",
+      "at": "w:éducateur",
+      "size": 60,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "top": 331
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 8.313,
+   "end": 12.833,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "H3: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:comment",
+     "to": 1.15,
+     "dur": 0.22
+    }
+   ],
+   "overlay": {
+    "out": 12.613,
+    "items": [
+     {
+      "text": "« ÉDUQUE TON CHIEN ! »",
+      "at": "w:dit",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 140
+     },
+     {
+      "text": "MAIS COMMENT ?",
+      "at": "w:personne",
+      "top": 255,
+      "size": 96,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pulse_at": "w:comment",
+      "pulse": 3
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 12.833,
+   "end": 20.367,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B2: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:galères",
+     "to": 1.1,
+     "dur": 0.3
+    }
+   ],
+   "overlay": {
+    "out": 20.147,
+    "items": [
+     {
+      "text": "DEPUIS 2022",
+      "at": "w:2022",
+      "size": 76,
+      "weight": 900,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "DES CENTAINES DE DUOS",
+      "at": "w:duos",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 264
+     },
+     {
+      "text": "LES MÊMES GALÈRES",
+      "at": "w:galères",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 354
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 20.367,
+   "end": 27.303,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B3: her face, the labels follow her words",
+   "overlay": {
+    "out": 27.083,
+    "items": [
+     {
+      "text": "IL TIRE EN LAISSE",
+      "at": "w:tire",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:solitude",
+      "top": 140
+     },
+     {
+      "text": "IL NE REVIENT PAS",
+      "at": "w:revient",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:solitude",
+      "top": 233
+     },
+     {
+      "text": "IL MORDILLE TOUT",
+      "at": "w:mordille",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:solitude",
+      "top": 325
+     },
+     {
+      "text": "LA SOLITUDE",
+      "at": "w:solitude",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "top": 140
+     },
+     {
+      "text": "LA PROPRETÉ",
+      "at": "w:propreté",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "top": 233
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 27.303,
+   "end": 29.267,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B3: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:temps",
+     "to": 1.12,
+     "dur": 0.25
+    }
+   ],
+   "overlay": {
+    "out": 29.047,
+    "items": [
+     {
+      "text": "TOUT LE TEMPS",
+      "at": "w:revient",
+      "top": 200,
+      "size": 100,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 29.267,
+   "end": 33.9,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "B4: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:l'académie",
+     "to": 1.15,
+     "dur": 0.22
+    }
+   ],
+   "overlay": {
+    "out": 33.68,
+    "items": [
+     {
+      "text": "L'ACADÉMIE",
+      "at": "w:l'académie",
+      "top": 150,
+      "size": 92,
+      "weight": 900,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "out_at": "w:communauté"
+     },
+     {
+      "text": "DOGS & US",
+      "at": "w:dogs",
+      "top": 270,
+      "size": 128,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     },
+     {
+      "text": "UNE COMMUNAUTÉ EN LIGNE",
+      "at": "w:communauté",
+      "top": 150,
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise"
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 33.9,
+   "end": 37.667,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "K1: her face, the labels follow her words",
+   "overlay": {
+    "out": 37.447,
+    "items": [
+     {
+      "text": "DES VIDÉOS",
+      "at": "w:vidéos",
+      "size": 66,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "dim_at": "w:important",
+      "dim_to": 0.5,
+      "top": 140
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 37.667,
+   "end": 43.667,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "K1: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:comprennes",
+     "to": 1.1,
+     "dur": 0.3
+    }
+   ],
+   "overlay": {
+    "out": 43.447,
+    "items": [
+     {
+      "text": "LE PLUS IMPORTANT",
+      "at": "w:important",
+      "size": 48,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "COMPRENDRE TON CHIEN",
+      "at": "w:comprennes",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "top": 224
+     },
+     {
+      "text": "QUOI FAIRE ET POURQUOI",
+      "at": "w:saches",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 328
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 43.667,
+   "end": 50.6,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B5: her face, the labels follow her words",
+   "overlay": {
+    "out": 50.38,
+    "items": [
+     {
+      "text": "DANS L'ACADÉMIE",
+      "at": 0.15,
+      "top": 70,
+      "size": 34,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".12em",
+      "pop": "rise"
+     },
+     {
+      "text": "GUIDES GRATUITS",
+      "at": "w:guides",
+      "size": 68,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "check": true,
+      "top": 140
+     },
+     {
+      "text": "CHIOT",
+      "at": "w:chiot",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:marche",
+      "pop": "rise",
+      "top": 253
+     },
+     {
+      "text": "MARCHE EN LAISSE",
+      "at": "w:marche",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:adoption",
+      "pop": "rise",
+      "top": 253
+     },
+     {
+      "text": "ADOPTION",
+      "at": "w:adoption",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:réactif",
+      "pop": "rise",
+      "top": 253
+     },
+     {
+      "text": "CHIEN RÉACTIF",
+      "at": "w:réactif",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 253
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 50.6,
+   "end": 58.533,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "B6: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:éduquer",
+     "to": 1.08,
+     "dur": 0.4
+    }
+   ],
+   "overlay": {
+    "out": 58.313,
+    "items": [
+     {
+      "text": "DANS L'ACADÉMIE",
+      "at": 0.15,
+      "top": 70,
+      "size": 34,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".12em",
+      "pop": "rise"
+     },
+     {
+      "text": "FORMATIONS VIDÉO",
+      "at": "w:formations",
+      "size": 68,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "check": true,
+      "top": 140
+     },
+     {
+      "text": "PAS À PAS",
+      "at": "w:pas",
+      "size": 56,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 253
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 58.533,
+   "end": 64.0,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B7: her face, the labels follow her words",
+   "overlay": {
+    "out": 63.78,
+    "items": [
+     {
+      "text": "DANS L'ACADÉMIE",
+      "at": 0.15,
+      "top": 70,
+      "size": 34,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".12em",
+      "pop": "rise"
+     },
+     {
+      "text": "DES LIVES AVEC MOI",
+      "at": "w:live",
+      "size": 68,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "check": true,
+      "top": 140
+     },
+     {
+      "text": "JE RÉPONDS À TES QUESTIONS",
+      "at": "w:répondre",
+      "size": 50,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 253
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 64.0,
+   "end": 71.9,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B8: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:s'entraider",
+     "to": 1.1,
+     "dur": 0.3
+    }
+   ],
+   "overlay": {
+    "out": 71.68,
+    "items": [
+     {
+      "text": "LE PLUS INTÉRESSANT",
+      "at": "w:intéressant",
+      "top": 70,
+      "size": 40,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".06em"
+     },
+     {
+      "text": "UNE COMMUNAUTÉ",
+      "at": "w:communauté",
+      "size": 68,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "check": true,
+      "top": 140
+     },
+     {
+      "text": "DE MAÎTRES COMME TOI",
+      "at": "w:toi",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 253
+     },
+     {
+      "text": "ON S'ENTRAIDE",
+      "at": "w:s'entraider",
+      "size": 60,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 345
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 71.9,
+   "end": 74.855,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "CTA: her face, the labels follow her words",
+   "overlay": {
+    "out": 74.635,
+    "items": [
+     {
+      "text": "ENTRÉE GRATUITE",
+      "at": "w:gratuite",
+      "top": 180,
+      "size": 84,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "check": true
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 74.855,
+   "end": 80.1,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "CTA: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:commente",
+     "to": 1.1,
+     "dur": 0.25
+    }
+   ],
+   "overlay": {
+    "out": 79.88,
+    "items": [
+     {
+      "text": "COMMENTE",
+      "at": "w:commente",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "ACADÉMIE",
+      "at": "w:académie",
+      "top": 250,
+      "size": 124,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pulse_at": "w:t'envoie",
+      "pulse": 7
+     },
+     {
+      "text": "ET JE T'ENVOIE LE LIEN",
+      "at": "w:lien",
+      "top": 420,
+      "size": 48,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise"
+     },
+     {
+      "chevrons": true,
+      "at": "w:rejoindre",
+      "top": 1640
+     }
+    ]
+   }
+  }
+ ]
+}
