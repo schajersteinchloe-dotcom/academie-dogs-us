@@ -189,7 +189,7 @@ for bi, b in enumerate(blocks):
                 if it.get(key) is not None:
                     resolve(it[key], t0, t1)      # fail here, not in build-reel.py
             if snd:
-                sfx.append({"t": round(ta + 0.03, 3), "sound": snd, "db": {"swish": -2}.get(snd, 0)})
+                sfx.append({"t": round(ta + 0.03, 3), "sound": snd, "db": {"swish": -2, "boom": -3}.get(snd, 0)})
             if it.get("anim") == "notif":
                 sfx.append({"t": round(ta + 0.55, 3), "sound": "pop", "db": -3})            # the badge
                 sfx.append({"t": round(resolve(it["out_at"], t0, t1) + 0.15, 3), "sound": "whoosh", "db": -3})
