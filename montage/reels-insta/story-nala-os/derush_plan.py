@@ -25,7 +25,7 @@ S = {
            (25.36, 27.84)],    # « Oui, c'est de toi qu'on parle. » (to Nala)
     "H2": [(248.95, 255.60)],  # « Story time du jour où Nala a mangé un os… galérer pendant 45 minutes. »
     "H3": [(271.70, 279.12),   # « Est-ce que tu leur racontes le jour où tu m'as fait galérer… hanche de grand-mère ? » (to Nala)
-           (281.40, 281.80)],  # « Dis-nous. »
+           (281.40, 282.60, "s")],  # « Dis-nous. », held while Nala looks at her
     "B1": [(30.56, 35.20)],    # « Bon, je commence l'histoire… dans son tapis de fouille. »
     "B2": [(35.55, 50.78)],    # « En gros, qu'est-ce qui s'était passé ? … à prendre un chemin. »
     "B3": [(50.78, 56.78),     # « Et Nala, je la vois aller dans des hautes herbes… dans ces hautes herbes. »
@@ -76,10 +76,12 @@ for w in json.loads((SRC / "IMG_5376.json").read_text())["words"]:
         words[-1]["text"] += text; words[-1]["end"] = max(words[-1]["end"], w["end"])
     else:
         words.append(dict(w, text=text, local=w["start"]))
-ranges = []
+ranges, SOLID = [], set()   # SOLID: ranges played whole (no pause cut)
 for name in VERSIONS[VERSION]:
-    for a, b in S[name]:
+    for a, b, *kind in S[name]:
         ranges.append((len(ranges), name, a, b))
+        if kind:
+            SOLID.add(len(ranges) - 1)
 for w in words:
     key = round(w["local"], 2)
     w["text"] = WORDS.get(key, w["text"])
@@ -114,6 +116,8 @@ def runs(s, e):
 
 out = []
 for ri, name, ka, kb in ranges:
+    if ri in SOLID:
+        out.append([ka, kb, ri, name]); continue
     others = [w for w in words if w["range"] != ri]
     segs = []
     for w in (w for w in words if w["range"] == ri):
@@ -140,6 +144,9 @@ for ca, cb in CUTS:
     out = [p for a, b, ri, nm in out for p in ([[a, ca, ri, nm], [cb, b, ri, nm]] if a < ca and cb < b else
                                                [[a, min(b, ca), ri, nm]] if a < ca < b else [[max(a, cb), b, ri, nm]] if a < cb < b else [[a, b, ri, nm]])]
 
+for p_, q_ in zip(out, out[1:]):   # two ranges that touch in the rush: their margins overlap, the audio would repeat
+    if p_[0] - 0.01 < q_[0] < p_[1]:
+        p_[1] = q_[0] = (q_[0] + p_[1]) / 2
 segments = [{"name": f"s{k + 1:03d}", "in": round(a, 3), "out": round(b, 3), "sentence": nm} for k, (a, b, _, nm) in enumerate(out)]
 db = lambda t: 20 * np.log10(np.sqrt((pcm[int(t * 16000):int(t * 16000) + 320] ** 2).mean()) + 1e-9)
 for sg in segments:

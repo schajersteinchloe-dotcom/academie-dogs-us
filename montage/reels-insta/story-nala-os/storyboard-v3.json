@@ -1,0 +1,926 @@
+{
+ "id": "story-nala-os-v3",
+ "title": "Story time · Nala et l'os (v3)",
+ "duration": 159.933,
+ "fps": 30,
+ "freeze_tail": 1.6,
+ "speaker": "assets/speaker.mp4",
+ "audio": "assets/reel-audio.wav",
+ "caption_style": "pop",
+ "caption_font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif",
+ "caption_size": 66,
+ "caption_max_words": 3,
+ "caption_accent": "#E8462A",
+ "keywords": [
+  "Nala",
+  "45",
+  "trésor",
+  "hanche",
+  "mamie",
+  "fière",
+  "contrefiche",
+  "gaga",
+  "Nounou",
+  "oreilles",
+  "harnais",
+  "énorme",
+  "caca",
+  "dîner",
+  "grand-mère",
+  "galérer",
+  "sien",
+  "Dis-nous",
+  "story"
+ ],
+ "locale": "fr-FR",
+ "face_origin": "50% 30%",
+ "face_drift": 0.025,
+ "brand": {
+  "bg": "#F3F1EE",
+  "ink": "#0E0C0D",
+  "accent": "#E8462A",
+  "font": "\"Archivo\", \"Helvetica Neue\", Arial, sans-serif"
+ },
+ "scenes": [
+  {
+   "layout": "F",
+   "start": 0.0,
+   "end": 6.902,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "H3: her face, the labels follow her words",
+   "overlay": {
+    "out": 6.682,
+    "items": [
+     {
+      "text": "STORY TIME",
+      "at": 0.1,
+      "top": 70,
+      "size": 34,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".12em",
+      "pop": "rise"
+     },
+     {
+      "text": "45 MINUTES",
+      "at": "w:45",
+      "size": 92,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "POUR UN OS GÉANT",
+      "at": "w:os",
+      "size": 56,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 287
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 6.902,
+   "end": 8.133,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "H3: her face, the labels follow her words",
+   "overlay": {
+    "out": 7.913,
+    "items": [
+     {
+      "text": "ALORS NALA ?",
+      "at": "w:dis-nous",
+      "top": 150,
+      "size": 84,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 8.133,
+   "end": 12.833,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B1: her face, the labels follow her words",
+   "overlay": {
+    "out": 12.613,
+    "items": [
+     {
+      "text": "SON TAPIS DE FOUILLE",
+      "at": "w:tapis",
+      "size": 56,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 140
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 12.833,
+   "end": 26.833,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B2: her face, the labels follow her words",
+   "overlay": {
+    "out": 26.613,
+    "items": [
+     {
+      "text": "EN BALADE",
+      "at": "w:balades",
+      "size": 72,
+      "weight": 900,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "AVEC UNE AMIE",
+      "at": "w:amie",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 258
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 26.833,
+   "end": 29.467,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B3: her face, the labels follow her words",
+   "overlay": {
+    "out": 29.247,
+    "items": [
+     {
+      "text": "LES HAUTES HERBES",
+      "at": "w:hautes",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 140
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 29.467,
+   "end": 33.833,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "B3: her face, the labels follow her words",
+   "overlay": {
+    "out": 33.613,
+    "items": [
+     {
+      "text": "ET LÀ…",
+      "at": "w:passe",
+      "top": 150,
+      "size": 110,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 33.833,
+   "end": 45.6,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B4: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:hanche",
+     "to": 1.12,
+     "dur": 0.25
+    }
+   ],
+   "overlay": {
+    "out": 45.38,
+    "items": [
+     {
+      "text": "UN OS…",
+      "at": "w:os",
+      "size": 66,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:hanche",
+      "top": 140
+     },
+     {
+      "text": "GROS COMME UNE HANCHE DE MAMIE",
+      "at": "w:hanche",
+      "size": 50,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "TOUTE FIÈRE",
+      "at": "w:fière",
+      "size": 66,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 250
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 45.6,
+   "end": 54.867,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B5: her face, the labels follow her words",
+   "overlay": {
+    "out": 54.647,
+    "items": [
+     {
+      "text": "« C'EST TOP »",
+      "at": "w:top",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:trésor",
+      "top": 140
+     },
+     {
+      "text": "SON TRÉSOR",
+      "at": "w:trésor",
+      "size": 70,
+      "weight": 900,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "= LE SIEN",
+      "at": "w:sien",
+      "size": 70,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 255
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 54.867,
+   "end": 60.867,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B6: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:tolérante",
+     "to": 1.1,
+     "dur": 0.3
+    }
+   ],
+   "overlay": {
+    "out": 60.647,
+    "items": [
+     {
+      "text": "TRÈS BON RAPPEL",
+      "at": "w:rappel",
+      "size": 60,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "check": true,
+      "top": 140
+     },
+     {
+      "text": "SAUF POUR SES TROUVAILLES",
+      "at": "w:trouvailles",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 241
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 60.867,
+   "end": 71.915,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "B7: her face, the labels follow her words",
+   "overlay": {
+    "out": 71.695,
+    "items": [
+     {
+      "text": "FRIANDISES APPÉTENTES",
+      "at": "w:friandises",
+      "size": 54,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "strike_at": "w:contrefiche",
+      "top": 140
+     },
+     {
+      "text": "ELLE S'EN CONTREFICHE",
+      "at": "w:contrefiche",
+      "size": 60,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 233
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 71.915,
+   "end": 75.233,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B7: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:30",
+     "to": 1.12,
+     "dur": 0.2
+    }
+   ],
+   "overlay": {
+    "out": 75.013,
+    "items": [
+     {
+      "text": "10 M",
+      "at": "w:10",
+      "top": 150,
+      "size": 120,
+      "weight": 900,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:20"
+     },
+     {
+      "text": "20 M",
+      "at": "w:20",
+      "top": 150,
+      "size": 120,
+      "weight": 900,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "out_at": "w:30"
+     },
+     {
+      "text": "30 M",
+      "at": "w:30",
+      "top": 150,
+      "size": 120,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 75.233,
+   "end": 82.533,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B7b: her face, the labels follow her words",
+   "overlay": {
+    "out": 82.313,
+    "items": [
+     {
+      "text": "ELLE SE POSAIT…",
+      "at": "w:posait",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 140
+     },
+     {
+      "text": "…ET REPARTAIT À 10 M",
+      "at": "w:repartait",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 238
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 82.533,
+   "end": 92.9,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B8: her face, the labels follow her words",
+   "overlay": {
+    "out": 92.68,
+    "items": [
+     {
+      "text": "IMPOSSIBLE DE LA RÉCUPÉRER",
+      "at": "w:récupérer",
+      "size": 48,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:sauf",
+      "top": 140
+     },
+     {
+      "text": "CONCENTRÉE SUR MOI",
+      "at": "w:concentrée",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "PAS SUR MON AMIE",
+      "at": "w:amie",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 238
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 92.9,
+   "end": 103.867,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "B9: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:gaga",
+     "to": 1.1,
+     "dur": 0.25
+    }
+   ],
+   "overlay": {
+    "out": 103.647,
+    "items": [
+     {
+      "text": "LE PLAN",
+      "at": "w:dit",
+      "size": 76,
+      "weight": 900,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     },
+     {
+      "text": "LE PLUS LOIN POSSIBLE",
+      "at": "w:loin",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "out_at": "w:gaga",
+      "top": 264
+     },
+     {
+      "text": "VOIX GAGA",
+      "at": "w:gaga",
+      "size": 64,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "out_at": "w:nounou",
+      "top": 264
+     },
+     {
+      "text": "« ALLEZ NOUNOU ! »",
+      "at": "w:nounou",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 264
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 103.867,
+   "end": 113.833,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B10: her face, the labels follow her words",
+   "overlay": {
+    "out": 113.613,
+    "items": [
+     {
+      "text": "ELLE A OUBLIÉ MON AMIE",
+      "at": "w:oublié",
+      "size": 52,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "top": 140
+     },
+     {
+      "text": "QUI SE RAPPROCHE…",
+      "at": "w:rapprocher",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 230
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 113.833,
+   "end": 123.6,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B11: her face, the labels follow her words",
+   "overlay": {
+    "out": 123.38,
+    "items": [
+     {
+      "text": "« ALLEZ NOUNOU, À LA MAISON ! »",
+      "at": "w:allez",
+      "size": 44,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "out_at": "w:oreilles",
+      "top": 140
+     },
+     {
+      "text": "LES OREILLES EN AVANT",
+      "at": "w:oreilles",
+      "size": 56,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "top": 140
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 123.6,
+   "end": 130.633,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B12: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:sauter",
+     "to": 1.15,
+     "dur": 0.18
+    }
+   ],
+   "overlay": {
+    "out": 130.413,
+    "items": [
+     {
+      "text": "ET HOP !",
+      "at": "w:sauter",
+      "top": 150,
+      "size": 110,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "out_at": "w:harnais"
+     },
+     {
+      "text": "CHOPÉE AU HARNAIS",
+      "at": "w:harnais",
+      "top": 150,
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "pop": "rise"
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 130.633,
+   "end": 139.2,
+   "cap_top": 1360,
+   "face_scale": 1.1,
+   "holdReason": "B13: her face, the labels follow her words",
+   "overlay": {
+    "out": 138.98,
+    "items": [
+     {
+      "text": "L'OS RÉCUPÉRÉ",
+      "at": "w:reprendre",
+      "size": 62,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "check": true,
+      "top": 140
+     },
+     {
+      "text": "EN MAIN",
+      "at": "w:main",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "strike_at": "w:bouche",
+      "out_at": "w:pardon",
+      "top": 244
+     },
+     {
+      "text": "EN BOUCHE, PARDON",
+      "at": "w:pardon",
+      "size": 58,
+      "weight": 800,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pop": "rise",
+      "top": 244
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 139.2,
+   "end": 149.367,
+   "cap_top": 1360,
+   "face_scale": 1.03,
+   "holdReason": "B14: her face, the labels follow her words",
+   "overlay": {
+    "out": 149.147,
+    "items": [
+     {
+      "text": "45 MINUTES",
+      "at": "w:45",
+      "size": 100,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "pulse_at": "w:dîner",
+      "pulse": 3,
+      "top": 140
+     },
+     {
+      "text": "+ UN DÎNER QUI M'ATTENDAIT",
+      "at": "w:dîner",
+      "size": 46,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 298
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 149.367,
+   "end": 156.867,
+   "cap_top": 1360,
+   "face_scale": 1.14,
+   "holdReason": "B15: her face, the labels follow her words",
+   "zoom": [
+    {
+     "at": "w:caca",
+     "to": 1.15,
+     "dur": 0.2
+    }
+   ],
+   "overlay": {
+    "out": 156.647,
+    "items": [
+     {
+      "text": "2 JOURS PLUS TARD…",
+      "at": "w:après",
+      "top": 70,
+      "size": 34,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".12em",
+      "pop": "rise"
+     },
+     {
+      "text": "CACA BLANC",
+      "at": "w:caca",
+      "size": 100,
+      "weight": 900,
+      "box": {
+       "bg": "#E8462A",
+       "fg": "#fff"
+      },
+      "out_at": "w:mais",
+      "top": 140
+     },
+     {
+      "text": "RIEN DE GRAVE",
+      "at": "w:rien",
+      "size": 72,
+      "weight": 900,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "check": true,
+      "top": 140
+     }
+    ]
+   }
+  },
+  {
+   "layout": "F",
+   "start": 156.867,
+   "end": 159.933,
+   "cap_top": 1360,
+   "face_scale": 1.0,
+   "holdReason": "B16: her face, the labels follow her words",
+   "overlay": {
+    "out": 159.713,
+    "items": [
+     {
+      "text": "STORY TIME",
+      "at": 156.917,
+      "top": 70,
+      "size": 34,
+      "weight": 700,
+      "box": {
+       "bg": "#0E0C0D",
+       "fg": "#fff"
+      },
+      "tracking": ".12em",
+      "pop": "rise"
+     },
+     {
+      "text": "ET TOI, TON CHIEN T'A DÉJÀ FAIT ÇA ?",
+      "at": 157.267,
+      "size": 44,
+      "weight": 800,
+      "box": {
+       "bg": "#fff",
+       "fg": "#0E0C0D"
+      },
+      "pop": "rise",
+      "top": 140
+     },
+     {
+      "chevrons": true,
+      "at": 157.767,
+      "top": 1640
+     }
+    ]
+   }
+  }
+ ]
+}

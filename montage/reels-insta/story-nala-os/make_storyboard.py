@@ -166,6 +166,8 @@ for bi, b in enumerate(blocks):
             it = dict(it)
             snd = it.pop("sfx", "pop")
             ta = resolve(it["at"], t0, t1)
+            if not str(it["at"]).startswith("w:"):
+                it["at"] = round(ta, 3)            # build-reel.py reads a number as an absolute time
             for key in ("out_at", "dim_at", "pulse_at", "strike_at", "underline_at"):
                 if it.get(key) is not None:
                     resolve(it[key], t0, t1)      # fail here, not in build-reel.py
@@ -193,6 +195,8 @@ for line in (Path(__file__).resolve().parent / "zooms.txt").read_text().split():
         if not any(abs(e["t"] - t) < 0.25 for e in sfx):
             sfx.append({"t": round(t + 0.04, 3), "sound": "whoosh", "db": -4})
 scenes[-1]["end"] = DUR + TAIL
+if scenes[-1].get("overlay"):
+    scenes[-1]["overlay"]["out"] = round(DUR + TAIL - 0.22, 3)   # the closing labels stay over the held frame
 sb = {
     "id": f"story-nala-os-{VERSION}", "title": f"Story time · Nala et l'os ({VERSION})", "duration": DUR + TAIL, "fps": 30,
     "freeze_tail": TAIL,
