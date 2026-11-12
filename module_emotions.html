@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gérer ses émotions · Dogs &amp; Us</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1e3a5f;
+  --navy-2:#2d5385;
+  --coral:#e05a3a;
+  --coral-light:#fdf0ec;
+  --cream:#faf9f5;
+  --green:#4a8c3f;
+  --green-light:#eaf4e8;
+  --gold:#f5a623;
+  --gold-light:#fff6e5;
+  --sky:#e8f1fb;
+  --line:#e8e4dc;
+  --r:14px;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--cream);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--navy);min-height:100vh}
+.wrap{max-width:680px;margin:0 auto;padding:0 0 4rem}
+button{font-family:inherit}
+
+/* HERO */
+.hero{text-align:center;padding:2rem 1rem 1rem}
+.hero-brand{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1.5px solid var(--line);border-radius:30px;padding:5px 14px 5px 10px;margin-bottom:14px}
+.hero-brand span{font-size:12px;font-weight:700;color:var(--navy);letter-spacing:.04em}
+.hero h1{font-size:clamp(22px,5.6vw,30px);font-weight:800;line-height:1.15;margin-bottom:8px}
+.hero h1 em{color:var(--coral);font-style:normal}
+.hero p{font-size:13.5px;color:#666;max-width:460px;margin:0 auto;line-height:1.6}
+
+/* GLOBAL PROGRESS */
+.gprog{margin:14px auto 0;max-width:420px;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;text-align:left}
+.gprog-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;margin-bottom:7px}
+.gprog-top b{color:var(--green)}
+.bar{height:9px;background:#f0ede6;border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),#8cc47f);border-radius:9px;transition:width .4s}
+.medals{display:flex;gap:6px;margin-top:8px;font-size:11px;color:#999;font-weight:700;flex-wrap:wrap}
+.medal{display:inline-flex;align-items:center;gap:4px;background:#f5f3ee;border-radius:20px;padding:3px 9px;transition:all .3s}
+.medal.on{background:var(--gold-light);color:#8a5d0b}
+.medal.on .mi{filter:none;opacity:1}
+.mi{filter:grayscale(1);opacity:.5}
+
+/* STEP NAV */
+.step-nav{display:flex;gap:6px;padding:1rem 1rem 1.1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:0;z-index:20;background:linear-gradient(var(--cream) 82%,rgba(250,249,245,0))}
+.step-nav::-webkit-scrollbar{display:none}
+.spill{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:1.5px solid #e0dbd0;border-radius:12px;padding:7px 10px;cursor:pointer;transition:all .18s;min-width:72px;-webkit-tap-highlight-color:transparent;text-align:center;position:relative}
+.spill .sem{font-size:17px}
+.spill .slbl{font-size:10.5px;font-weight:700;color:#999;white-space:nowrap;line-height:1.3}
+.spill .scount{font-size:9px;font-weight:800;color:#bbb}
+.spill.active{border-color:var(--navy);background:var(--navy)}
+.spill.active .slbl{color:#fff}
+.spill.active .scount{color:rgba(255,255,255,.6)}
+.spill.done::after{content:'✓';position:absolute;top:-6px;right:-5px;width:17px;height:17px;border-radius:50%;background:var(--green);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+/* CARDS */
+.panel{display:none;padding:0 1rem}
+.panel.visible{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:var(--r);border:1.5px solid var(--line);padding:1.25rem;margin-bottom:.875rem;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--coral)}
+.card.g::before{background:var(--green)}
+.card.n::before{background:var(--navy)}
+.card.y::before{background:var(--gold)}
+.shero{display:flex;gap:11px;align-items:flex-start;margin-bottom:.9rem}
+.shero-icon{width:48px;height:48px;min-width:48px;border-radius:12px;background:var(--coral-light);display:flex;align-items:center;justify-content:center;font-size:24px}
+.card.g .shero-icon{background:var(--green-light)}
+.card.n .shero-icon{background:var(--sky)}
+.card.y .shero-icon{background:var(--gold-light)}
+.shero-text h2{font-size:16px;font-weight:800;margin-bottom:3px;line-height:1.3}
+.stag{display:inline-block;background:var(--navy);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:5px;letter-spacing:.06em}
+.shero-text p{font-size:12.5px;color:#666;line-height:1.55}
+.txt{font-size:13px;color:#4a5260;line-height:1.65;margin-bottom:.6rem}
+.txt b{color:var(--navy)}
+.slabel{font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#b5b0a5;text-transform:uppercase;margin:1.1rem 0 8px;display:flex;align-items:center;gap:6px}
+.slabel::after{content:'';flex:1;height:1px;background:#f0ede6}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.type-card{border-radius:12px;padding:.9rem;border:1.5px solid}
+.type-card.exc{background:var(--sky);border-color:#c6dbf2}
+.type-card.fru{background:var(--gold-light);border-color:#f5d89a}
+.type-card h3{font-size:13.5px;font-weight:800;margin-bottom:5px}
+.type-card.fru h3{color:#8a5d0b}
+.type-card p{font-size:12px;line-height:1.55;color:#555;margin-bottom:6px}
+.type-card ul{padding-left:15px;font-size:11.5px;color:#555;line-height:1.75}
+
+.bucket{display:flex;gap:14px;align-items:center;background:#f9f8f4;border-radius:12px;padding:12px}
+.bucket svg{flex:none;width:74px}
+.bucket p{font-size:12.5px;color:#4a5260;line-height:1.6}
+
+.rule-list{display:flex;flex-direction:column;gap:7px}
+.rule{display:flex;gap:10px;align-items:flex-start;background:#f9f8f4;border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.55;color:#4a5260}
+.rule .ri{font-size:17px;flex:none;margin-top:1px}
+.rule b{color:var(--navy)}
+
+.info-box{background:#f0f4f8;border-left:3px solid var(--navy);border-radius:0 10px 10px 0;padding:.85rem 1rem;margin-bottom:.875rem;font-size:12.5px;color:var(--navy);line-height:1.6}
+.info-box strong{display:block;font-size:13px;font-weight:800;margin-bottom:4px}
+.red-box{background:#fff5f3;border-left:3px solid var(--coral);border-radius:0 10px 10px 0;padding:.85rem 1rem;margin-bottom:.875rem;font-size:12.5px;color:#a8402a;line-height:1.6}
+.red-box strong{display:block;font-size:13px;font-weight:800;margin-bottom:4px}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.lg{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #e0dbd0;border-radius:20px;padding:4px 10px;font-size:11.5px;font-weight:700}
+
+/* LEVEL HEADER */
+.lvl-prog{display:flex;align-items:center;gap:10px;margin-top:.9rem}
+.lvl-prog .bar{flex:1}
+.lvl-prog span{font-size:12px;font-weight:800;white-space:nowrap}
+.tools-row{display:flex;gap:8px;margin:.2rem 0 .7rem;flex-wrap:wrap}
+.dice{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--navy);font-size:12.5px;font-weight:800;padding:9px 14px;border-radius:25px;border:none;cursor:pointer;min-height:40px;-webkit-tap-highlight-color:transparent;transition:transform .15s}
+.dice:active{transform:scale(.96)}
+
+/* FILTERS */
+.filters{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filters::-webkit-scrollbar{display:none}
+.chip{flex:none;display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #e0dbd0;border-radius:20px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;min-height:36px;-webkit-tap-highlight-color:transparent;transition:all .15s}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.empty{font-size:12.5px;color:#999;text-align:center;padding:1.2rem}
+
+/* EXERCISES */
+.ex-list{display:flex;flex-direction:column;gap:8px}
+.ex{background:#fff;border:1.5px solid var(--line);border-radius:13px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.ex.open{border-color:#c5d8f0;box-shadow:0 6px 18px rgba(30,58,95,.07)}
+.ex.done{background:#fbfdfa;border-color:#cfe5ca}
+.ex-head{display:flex;align-items:center;gap:10px;padding:11px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;min-height:58px}
+.ex-num{width:30px;height:30px;min-width:30px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.lv1 .ex-num{background:var(--green)} .lv3 .ex-num{background:var(--coral)}
+.ex-main{flex:1;min-width:0}
+.ex-title{font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:4px}
+.ex.done .ex-title{color:var(--green)}
+.ex-meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.ic{font-size:13px;line-height:1}
+.fb{font-size:9.5px;font-weight:800;border-radius:20px;padding:2px 7px;letter-spacing:.02em}
+.fb.E{background:var(--sky);color:var(--navy-2)}
+.fb.F{background:var(--gold-light);color:#8a5d0b}
+.fb.C{background:var(--green-light);color:var(--green)}
+.dur{font-size:10px;color:#999;font-weight:700}
+.ex-check{width:36px;height:36px;min-width:36px;border-radius:50%;border:2px solid #d9d4c8;background:#fff;color:transparent;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.ex.done .ex-check{background:var(--green);border-color:var(--green);color:#fff;transform:scale(1.05)}
+.ex-arrow{font-size:10px;color:#aaa;transition:transform .25s;font-style:normal}
+.ex.open .ex-arrow{transform:rotate(180deg)}
+.ex-body{display:none;padding:0 14px 16px;border-top:1px dashed #ece9e1}
+.ex.open .ex-body{display:block;animation:fade .2s ease}
+.blk{margin-top:12px}
+.blk h4{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#a9a397;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.blk p{font-size:13px;color:#4a5260;line-height:1.65}
+.work{background:var(--sky);border-radius:10px;padding:10px 12px}
+.work p{color:var(--navy)}
+.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:7px}
+.steps li{counter-increment:s;display:flex;gap:9px;font-size:13px;color:#4a5260;line-height:1.6}
+.steps li::before{content:counter(s);flex:none;width:21px;height:21px;margin-top:1px;border-radius:50%;background:#f0ede6;color:var(--navy);font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.tip{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 10px;font-size:12.5px;color:#7a5c1a;line-height:1.55}
+.ok{background:var(--green-light);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:8px 10px;font-size:12.5px;color:#2f6a26;line-height:1.55}
+.done-btn{margin-top:12px;width:100%;padding:12px;border-radius:11px;border:1.5px solid var(--green);background:#fff;color:var(--green);font-size:13px;font-weight:800;cursor:pointer;min-height:44px}
+.ex.done .done-btn{background:var(--green);color:#fff}
+
+/* SESSION */
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:12px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--green),var(--navy))}
+.tl{position:relative;padding:4px 0 12px}
+.tl .d{position:absolute;left:-30px;top:2px;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tl b{font-size:13px;display:block;margin-bottom:2px}
+.tl span{font-size:12.5px;color:#666;line-height:1.5}
+.journal{display:flex;flex-direction:column;gap:6px}
+.jq{display:flex;gap:9px;align-items:flex-start;background:#f9f8f4;border-radius:10px;padding:9px 11px;font-size:12.5px;line-height:1.5;color:#4a5260}
+
+/* CTA */
+.cta-banner{background:var(--navy);border-radius:var(--r);padding:1.2rem;margin:1.1rem 0 .875rem;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.cta-banner::after{content:'🐾';position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:46px;opacity:.08;pointer-events:none}
+.ctag{font-size:9.5px;font-weight:800;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+.cta-title{font-size:14.5px;font-weight:800;color:#fff;line-height:1.4}
+.cta-desc{font-size:12px;color:rgba(255,255,255,.7);line-height:1.55}
+.cta-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.cta-btn{display:inline-flex;align-items:center;gap:5px;background:var(--gold);color:var(--navy);font-size:12.5px;font-weight:800;padding:10px 16px;border-radius:25px;text-decoration:none;min-height:42px}
+.cta-btn.ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+
+/* NAV */
+.nav-row{display:flex;gap:8px;margin-top:.875rem}
+.nbtn{flex:1;padding:13px 12px;border-radius:11px;border:1.5px solid #e0dbd0;background:#fff;color:var(--navy);font-size:13px;font-weight:700;cursor:pointer;min-height:46px;-webkit-tap-highlight-color:transparent}
+.nbtn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.nbtn:disabled{opacity:.35;cursor:default}
+
+/* TOAST */
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,220%);opacity:0;background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:12px 18px;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .35s cubic-bezier(.2,.9,.3,1.3);z-index:50;max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0);opacity:1}
+
+@media (min-width:600px){.filters{flex-wrap:wrap}}
+@media (max-width:420px){
+  .type-grid{grid-template-columns:1fr}
+  .card{padding:1.05rem}
+  .bucket{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-brand"><span style="font-size:17px">🐾</span><span>DOGS &amp; US · Guide gratuit</span></div>
+    <h1>Gérer ses émotions :<br><em>excitation &amp; frustration</em> 🎢</h1>
+    <p>30 exercices ludiques avec friandises et jouets, du débutant à l'avancé, pour aider ton chien à patienter, redescendre et rester calme face à ce qui l'excite. Coche chaque exercice réussi et suis votre progression.</p>
+    <div class="gprog">
+      <div class="gprog-top"><span>Ta progression</span><b id="gcount">0 / 30</b></div>
+      <div class="bar"><i id="gbar"></i></div>
+      <div class="medals">
+        <span class="medal" id="m1"><span class="mi">🥉</span>Débutant</span>
+        <span class="medal" id="m2"><span class="mi">🥈</span>Intermédiaire</span>
+        <span class="medal" id="m3"><span class="mi">🥇</span>Avancé</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav" id="snav"></div>
+  <div id="panels"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SKOOL_CLASSROOM='https://www.skool.com/lacademie-dogs-us-8505/classroom';
+const SKOOL_COMMUNITY='https://www.skool.com/lacademie-dogs-us-8505';
+const STORE='du_emotions_v2';
+
+const TAG={fri:['🍪','Friandise'],jou:['🎾','Jouet'],int:['🏠','Intérieur'],ext:['🌳','Extérieur']};
+const FOC={E:'⚡ Excitation',F:'😤 Frustration',C:'🧘 Calme'};
+
+/* ================= EXERCICES ================= */
+const EX={
+1:[
+{t:"Le regard tranquille",tg:['fri','int'],f:['E','F'],d:"3 min",
+w:"L'attention volontaire. Ton chien découvre que se tourner vers toi, de lui-même et sans être sollicité, est une excellente idée. C'est la base de tout le guide : un chien qui sait revenir vers toi spontanément sait aussi sortir d'une émotion qui monte.",
+m:"Une pièce calme, une dizaine de petites friandises dans ta main fermée ou une pochette. Choisis un moment où ton chien n'est ni affamé, ni surexcité.",
+s:["Assieds-toi tranquillement, friandises hors de sa vue.","Ne l'appelle pas, ne fais pas de bruit et ne le fixe pas : attends simplement.","Dès qu'il te regarde, même une seconde, dis « oui » d'une voix douce et donne une friandise près de toi.","Fais trois répétitions, puis une vraie pause. Tu pourras recommencer plus tard dans la journée."],
+a:"Si rien ne se passe au bout de 30 secondes, la pièce est trop stimulante ou ton chien est fatigué. Change de moment plutôt que d'insister.",
+r:"Il te regarde de plus en plus vite, avec un corps détendu."},
+
+{t:"La main qui s'ouvre",tg:['fri','int'],f:['F'],d:"3 min",
+w:"La frustration face à une récompense visible. Ton chien apprend que gratter, lécher ou mordiller la main ne fonctionne pas, et que faire une petite pause ouvre l'accès. C'est la première brique de la patience, sans aucune punition.",
+m:"Une friandise dans la main fermée, présentée à environ 20 cm de son museau, jamais collée à son nez.",
+s:["Présente ta main fermée contenant la friandise.","Il va renifler, lécher, peut-être gratter : reste immobile et silencieux.","Dès qu'il recule la tête ou fait une pause, dis « oui » et donne la friandise avec l'autre main.","Recommence trois à cinq fois. Quand il recule dès que ta main apparaît, essaie avec la main entrouverte.","S'il avance vers la main ouverte, referme-la doucement et attends la prochaine pause."],
+a:"S'il s'acharne ou mordille fort, éloigne ta main et simplifie : main plus haute, friandise moins appétissante. Ne le laisse pas insister longtemps, la frustration doit rester légère.",
+r:"Il recule de lui-même et attend tranquillement que tu lui donnes."},
+
+{t:"La gamelle qui descend",tg:['fri','int'],f:['E','F'],d:"Chaque repas",
+w:"La patience et le calme, sans dire un mot. Ton chien comprend tout seul que c'est son calme qui fait descendre la gamelle, et que son excitation la fait remonter. Il apprend à se contrôler lui-même, plutôt que d'obéir à un ordre.",
+m:"Sa gamelle remplie, tenue à hauteur de ta poitrine. Au début, tu peux utiliser une petite partie de sa ration pour faire plusieurs essais.",
+s:["Tiens-toi debout, gamelle en main, sans rien dire.","Commence à baisser la gamelle doucement.","S'il saute, aboie ou se précipite, remonte simplement la gamelle à sa position de départ. Toujours sans parler.","Dès qu'il se calme (quatre pattes au sol, ou assis de lui-même), recommence à descendre.","Quand la gamelle touche le sol et qu'il reste calme une seconde, dis « vas-y » et laisse-le manger.","Au fil des jours, la gamelle descendra de plus en plus vite : il aura compris."],
+a:"Ne dis ni « non », ni « assis » : c'est lui qui doit trouver la solution. Les premières fois peuvent prendre un peu de temps, reste patient(e) et neutre.",
+r:"La gamelle descend jusqu'au sol sans qu'il bouge."},
+
+{t:"Le passage de porte",tg:['fri','int'],f:['E','F'],d:"Chaque sortie",
+w:"La patience au moment du départ, l'un des gros pics d'excitation de la journée. Il comprend que rester calme fait s'ouvrir la porte, et que se précipiter la fait se refermer. C'est aussi une vraie sécurité au quotidien.",
+m:"Sa laisse et son harnais, la porte d'entrée. Mets la laisse calmement : si l'excitation monte déjà, attends qu'il redescende avant de continuer.",
+s:["Attache la laisse, puis place-toi devant la porte fermée.","Ouvre très légèrement la porte.","S'il se précipite vers l'ouverture, referme doucement (sans jamais claquer la porte ni coincer son museau).","Dès qu'il reste calme, assis ou debout, rouvre un peu.","Ouvre de plus en plus, au fur et à mesure qu'il reste posé.","Quand la porte est grande ouverte et qu'il attend, dis « on y va » : sortir est sa récompense."],
+a:"Ne lui demande rien : c'est à lui de comprendre que rester calme fait gagner la sortie. Si c'est trop dur au début, entraîne-toi sur une porte intérieure.",
+r:"Il reste assis et calme pendant que la porte s'ouvre en grand."},
+
+{t:"Le tapis refuge",tg:['fri','int'],f:['E'],d:"5 min",
+w:"Le tapis devient un endroit où il fait bon se poser, un repère qu'il pourra retrouver pour redescendre quand l'excitation monte. C'est la base du « au panier » que tu utiliseras pour les repas et les visites.",
+m:"Un tapis ou un plaid confortable, posé dans un coin tranquille. Des friandises calmes (pas ses préférées, qui l'exciteraient).",
+s:["Pose le tapis au sol et observe ce que fait ton chien.","Récompense chaque intérêt pour le tapis (le regarder, le renifler, poser une patte) en déposant une friandise dessus.","Récompense ensuite les moments où il s'installe : assis, puis couché. Ne lui demande rien, attends qu'il le propose.","Quand il est posé, dépose de temps en temps une friandise doucement entre ses pattes.","Quand il y va facilement, ajoute le mot « au panier » juste avant qu'il s'y rende."],
+a:"N'utilise jamais le tapis comme punition. Il doit rester associé uniquement à de bonnes choses.",
+r:"Il va de lui-même sur son tapis et s'y couche en soupirant."},
+
+{t:"La cible main",tg:['fri','int'],f:['E'],d:"3 min",
+w:"Un comportement de remplacement. Au lieu de sauter, mordiller ou aboyer, il vient toucher ta paume avec sa truffe. Un outil très efficace quand des invités arrivent ou quand il s'excite.",
+m:"Ta main ouverte et quelques friandises.",
+s:["Présente ta paume à quelques centimètres de son nez.","Dis « oui » dès qu'il s'approche, puis récompense-le.","Attends ensuite un vrai contact du museau avant de dire « oui ».","Ajoute le mot « touche » quand il le fait à coup sûr.","Déplace progressivement ta main : à gauche, à droite, plus bas, un pas plus loin."],
+a:"Quand quelqu'un arrive, propose ta main plutôt que de le gronder s'il saute : tu lui donnes une solution.",
+r:"Il touche ta main dès que tu dis « touche », même un peu excité."},
+
+{t:"Le jouet présenté calmement",tg:['jou','int'],f:['E','F'],d:"3 min",
+w:"L'excitation à la vue du jouet. Le jeu devient prévisible : il commence quand ton chien est capable de participer sans sauter ni attraper tes mains.",
+m:"Un jouet peu stimulant pour commencer (peluche plutôt que balle).",
+s:["Sors le jouet lentement, sans l'agiter.","S'il saute ou attrape tes mains, ramène le jouet contre toi et attends.","Dès qu'il a les quatre pattes au sol, lance le jeu.","Joue quelques secondes, puis range le jouet.","Passe progressivement à des jouets plus excitants."],
+a:"Si l'excitation monte trop, propose une activité plus facile (une recherche au sol) plutôt qu'une longue attente.",
+r:"Il attend que le jeu commence sans sauter sur toi."},
+
+{t:"L'échange gagnant",tg:['fri','jou','int'],f:['F'],d:"3 min",
+w:"Le lâcher sans conflit. Ton chien apprend que donner un objet n'est pas une perte : il gagne quelque chose de mieux, et récupère souvent l'objet. Fini les courses-poursuites et les bagarres pour une chaussette.",
+m:"Un jouet ou un objet sans grande valeur pour lui, et une friandise de meilleure valeur.",
+s:["Laisse-le prendre le jouet.","Présente la friandise près de son nez.","Quand il lâche, dis « donne » puis donne-lui la friandise.","Rends-lui le jouet : il comprend que lâcher ne veut pas dire perdre.","Répète avec des objets un peu plus intéressants."],
+a:"S'il grogne ou se fige quand tu approches de ses objets, ne fais pas cet exercice seul(e) : demande l'aide d'un professionnel.",
+r:"Il lâche spontanément quand tu approches ta main."},
+
+{t:"Les mordillements : vive le jouet !",tg:['jou','int'],f:['E','F'],d:"Au quotidien",
+w:"Les mordillements, très fréquents chez le chiot et le chien excité. Il apprend que mordiller une main arrête le jeu, et que mordiller un jouet le fait continuer. Tu lui donnes une alternative au lieu de seulement lui dire non.",
+m:"Un jouet long et souple (corde, peluche longue) pour garder ses dents loin de tes doigts. Garde-en toujours un à portée dans les pièces de vie.",
+s:["Joue avec lui en tenant le jouet par une extrémité, loin de tes doigts.","S'il attrape ta main ou tes vêtements, arrête tout : mains immobiles contre toi, regard ailleurs, deux ou trois secondes.","Dès qu'il lâche, propose à nouveau le jouet et relance le jeu.","S'il recommence plusieurs fois de suite, il est trop excité : arrête le jeu et donne-lui un os ou un jouet à mâcher.","Félicite chaque morsure « au bon endroit », sur le jouet."],
+a:"Un chiot qui mordille énormément est souvent fatigué : vérifie qu'il dort assez. Évite de retirer brusquement les mains, ça ressemble à un jeu de chasse.",
+r:"Il va chercher son jouet de lui-même quand il a envie de mordiller."},
+
+{t:"On / off : le jeu qui s'arrête et repart",tg:['jou','fri','int'],f:['E'],d:"5 min",
+w:"Le fameux interrupteur « on / off ». Beaucoup de chiens n'arrivent pas à redescendre après le jeu. Ici, il apprend qu'une pause n'est pas la fin du monde : le jeu reprend dès qu'il se calme.",
+m:"Un jouet qu'il aime, quelques friandises.",
+s:["Joue avec lui quelques secondes, avec entrain.","Dis « pause », immobilise-toi et ramène le jouet contre toi.","S'il tient encore le jouet, propose l'échange avec une friandise.","Dès qu'il se pose (quatre pattes au sol, un petit regard), relance le jeu avec un « on joue ! ».","Recommence trois ou quatre fois, puis termine par « c'est fini » et quelques friandises éparpillées au sol."],
+a:"Commence avec des jeux très courts et peu intenses. S'il met longtemps à redescendre, joue moins fort la fois suivante.",
+r:"Au mot « pause », il se calme en quelques secondes."}
+],
+
+2:[
+{t:"La statue",tg:['jou','int'],f:['E','F'],d:"5 min",
+w:"Le contrôle de soi en pleine excitation. Quand tu te transformes en statue, c'est à lui de proposer le calme pour relancer le jeu. Il apprend à freiner tout seul, même quand il est à fond.",
+m:"Un jouet de traction ou une peluche, un espace dégagé (salon, jardin).",
+s:["Joue avec lui de façon dynamique.","D'un coup, deviens une statue : immobile, jouet contre toi, regard au loin.","Attends qu'il propose un comportement calme : assis, couché ou simplement quatre pattes au sol.","Dès qu'il le fait, redeviens vivant(e) et relance le jeu avec joie.","Augmente petit à petit l'intensité du jeu avant la statue."],
+a:"S'il saute sur toi pendant la statue, tourne-lui le dos calmement. S'il n'arrive pas à se calmer, le jeu était trop intense : refais une version plus douce.",
+r:"Dès que tu te figes, il s'assoit de lui-même."},
+
+{t:"La balle qui attend",tg:['jou','int'],f:['F','E'],d:"5 min",
+w:"La patience face à son jouet préféré. Il apprend que foncer sur la balle la fait disparaître, et qu'attendre le « vas-y » la lui donne. Un exercice clé pour les chiens fous de balle.",
+m:"Sa balle ou son jouet préféré. Commence à l'intérieur, au calme.",
+s:["Tiens la balle dans ta main, bras le long du corps.","Baisse doucement la main vers le sol. S'il se jette dessus, remonte la main (comme pour la gamelle qui descend).","Quand tu arrives à poser la balle au sol et qu'il attend une seconde, dis « vas-y » et laisse-le la prendre.","Joue avec lui en récompense.","Progressivement, pose la balle un peu plus loin, puis fais-la rouler doucement avant de dire « vas-y »."],
+a:"Ne crie pas « non » s'il fonce : reprends simplement la balle. S'il échoue trop souvent, utilise un jouet moins excitant.",
+r:"Il regarde la balle posée au sol et attend ton « vas-y »."},
+
+{t:"La fin du jeu acceptée",tg:['jou','fri','int'],f:['F'],d:"5 min",
+w:"La frustration quand le jeu s'arrête pour de bon. Au lieu de réclamer, aboyer ou te suivre partout avec son jouet, il apprend que la fin du jeu annonce une autre bonne chose, plus calme.",
+m:"Son jouet de jeu, et un jouet d'occupation préparé à l'avance (Kong garni, os à mâcher, tapis de léchage).",
+s:["Joue avec lui quelques minutes.","Annonce clairement « c'est fini », toujours avec le même mot.","Range le jouet hors de sa vue.","Donne-lui aussitôt son jouet d'occupation, dans son panier.","S'il réclame encore, ignore-le calmement : la règle est toujours la même."],
+a:"Choisis un mot de fin et ne t'en sers que pour ça. La cohérence fait toute la différence.",
+r:"Au mot « c'est fini », il part s'installer avec son jouet d'occupation."},
+
+{t:"La pluie de friandises",tg:['fri','int','ext'],f:['E'],d:"2 min",
+w:"Faire redescendre une excitation qui monte (folies du soir, retour de promenade, avant une visite). Renifler le sol fait naturellement baisser le rythme cardiaque. C'est ton joker anti-excitation.",
+m:"Une poignée de petites friandises ou de croquettes, un sol propre (tapis, herbe).",
+s:["Entraîne-le d'abord au calme : dis « cherche » et lance une poignée de friandises au sol.","Laisse-le chercher jusqu'à la dernière, sans le presser.","Quand il connaît bien le jeu, utilise-le dès que tu sens l'excitation monter, avant qu'elle explose.","Après la recherche, propose-lui son tapis ou un jouet à mâcher pour finir de redescendre."],
+a:"Tu ne récompenses pas l'excitation : tu l'aides à en sortir. Utilise-le tôt, quand il est encore capable de chercher.",
+r:"Au mot « cherche », il baisse le nez et se calme en quelques secondes."},
+
+{t:"Au panier pendant le repas",tg:['fri','int'],f:['F'],d:"Un repas",
+w:"Le « au panier » et la frustration à table. Il comprend tout seul que quémander ne rapporte rien, mais qu'être sur son tapis pendant le repas est très payant.",
+m:"Son panier ou son tapis, à quelques mètres de la table (déjà connu grâce au « tapis refuge »). Une boîte de friandises posée près de toi.",
+s:["Installe-toi à table et commence à manger normalement.","S'il vient quémander, ignore-le totalement : ni regard, ni parole, ni geste.","Dès qu'il est calme, lève-toi, prends une friandise et va la déposer dans son panier.","Refais-le plusieurs fois pendant le repas, chaque fois qu'il est calme ou qu'il retourne au panier.","Au fil des repas, il ira de lui-même au panier : récompense-le là-bas, puis espace les friandises."],
+a:"Ne lui donne jamais à manger depuis la table, même une seule fois : ça relance l'envie de quémander pour des semaines. Toute la famille doit jouer le jeu.",
+r:"Dès que vous passez à table, il file dans son panier."},
+
+{t:"Le tapis malgré l'agitation",tg:['fri','int'],f:['F','E'],d:"5 min",
+w:"Rester calme quand la maison s'agite : enfants qui courent, ménage, objets qui tombent. Il apprend que rester sur son tapis est payant, même quand tout bouge autour de lui.",
+m:"Son tapis et des friandises. Ton chien a déjà appris le « tapis refuge ».",
+s:["Ton chien est installé sur son tapis, toi juste à côté.","Fais un petit mouvement (un pas de côté, te baisser), puis récompense-le sur le tapis.","Augmente petit à petit : t'éloigner, revenir, sautiller, faire tomber un coussin.","Récompense souvent au début, puis espace les friandises.","S'il quitte le tapis, réinvite-le simplement et reviens à une difficulté plus facile."],
+a:"Une seule difficulté à la fois : soit la distance, soit la durée, soit l'agitation.",
+r:"Tu peux bouger dans la pièce, il reste couché tranquillement."},
+
+{t:"La sonnette, signal du tapis",tg:['fri','int'],f:['E'],d:"5 min",
+w:"L'excitation déclenchée par la sonnette ou les coups à la porte. La sonnette devient le signal pour aller sur son tapis, où l'attend une récompense, au lieu de courir aboyer devant la porte.",
+m:"Son tapis placé à quelques mètres de l'entrée, en vue de la porte. Un complice qui sonne, ou un enregistrement de ta sonnette sur ton téléphone.",
+s:["Sans sonnette, envoie-le au tapis plusieurs fois et récompense-le là-bas.","Fais sonner (ou passe l'enregistrement à faible volume), puis va aussitôt déposer une friandise sur le tapis.","Répète jusqu'à ce qu'il se dirige vers le tapis dès qu'il entend la sonnette.","Augmente le volume, puis passe à la vraie sonnette avec ton complice.","Récompense généreusement quand il reste sur le tapis pendant que tu ouvres."],
+a:"Ne gronde pas les aboiements : c'est justement ce comportement que l'on remplace. Avance à petits pas, la sonnette est un énorme déclencheur pour beaucoup de chiens.",
+r:"Ça sonne, et il court à son tapis au lieu de la porte."},
+
+{t:"L'accueil des invités",tg:['fri','int'],f:['E'],d:"Chaque visite",
+w:"Les arrivées qui partent dans tous les sens : sauts, aboiements, mordillements. Il apprend que le calme fait venir l'attention et les caresses, et que sauter les fait disparaître.",
+m:"Des invités prévenus à l'avance (explique-leur la règle). Une boîte de friandises près de l'entrée et son tapis.",
+s:["Avant d'ouvrir, envoie-le au tapis ou garde-le en laisse si besoin.","Demande aux invités d'entrer sans le regarder ni lui parler pendant les premières secondes.","Pendant ce temps, lance quelques friandises au sol près de lui : il renifle et redescend.","Quand il a les quatre pattes au sol, l'invité peut le saluer calmement, accroupi et de profil.","S'il saute, l'invité se redresse et se détourne en silence, puis réessaie dès qu'il est calme."],
+a:"La règle d'or : on ne dit bonjour qu'à un chien qui a les quatre pattes au sol. Si toute la famille et les invités s'y tiennent, les progrès arrivent vite.",
+r:"Il accueille tes invités sans sauter, la queue qui remue doucement."},
+
+{t:"Dire bonjour sans sauter",tg:['fri','int','ext'],f:['E'],d:"5 min",
+w:"Saluer avec les quatre pattes au sol. C'est son calme qui fait avancer la personne : s'il saute, elle s'éloigne ; s'il reste posé, elle arrive et lui dit bonjour.",
+m:"Un ami ou un membre de la famille complice. Ton chien en laisse, des friandises dans ta pochette.",
+s:["Ton chien en laisse à tes côtés, le complice démarre à quelques mètres.","Le complice avance lentement vers vous.","Pendant qu'il avance, récompense ton chien tant qu'il garde les quatre pattes au sol.","S'il saute ou s'élance, le complice recule de deux pas et s'arrête.","Quand le complice arrive, il dit bonjour calmement quelques secondes, puis repart. Recommence."],
+a:"Garde la laisse détendue : c'est le recul du complice qui enseigne, pas la laisse. Change de complice dès que ça fonctionne bien.",
+r:"Le complice arrive jusqu'à vous et ton chien reste les quatre pattes au sol."},
+
+{t:"La sortie de voiture",tg:['fri','ext'],f:['E','F'],d:"Chaque trajet",
+w:"L'excitation à l'arrivée au parc ou en forêt, quand le chien veut jaillir du coffre. Comme pour la porte, il apprend que c'est son calme qui ouvre la sortie. Une vraie question de sécurité.",
+m:"Ton chien attaché dans la voiture (harnais et ceinture, ou caisse), la laisse prête. Un parking calme.",
+s:["Ouvre la portière ou le coffre très légèrement.","S'il pousse pour sortir, referme doucement.","Dès qu'il est calme, rouvre un peu, puis de plus en plus.","Attache la laisse pendant qu'il reste posé.","Quand il attend calmement, dis « vas-y » et fais-le descendre. Donne une friandise au sol dès qu'il pose les pattes."],
+a:"Garde toujours une main sur la laisse ou la portière : sur un parking, une sortie ratée peut être dangereuse.",
+r:"Le coffre est ouvert, et il attend ton signal pour descendre."}
+],
+
+3:[
+{t:"Le jeu de traction dehors",tg:['jou','ext'],f:['E'],d:"5 min",
+w:"L'interrupteur « on / off » en extérieur, là où tout est plus excitant. S'il peut jouer à fond puis redescendre dehors, il pourra le faire partout.",
+m:"Son jouet de traction préféré, un lieu calme dehors (jardin, parc vide), une longe pour la sécurité.",
+s:["Révise d'abord le « on / off » et la statue à la maison.","Dehors, joue brièvement à la traction.","Dis « pause » et attends quatre pattes au sol ou un regard vers toi.","Relance le jeu en récompense.","Ajoute peu à peu des distractions : passants au loin, bruits, autres chiens à grande distance."],
+a:"Si dehors il n'arrive plus à lâcher, rends le jeu plus calme ou reviens dans un lieu plus facile.",
+r:"En plein parc, il passe du jeu intense au calme sur ton « pause »."},
+
+{t:"La connexion en extérieur",tg:['fri','jou','ext'],f:['E'],d:"Pendant la balade",
+w:"La connexion avec toi quand le monde est plein d'odeurs et de stimulations. Chaque fois qu'il revient vers toi de lui-même, c'est la fête : il apprend que tu restes la meilleure source de bonnes choses, même dehors.",
+m:"Une pochette de friandises de haute valeur et son jouet, une balade tranquille.",
+s:["Marche tranquillement, sans l'appeler ni lui parler.","Dès qu'il te regarde ou se tourne vers toi spontanément, dis « oui ».","Récompense-le près de toi : une friandise, un petit jeu avec son jouet ou une recherche au sol.","Laisse-le repartir explorer aussitôt.","Au fil des balades, récompense des connexions de plus en plus longues."],
+a:"N'appelle pas : on cherche le retour spontané. Au début, récompense même un simple coup d'œil.",
+r:"Il se retourne régulièrement vers toi pendant la balade."},
+
+{t:"Le banc d'observation",tg:['fri','ext'],f:['E'],d:"10 min",
+w:"L'observation calme en extérieur. Ton chien apprend à regarder le monde passer (passants, vélos, enfants, chiens au loin) sans s'exciter, puis à revenir vers toi.",
+m:"Un banc ou un coin tranquille au parc, à bonne distance du passage. Des friandises.",
+s:["Installe-toi assez loin pour qu'il reste détendu.","Laisse-le regarder ce qui se passe, c'est permis.","Quand il observe calmement puis tourne la tête vers toi, dis « oui » et récompense.","Laisse-le regarder à nouveau.","Reste peu de temps et repars avant qu'il ne se fatigue."],
+a:"S'il fixe, se fige ou tire, éloigne-toi : la distance était trop courte. Rapproche-toi très progressivement, au fil des séances.",
+r:"Il regarde passer les gens, puis revient vers toi tout seul."},
+
+{t:"Observer un chien de loin",tg:['fri','ext'],f:['E','F'],d:"10 min",
+w:"L'excitation (ou la frustration) de voir un autre chien sans pouvoir aller le voir. Voir un chien devient une bonne nouvelle, sans obligation de rencontre.",
+m:"Un chien calme avec un ami informé, beaucoup d'espace, des friandises de haute valeur.",
+s:["Commence très loin de l'autre chien.","Chaque fois que ton chien le regarde calmement, dis « oui » et récompense près de toi.","Laisse-le regarder, renifler, revenir vers toi.","Rapproche-toi de quelques mètres seulement s'il reste détendu.","Repartez sans imposer de rencontre."],
+a:"S'il se fige, gémit, fixe ou tire, augmente la distance immédiatement.",
+r:"Il voit l'autre chien et se tourne vers toi, détendu."},
+
+{t:"Dire bonjour à un inconnu",tg:['fri','ext'],f:['E'],d:"5 min",
+w:"Rencontrer quelqu'un dans la rue ou chez des amis sans lui sauter dessus. C'est la version « vraie vie » de l'exercice avec un proche.",
+m:"Un complice que ton chien ne connaît pas (un ami d'ami, un voisin), prévenu des règles. Des friandises.",
+s:["Révise d'abord « dire bonjour sans sauter » avec un proche.","Le complice approche lentement et s'arrête à deux mètres.","Récompense ton chien tant qu'il reste les quatre pattes au sol.","Le complice se met de profil et le laisse venir renifler.","S'il saute, le complice se tourne et recule ; sinon, il le caresse calmement quelques secondes."],
+a:"Dans la rue, tu as le droit de dire « il est en éducation, on ne le caresse pas aujourd'hui ». Tu protèges ses progrès.",
+r:"Un inconnu peut le caresser, et ses pattes restent au sol."},
+
+{t:"Les visites qui durent",tg:['fri','jou','int'],f:['E','F'],d:"Toute la visite",
+w:"Rester posé pendant toute une visite, pas seulement à l'arrivée. Il apprend que la visite est un moment calme, avec son occupation à lui.",
+m:"Son tapis dans la pièce de vie, un jouet d'occupation qui dure (Kong garni et congelé, os à mâcher).",
+s:["Après l'accueil, invite-le sur son tapis.","Donne-lui son jouet d'occupation sur le tapis.","Pendant la visite, dépose de temps en temps une friandise sur le tapis quand il est posé.","S'il vient solliciter les invités, ils l'ignorent et tu le réinvites au tapis.","Si la visite est longue, prévois une petite sortie au calme."],
+a:"Préviens tes invités : pas de jeu excitant ni de caresses dès qu'il réclame. Ça viendra quand il sera posé.",
+r:"Il passe la visite tranquillement sur son tapis."},
+
+{t:"Le tapis en terrasse",tg:['fri','jou','ext'],f:['F','E'],d:"15 min",
+w:"La patience dans un lieu public stimulant : terrasse de café, pique-nique, jardin d'amis. Le tapis devient un repère de calme que tu emportes partout.",
+m:"Son tapis, un jouet à mâcher, des friandises. Commence par un banc isolé ou un jardin d'amis avant une vraie terrasse.",
+s:["Pose le tapis et récompense chaque installation.","Donne-lui son jouet à mâcher pour l'aider à patienter.","Dépose des friandises sur le tapis quand il est posé, de moins en moins souvent.","Reste peu de temps les premières fois (une dizaine de minutes).","Allonge la durée au fil des sorties."],
+a:"Choisis une table en bord de terrasse, loin du passage. Un chien qui s'est dépensé avant patiente beaucoup mieux.",
+r:"Tu prends un café et il reste couché sur son tapis."},
+
+{t:"La balle qui roule",tg:['jou','ext'],f:['F','E'],d:"5 min",
+w:"Résister à l'envie de foncer sur un objet en mouvement. C'est la version avancée de « la balle qui attend » : il garde le contrôle même face à ce qui l'excite le plus.",
+m:"Sa balle ou un jouet qui roule, un espace clos dehors, une longe pour la sécurité.",
+s:["Révise « la balle qui attend » dehors.","Fais rouler la balle doucement à côté de vous.","S'il attend, dis « vas-y » et laisse-le la prendre.","S'il part avant, ramasse la balle calmement et recommence plus facilement.","Augmente progressivement : roulé plus vite, puis petit lancer."],
+a:"Limite les lancers répétés : les longues séries de balle font monter l'excitation en flèche. Préfère quelques lancers et beaucoup de pauses.",
+r:"Tu lances la balle, et il attend ton « vas-y »."},
+
+{t:"Le demi-tour joyeux",tg:['fri','int','ext'],f:['E','F'],d:"5 min",
+w:"Quitter une situation trop excitante sans conflit. Un demi-tour joyeux, appris à l'avance, te permet de t'éloigner d'un chien, d'un vélo ou d'un groupe avant qu'il ne déborde.",
+m:"Apprends-le d'abord à la maison, sans aucune distraction. Des friandises de haute valeur.",
+s:["Choisis un signal joyeux (« on y va ! »).","Dis le signal, tourne en arc de cercle et récompense-le pendant que vous marchez.","Entraîne-le souvent, dans des lieux faciles.","Utilise-le ensuite tôt, dès qu'il remarque quelque chose d'excitant, avant qu'il ne fixe."],
+a:"Privilégie toujours une issue dégagée, sans tension sur la laisse.",
+r:"Au signal, il fait demi-tour avec toi en remuant la queue."},
+
+{t:"La recherche en zone refuge",tg:['fri','ext'],f:['E','F'],d:"5 min",
+w:"La récupération après un moment intense. Après une rencontre ou une grosse excitation, il apprend à redescendre grâce à une activité connue et apaisante.",
+m:"Un espace protégé (derrière une voiture, un muret), des friandises.",
+s:["Éloigne-toi d'abord vers l'espace protégé.","Propose une « pluie de friandises » ou une recherche connue, s'il l'accepte.","Laisse-le libre de ne pas manger.","Si sa vigilance reste élevée, quitte les lieux."],
+a:"Un chien qui refuse de manger est souvent trop stressé : c'est une information précieuse, pas un caprice.",
+r:"Il se remet à renifler et à chercher, signe qu'il redescend."}
+]};
+
+const LEVELS=[
+ {k:1,label:"Débutant",emoji:"🌱",tag:"NIVEAU 1",title:"Débutant : poser les bases",intro:"Tout se passe à la maison. Ton chien découvre que le calme et la patience ouvrent l'accès à ce qu'il veut : sa gamelle, la porte, le jeu. Ce sont les fondations de tout le reste, prends le temps de bien les installer.",next:"Passe au niveau suivant quand ton chien réussit facilement la plupart de ces exercices, sans s'agacer."},
+ {k:2,label:"Intermédiaire",emoji:"🌿",tag:"NIVEAU 2",title:"Intermédiaire : les situations du quotidien",intro:"Jeux plus intenses, repas, sonnette, invités, voiture : on s'attaque aux moments où l'excitation et la frustration explosent le plus souvent à la maison.",next:"Passe à l'avancé quand il redescend vite après le jeu et accueille tes proches sans sauter."},
+ {k:3,label:"Avancé",emoji:"🌳",tag:"NIVEAU 3",title:"Avancé : dans la vraie vie",intro:"Extérieur, inconnus, autres chiens, terrasses : on travaille dans des contextes riches, toujours sous son seuil. L'avancé ne consiste jamais à le pousser à bout, mais à l'aider à garder la tête froide.",next:"Bravo ! Reviens régulièrement aux exercices débutants : ce sont eux qui entretiennent les bonnes habitudes."}
+];
+
+/* ================= STATE ================= */
+let done={};
+try{done=JSON.parse(localStorage.getItem(STORE)||'{}')||{}}catch(e){done={}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(done))}catch(e){}}
+const filt={1:'all',2:'all',3:'all'};
+let current=0;
+const TABS=[{label:'Comprendre',emoji:'🧠'},...LEVELS.map(l=>({label:l.label,emoji:l.emoji,k:l.k})),{label:'Mes séances',emoji:'📓'}];
+
+/* numbering */
+let n=0;LEVELS.forEach(l=>EX[l.k].forEach((e,i)=>{e.n=++n;e.id=l.k+'-'+i;e.lv=l.k}));
+const ALL=LEVELS.flatMap(l=>EX[l.k]);
+
+/* ================= RENDER ================= */
+function exHTML(e){
+ const icons=e.tg.map(t=>`<span class="ic" title="${TAG[t][1]}">${TAG[t][0]}</span>`).join('');
+ const fb=e.f.map(f=>`<span class="fb ${f}">${FOC[f]}</span>`).join('');
+ return `<div class="ex lv${e.lv}${done[e.id]?' done':''}" data-id="${e.id}" data-tags="${e.tg.join(' ')}" data-f="${e.f.join(' ')}">
+  <div class="ex-head">
+    <div class="ex-num">${e.n}</div>
+    <div class="ex-main"><div class="ex-title">${e.t}</div><div class="ex-meta">${icons}${fb}<span class="dur">⏱ ${e.d}</span></div></div>
+    <i class="ex-arrow">▼</i>
+    <button class="ex-check" aria-label="Marquer comme réussi">✓</button>
+  </div>
+  <div class="ex-body">
+    <div class="blk work"><h4>🎯 Ce que ça travaille</h4><p>${e.w}</p></div>
+    <div class="blk"><h4>🧺 Mise en place</h4><p>${e.m}</p></div>
+    <div class="blk"><h4>👣 Étape par étape</h4><ol class="steps">${e.s.map(x=>`<li><span>${x}</span></li>`).join('')}</ol></div>
+    <div class="blk tip"><b>💡 Si ça coince :</b> ${e.a}</div>
+    <div class="blk ok"><b>✅ Signe de réussite :</b> ${e.r}</div>
+    <button class="done-btn">${done[e.id]?'✓ Exercice réussi':'Marquer comme réussi'}</button>
+  </div></div>`;
+}
+
+function levelPanel(l){
+ const chips=[['all','✨ Tous'],['E','⚡ Excitation'],['F','😤 Frustration'],['fri','🍪 Friandise'],['jou','🎾 Jouet'],['int','🏠 Intérieur'],['ext','🌳 Extérieur']];
+ return `<div class="card ${l.k===1?'g':l.k===2?'n':''}">
+  <div class="shero"><div class="shero-icon">${l.emoji}</div><div class="shero-text"><span class="stag">${l.tag} · ${EX[l.k].length} EXERCICES</span><h2>${l.title}</h2><p>${l.intro}</p></div></div>
+  <div class="lvl-prog"><div class="bar"><i id="lb${l.k}"></i></div><span id="lc${l.k}"></span></div>
+ </div>
+ <div class="tools-row"><button class="dice" data-lv="${l.k}">🎲 Un exercice au hasard</button></div>
+ <div class="filters" data-lv="${l.k}">${chips.map(c=>`<button class="chip${c[0]==='all'?' on':''}" data-f="${c[0]}">${c[1]}</button>`).join('')}</div>
+ <div class="ex-list" id="list${l.k}">${EX[l.k].map(exHTML).join('')}</div>
+ <div class="empty" id="empty${l.k}" style="display:none">Aucun exercice avec ce filtre dans ce niveau.</div>
+ <div class="info-box" style="margin-top:.9rem"><strong>🚦 Quand passer à la suite ?</strong>${l.next}</div>`;
+}
+
+function introPanel(){
+ return `<div class="card">
+  <div class="shero"><div class="shero-icon">🧠</div><div class="shero-text"><span class="stag">AVANT TOUT</span><h2>Excitation et frustration, c'est quoi ?</h2><p>Ce ne sont ni des caprices, ni de la désobéissance. Ce sont des émotions qui débordent, et ça s'apprend à gérer.</p></div></div>
+  <div class="type-grid">
+   <div class="type-card exc"><h3>⚡ L'excitation</h3><p>Un trop-plein d'énergie et d'émotion, souvent positive : ton chien n'arrive plus à se contenir.</p><ul><li>Il saute sur les gens</li><li>Il mordille mains et vêtements</li><li>Il aboie, tourne sur lui-même</li><li>Il tire en laisse</li><li>Il n'écoute plus rien</li></ul></div>
+   <div class="type-card fru"><h3>😤 La frustration</h3><p>Ce qu'il ressent quand il veut quelque chose et ne peut pas l'obtenir tout de suite.</p><ul><li>Il gémit ou aboie en attendant</li><li>Il gratte, mord la laisse</li><li>Il s'agite devant une porte</li><li>Il réclame sans arrêt</li><li>Il devient « insupportable »</li></ul></div>
+  </div>
+  <div class="slabel">Le seau émotionnel</div>
+  <div class="bucket">
+   <svg viewBox="0 0 80 90" aria-hidden="true"><path d="M10 14 L70 14 L62 84 L18 84 Z" fill="#fff" stroke="#1e3a5f" stroke-width="3" stroke-linejoin="round"/><path d="M15.5 56 L64.5 56 L62 84 L18 84 Z" fill="#f5a623" opacity=".85"/><path d="M13.3 36 L66.7 36 L64.5 56 L15.5 56 Z" fill="#e05a3a" opacity=".25"/><path d="M8 14 Q40 2 72 14" fill="none" stroke="#1e3a5f" stroke-width="2.5"/><text x="40" y="74" text-anchor="middle" font-size="9" font-weight="700" fill="#1e3a5f">stress</text></svg>
+   <p>Imagine que ton chien a un seau. Chaque émotion le remplit un peu : une visite, un chien croisé, un jeu intense, une attente. Quand le seau déborde, il « craque » pour un rien. <b>Les exercices de ce guide l'aident à vider son seau</b> et à agrandir sa capacité à rester calme.</p>
+  </div>
+ </div>
+
+ <div class="card g">
+  <div class="shero"><div class="shero-icon">📏</div><div class="shero-text"><span class="stag">LES RÈGLES D'OR</span><h2>Avant de commencer</h2><p>À lire une fois, à garder en tête à chaque séance.</p></div></div>
+  <div class="rule-list">
+   <div class="rule"><span class="ri">🧘</span><div><b>Calme ne veut pas dire immobile.</b> Un chien assis peut être très inquiet. On cherche un chien détendu, pas un chien figé.</div></div>
+   <div class="rule"><span class="ri">🍽️</span><div><b>Ses besoins passent avant tout.</b> Eau, repas, sommeil, sorties : on ne les utilise jamais comme moyen de pression pour obtenir le calme.</div></div>
+   <div class="rule"><span class="ri">🎯</span><div><b>Une seule difficulté à la fois.</b> Augmente soit la durée, soit la distance, soit les distractions. Jamais les trois en même temps.</div></div>
+   <div class="rule"><span class="ri">⏱️</span><div><b>Des séances courtes.</b> Quelques répétitions, des pauses, et on termine sur une réussite. Pas de quota à atteindre.</div></div>
+   <div class="rule"><span class="ri">👀</span><div><b>Lis tout le corps.</b> Un bâillement ou un léchage de truffe seul ne prouve rien. Regarde la posture, la respiration et le contexte.</div></div>
+   <div class="rule"><span class="ri">💙</span><div><b>Jamais de punition.</b> Ni cris, ni à-coups, ni violence. Un grognement est un message précieux : on ne le punit jamais.</div></div>
+  </div>
+ </div>
+
+ <div class="red-box"><strong>🛑 Quand arrêter tout de suite</strong>Fixation, corps raide, évitement, agitation qui monte, grognement ou difficulté à se calmer : arrête la demande, éloigne-toi et propose une sortie ou une activité facile. Simplifie la prochaine séance.</div>
+ <div class="info-box"><strong>🩺 Quand consulter</strong>Douleur, changement de comportement brutal, morsure, protection des objets ou de la nourriture, peur intense ou détresse quand il est seul : fais d'abord un bilan chez le vétérinaire, puis fais-toi accompagner individuellement.</div>
+
+ <div class="card y">
+  <div class="shero"><div class="shero-icon">🗺️</div><div class="shero-text"><span class="stag">MODE D'EMPLOI</span><h2>Comment utiliser ce guide</h2><p>Choisis un niveau, un exercice, et lance-toi. Coche ✓ chaque exercice réussi pour suivre ta progression.</p></div></div>
+  <div class="slabel">Les pictos</div>
+  <div class="legend"><span class="lg">🍪 Friandise</span><span class="lg">🎾 Jouet</span><span class="lg">🏠 Intérieur</span><span class="lg">🌳 Extérieur</span><span class="lg">⚡ Excitation</span><span class="lg">😤 Frustration</span></div>
+  <div class="slabel">Astuces</div>
+  <p class="txt">Utilise les <b>filtres</b> pour trouver un exercice selon ce que tu as sous la main, ou le problème que tu veux travailler. En panne d'idée ? Le bouton <b>🎲 Un exercice au hasard</b> en choisit un pour toi parmi ceux qu'il te reste.</p>
+  <p class="txt" style="margin:0">Ta progression est enregistrée sur cet appareil : tu peux revenir quand tu veux.</p>
+ </div>`;
+}
+
+function sessionPanel(){
+ return `<div class="card g">
+  <div class="shero"><div class="shero-icon">⏱️</div><div class="shero-text"><span class="stag">EXEMPLE DE SÉANCE</span><h2>Construire une séance réussie</h2><p>10 à 15 minutes suffisent. Tu peux t'arrêter avant si ton chien préfère.</p></div></div>
+  <div class="timeline">
+   <div class="tl"><span class="d">👃</span><b>1. Exploration libre</b><span>Quelques minutes de reniflage pour arriver dans un état calme.</span></div>
+   <div class="tl"><span class="d">🔁</span><b>2. Un exercice connu</b><span>Deux ou trois répétitions faciles pour le mettre en confiance.</span></div>
+   <div class="tl"><span class="d">☕</span><b>3. Une pause</b><span>Il boit, renifle, se pose. Observe son état.</span></div>
+   <div class="tl"><span class="d">✨</span><b>4. Une seule nouveauté</b><span>Très facile, et seulement s'il reste disponible.</span></div>
+   <div class="tl" style="padding-bottom:0"><span class="d">🛋️</span><b>5. Une fin agréable</b><span>Une activité qu'il adore, ou un repos qu'il choisit.</span></div>
+  </div>
+ </div>
+ <div class="card n">
+  <div class="shero"><div class="shero-icon">📓</div><div class="shero-text"><span class="stag">MON CARNET</span><h2>Les questions à noter après chaque séance</h2><p>Quelques lignes dans ton téléphone suffisent. En quelques semaines, tu verras ses progrès noir sur blanc.</p></div></div>
+  <div class="journal">
+   <div class="jq">📍<span>Date, lieu et exercice choisi</span></div>
+   <div class="jq">🌡️<span>Son état avant la séance : calme, excité, fatigué ?</span></div>
+   <div class="jq">📏<span>Les déclencheurs présents et leur distance approximative</span></div>
+   <div class="jq">🍪<span>Les récompenses utilisées et ce que tu as adapté</span></div>
+   <div class="jq">👀<span>Les signaux observés pendant la séance</span></div>
+   <div class="jq">🔋<span>Sa récupération : combien de temps pour redescendre ?</span></div>
+   <div class="jq">✏️<span>À simplifier ou à garder pour la prochaine fois</span></div>
+  </div>
+  <div class="info-box" style="margin:.9rem 0 0"><strong>Le bon réflexe</strong>Si sa récupération te paraît inhabituelle, simplifie la séance suivante. Si les changements persistent ou apparaissent brutalement, consulte.</div>
+ </div>
+ <div class="cta-banner">
+  <span class="ctag">Et maintenant ?</span>
+  <div class="cta-title">Continue l'aventure dans L'Académie 🐾</div>
+  <div class="cta-desc">Découvre les autres guides gratuits (Check In Puppy, rappel, marche en laisse, réactivité) et viens partager vos progrès dans la communauté. Une question sur un exercice ? Poste-la, je te réponds !</div>
+  <div class="cta-btns"><a class="cta-btn" href="${SKOOL_CLASSROOM}" target="_blank" rel="noopener">📚 Les autres guides</a><a class="cta-btn ghost" href="${SKOOL_COMMUNITY}" target="_blank" rel="noopener">💬 La communauté</a></div>
+ </div>`;
+}
+
+function navRow(i){
+ return `<div class="nav-row"><button class="nbtn" data-go="${i-1}" ${i===0?'disabled':''}>← Précédent</button><button class="nbtn primary" data-go="${i+1}" ${i===TABS.length-1?'disabled':''}>Suivant →</button></div>`;
+}
+
+function build(){
+ document.getElementById('snav').innerHTML=TABS.map((t,i)=>`<button class="spill${i===0?' active':''}" data-i="${i}"><span class="sem">${t.emoji}</span><span class="slbl">${t.label}</span>${t.k?`<span class="scount" id="sc${t.k}"></span>`:''}</button>`).join('');
+ const P=document.getElementById('panels');
+ P.innerHTML=TABS.map((t,i)=>{
+  let inner = i===0?introPanel(): t.k?levelPanel(LEVELS[t.k-1]) : sessionPanel();
+  return `<div class="panel${i===0?' visible':''}" data-p="${i}">${inner}${navRow(i)}</div>`;
+ }).join('');
+ bind();updateProgress(false);
+}
+
+/* ================= INTERACTIONS ================= */
+function go(i){
+ if(i<0||i>=TABS.length) return;
+ current=i;
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('visible',+p.dataset.p===i));
+ document.querySelectorAll('.spill').forEach(s=>s.classList.toggle('active',+s.dataset.i===i));
+ const pill=document.querySelector(`.spill[data-i="${i}"]`);
+ if(pill) pill.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+ window.scrollTo({top:document.getElementById('snav').offsetTop-4,behavior:'smooth'});
+}
+
+function toggleDone(id){
+ const y=window.scrollY;
+ done[id]=!done[id]; if(!done[id]) delete done[id];
+ save();
+ const el=document.querySelector(`.ex[data-id="${id}"]`);
+ el.classList.toggle('done',!!done[id]);
+ el.querySelector('.done-btn').textContent=done[id]?'✓ Exercice réussi':'Marquer comme réussi';
+ updateProgress(!!done[id], +id.split('-')[0]);
+ requestAnimationFrame(()=>window.scrollTo(0,y));
+}
+
+const CHEERS=["Bravo ! 🎉","Super travail ! 🐾","Bien joué ! 💪","Génial ! ✨","Trop fort ! 🥳","Un pas de plus ! 💙"];
+function updateProgress(cheer,lv){
+ const total=ALL.length, c=ALL.filter(e=>done[e.id]).length;
+ document.getElementById('gcount').textContent=c+' / '+total;
+ document.getElementById('gbar').style.width=(c/total*100)+'%';
+ LEVELS.forEach(l=>{
+  const arr=EX[l.k], d=arr.filter(e=>done[e.id]).length;
+  document.getElementById('lb'+l.k).style.width=(d/arr.length*100)+'%';
+  document.getElementById('lc'+l.k).textContent=d+' / '+arr.length;
+  document.getElementById('sc'+l.k).textContent=d+'/'+arr.length;
+  const complete=d===arr.length;
+  document.getElementById('m'+l.k).classList.toggle('on',complete);
+  document.querySelector(`.spill[data-i="${l.k}"]`).classList.toggle('done',complete);
+  if(cheer && lv===l.k && complete) toast(`${['🥉','🥈','🥇'][l.k-1]} Niveau ${l.label} terminé ! Quelle équipe !`);
+  else if(cheer && lv===l.k) toast(CHEERS[Math.floor(Math.random()*CHEERS.length)]);
+ });
+}
+
+let tt;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2200)}
+
+function applyFilter(lv){
+ const f=filt[lv]; let shown=0;
+ document.querySelectorAll(`#list${lv} .ex`).forEach(el=>{
+  const ok= f==='all' || el.dataset.tags.split(' ').includes(f) || el.dataset.f.split(' ').includes(f);
+  el.style.display=ok?'':'none'; if(ok) shown++;
+ });
+ document.getElementById('empty'+lv).style.display=shown?'none':'block';
+}
+
+function openEx(el,scroll){
+ el.classList.add('open');
+ if(scroll) setTimeout(()=>{const top=el.getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top,behavior:'smooth'})},60);
+}
+
+function bind(){
+ document.getElementById('snav').addEventListener('click',e=>{const b=e.target.closest('.spill'); if(b) go(+b.dataset.i)});
+ document.getElementById('panels').addEventListener('click',e=>{
+  const nb=e.target.closest('.nbtn'); if(nb&&!nb.disabled){go(+nb.dataset.go);return}
+  const chk=e.target.closest('.ex-check, .done-btn');
+  if(chk){e.stopPropagation(); toggleDone(chk.closest('.ex').dataset.id); return}
+  const head=e.target.closest('.ex-head');
+  if(head){const ex=head.parentElement; ex.classList.toggle('open'); return}
+  const chip=e.target.closest('.chip');
+  if(chip){const box=chip.parentElement, lv=+box.dataset.lv; filt[lv]=chip.dataset.f; box.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===chip)); applyFilter(lv); return}
+  const dice=e.target.closest('.dice');
+  if(dice){
+   const lv=+dice.dataset.lv;
+   let pool=[...document.querySelectorAll(`#list${lv} .ex`)].filter(el=>el.style.display!=='none'&&!el.classList.contains('done'));
+   if(!pool.length) pool=[...document.querySelectorAll(`#list${lv} .ex`)].filter(el=>el.style.display!=='none');
+   if(!pool.length) return;
+   const pick=pool[Math.floor(Math.random()*pool.length)];
+   document.querySelectorAll(`#list${lv} .ex.open`).forEach(x=>x!==pick&&x.classList.remove('open'));
+   openEx(pick,true); toast('🎲 C\'est parti pour : '+pick.querySelector('.ex-title').textContent);
+  }
+ });
+}
+build();
+</script>
+</body>
+</html>
