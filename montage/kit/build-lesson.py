@@ -21,7 +21,13 @@ lesson.json:
     "chapters": [ { "tag": "Leçon 3", "at": 0.4, "cards": [ {"text": "Le titre", "at": 0.6},
                                                            {"text": "Le piège", "kind": "alert", "at": "w:piège"} ] },
                   { "tag": "1 · La laisse", "at": "w:laisse", "cards": [ … ] } ],
-    "images": [ {"src": "assets/img/os.png", "x": 40, "y": 360, "w": 320, "rotate": -12, "at": "w:ceci", "out": 171.2} ] }
+    "images": [ {"src": "assets/img/os.png", "x": 40, "y": 360, "w": 320, "rotate": -12, "at": "w:ceci", "out": 171.2} ],
+    "broll": [ {"src": "assets/broll/avant.mp4", "at": "w:le bras", "out": "w:et pourtant", "media_start": 0.5,
+                "label": "AVANT", "fade": 0.35} ],
+    "jump_zoom": 1.06 }
+  broll: a practice clip laid over her voice, full frame, muted: it fades in (from a slight zoom) on `at` and out on
+  `out`, pushing in slowly meanwhile; `label` puts a small tag in its top-right corner. jump_zoom: the face cam
+  alternates between 1 and this scale at each cut of the derush, so that a removed stutter reads as a cut, not a jump.
   Every time is seconds or "w:words" = the start of the first occurrence of these words after the chapter (or card) start.
 """
 import argparse, html, json, re
@@ -165,6 +171,38 @@ for n, im in enumerate(lesson.get("images", []), 1):
     img_tl.append(f'tl.to("#{iid}", {{ opacity: 0, duration: 0.2 }}, {r3(t1 - 0.2)});')
     plan.append(f"{t0:7.2f}s  (photo {im['src']})")
 
+# ----------------------------------------------------------------------------- practice clips over the voice
+
+br_html, br_tl = [], []
+for n, br in enumerate(lesson.get("broll", []), 1):
+    t0 = at_time(br["at"])
+    t1 = at_time(br["out"], t0) if isinstance(br.get("out"), str) else float(br.get("out", t0 + 4.0))
+    if t0 >= DURATION:
+        continue
+    t1 = min(t1, DURATION)
+    fade = float(br.get("fade", 0.35))
+    bid = f"br{n}"
+    label = f'<div class="brlabel">{esc(br["label"])}</div>' if br.get("label") else ""
+    br_html.append(f'<div class="broll" id="{bid}"><div class="brin" id="{bid}-in"><video class="clip" src="{esc(br["src"])}" data-start="{r3(t0)}" '
+                   f'data-duration="{r3(t1 - t0)}" data-media-start="{r3(br.get("media_start", 0))}" data-track-index="{6 + n % 2}" muted playsinline></video></div>{label}</div>')
+    br_tl.append(f'tl.fromTo("#{bid}", {{ opacity: 0 }}, {{ opacity: 1, duration: {fade}, ease: "power2.out" }}, {r3(t0)});')
+    br_tl.append(f'tl.fromTo("#{bid}-in", {{ scale: 1.06 }}, {{ scale: 1.0, duration: {fade + 0.25}, ease: "power2.out" }}, {r3(t0)});')
+    br_tl.append(f'tl.to("#{bid}-in", {{ scale: 1.04, duration: {r3(max(0.1, t1 - t0 - fade - 0.25))}, ease: "none" }}, {r3(t0 + fade + 0.25)});')
+    br_tl.append(f'tl.to("#{bid}", {{ opacity: 0, duration: {fade}, ease: "power2.in" }}, {r3(t1 - fade)});')
+    if br.get("label"):
+        br_tl.append(f'tl.from("#{bid} .brlabel", {{ opacity: 0, x: 20, duration: 0.25, ease: "power2.out" }}, {r3(t0 + 0.25)});')
+    if br.get("sfx", "whoosh"):
+        sfx.append({"t": r3(t0 + 0.05), "sound": br.get("sfx", "whoosh")})
+    plan.append(f"{t0:7.2f}s  (vidéo {br['src']} jusqu'à {t1:.2f}s)")
+
+# the face cam: alternate zoom at each cut of the derush (the cuts are the starts of the kept pieces)
+jz_tl = []
+JZ = float(lesson.get("jump_zoom", 1.0))
+if JZ != 1.0:
+    for k, keep in enumerate(decisions.get("keeps", [])):
+        if 0 < keep["start"] < DURATION:
+            jz_tl.append(f'tl.set("#speaker-wrap", {{ scale: {JZ if k % 2 else 1} }}, {r3(keep["start"])});')
+
 # ----------------------------------------------------------------------------- captions
 
 
@@ -230,7 +268,14 @@ index = f"""<!doctype html>
       * {{ box-sizing: border-box; margin: 0; padding: 0; }}
       html, body {{ width: {W}px; height: {H}px; overflow: hidden; background: #000; }}
       #root {{ position: relative; width: {W}px; height: {H}px; overflow: hidden; font-family: "Archivo", "DejaVu Sans", sans-serif; }}
-      #speaker {{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }}
+      #speaker-wrap {{ position: absolute; inset: 0; z-index: 0; transform-origin: {lesson.get("jump_origin", "60% 30%")}; }}
+      #speaker {{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }}
+      .broll {{ position: absolute; inset: 0; z-index: 1; overflow: hidden; opacity: 0; }}
+      .brin {{ position: absolute; inset: 0; }}
+      .brin video {{ width: 100%; height: 100%; object-fit: cover; }}
+      .brlabel {{ position: absolute; right: 60px; top: 52px; height: 62px; padding: 0 22px; display: flex; align-items: center;
+                 border-radius: 12px; background: #E8462A; color: #fff; font-weight: 800; font-size: 38px; letter-spacing: .04em;
+                 box-shadow: 0 6px 18px rgba(0, 0, 0, .2); }}
       .col {{ position: absolute; left: {COL_X}px; top: {TAG_Y}px; width: 1100px; height: 900px; z-index: 2; }}
       .tag, .card {{ position: absolute; left: 0; display: flex; align-items: center; white-space: nowrap;
                     box-shadow: 0 6px 18px rgba(0, 0, 0, .16); }}
@@ -251,7 +296,8 @@ index = f"""<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="{esc(ID)}" data-start="0" data-duration="{r3(DURATION)}" data-width="{W}" data-height="{H}">
-      <video id="speaker" class="clip" src="{esc(SPEAKER)}" data-start="0" data-duration="{r3(DURATION - 1 / FPS)}" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <div id="speaker-wrap"><video id="speaker" class="clip" src="{esc(SPEAKER)}" data-start="0" data-duration="{r3(DURATION - 1 / FPS)}" data-media-start="0" data-track-index="0" muted playsinline></video></div>
+      {chr(10).join("      " + x for x in br_html)}
       <audio id="voice" class="clip" src="{esc(AUDIO)}" data-start="0" data-duration="{r3(DURATION)}" data-track-index="10" data-volume="1"></audio>
       {chr(10).join("      " + x for x in col_html)}
       {chr(10).join("      " + x for x in img_html)}
@@ -260,7 +306,7 @@ index = f"""<!doctype html>
     <script>
       window.__timelines = window.__timelines || {{}};
       const tl = gsap.timeline({{ paused: true }});
-      {chr(10).join("      " + x for x in col_tl + img_tl + cap_tl)}
+      {chr(10).join("      " + x for x in jz_tl + br_tl + col_tl + img_tl + cap_tl)}
       tl.to({{}}, {{ duration: {r3(DURATION)} }}, 0);
       window.__timelines["{esc(ID)}"] = tl;
     </script>
