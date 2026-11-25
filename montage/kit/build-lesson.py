@@ -24,7 +24,7 @@ lesson.json:
     "images": [ {"src": "assets/img/os.png", "x": 40, "y": 360, "w": 320, "rotate": -12, "at": "w:ceci", "out": 171.2} ],
     "broll": [ {"src": "assets/broll/avant.mp4", "at": "w:le bras", "out": "w:et pourtant", "media_start": 0.5,
                 "label": "AVANT", "fade": 0.35} ],
-    "jump_zoom": 1.06 }
+    "jump_zoom": 1.06, "jump_min_gap": 1.5 }
   broll: a practice clip laid over her voice, full frame, muted: it fades in (from a slight zoom) on `at` and out on
   `out`, pushing in slowly meanwhile; `label` puts a small tag in its top-right corner. jump_zoom: the face cam
   alternates between 1 and this scale at each cut of the derush, so that a removed stutter reads as a cut, not a jump.
@@ -174,13 +174,18 @@ for n, im in enumerate(lesson.get("images", []), 1):
 # ----------------------------------------------------------------------------- practice clips over the voice
 
 br_html, br_tl = [], []
-for n, br in enumerate(lesson.get("broll", []), 1):
+spans = []
+for br in lesson.get("broll", []):
     t0 = at_time(br["at"])
-    t1 = at_time(br["out"], t0) if isinstance(br.get("out"), str) else float(br.get("out", t0 + 4.0))
+    spans.append((t0, at_time(br["out"], t0) if isinstance(br.get("out"), str) else float(br.get("out", t0 + 4.0))))
+for n, br in enumerate(lesson.get("broll", []), 1):
+    t0, t1 = spans[n - 1]
     if t0 >= DURATION:
         continue
-    t1 = min(t1, DURATION)
     fade = float(br.get("fade", 0.35))
+    if any(abs(a - t1) < 0.06 for a, _ in spans):   # the next clip follows straight on: stay under it while it fades in
+        t1 += fade
+    t1 = min(t1, DURATION)
     bid = f"br{n}"
     label = f'<div class="brlabel">{esc(br["label"])}</div>' if br.get("label") else ""
     br_html.append(f'<div class="broll" id="{bid}"><div class="brin" id="{bid}-in"><video class="clip" src="{esc(br["src"])}" data-start="{r3(t0)}" '
@@ -198,10 +203,13 @@ for n, br in enumerate(lesson.get("broll", []), 1):
 # the face cam: alternate zoom at each cut of the derush (the cuts are the starts of the kept pieces)
 jz_tl = []
 JZ = float(lesson.get("jump_zoom", 1.0))
-if JZ != 1.0:
-    for k, keep in enumerate(decisions.get("keeps", [])):
-        if 0 < keep["start"] < DURATION:
-            jz_tl.append(f'tl.set("#speaker-wrap", {{ scale: {JZ if k % 2 else 1} }}, {r3(keep["start"])});')
+if JZ != 1.0:   # only at the cuts that skip a retake or a long pause (a source gap over jump_min_gap), not every breath
+    flip, prev = 0, None
+    for keep in decisions.get("keeps", []):
+        if prev is not None and keep["sourceStart"] - prev["sourceEnd"] > float(lesson.get("jump_min_gap", 1.5)) and 0 < keep["start"] < DURATION:
+            flip ^= 1
+            jz_tl.append(f'tl.set("#speaker-wrap", {{ scale: {JZ if flip else 1} }}, {r3(keep["start"])});')
+        prev = keep
 
 # ----------------------------------------------------------------------------- captions
 

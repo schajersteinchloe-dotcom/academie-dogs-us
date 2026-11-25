@@ -1,0 +1,262 @@
+{
+ "id": "intro-marche-en-laisse",
+ "title": "Formation Marche en laisse · Vidéo d'introduction",
+ "caption_max_words": 7,
+ "jump_zoom": 1.06,
+ "jump_min_gap": 1.5,
+ "jump_origin": "60% 30%",
+ "chapters": [
+  {
+   "tag": "Introduction",
+   "at": 0.15,
+   "cards": [
+    {
+     "text": "Formation marche en laisse",
+     "at": "w:formation"
+    },
+    {
+     "text": "Tes balades ressemblent à ça ?",
+     "kind": "arrow",
+     "at": "w:est-ce que"
+    }
+   ]
+  },
+  {
+   "tag": "Le problème",
+   "at": "w:ton chien tire",
+   "cards": [
+    {
+     "text": "Il tire pour tout",
+     "at": "w:absolument"
+    },
+    {
+     "text": "Mal à l'épaule",
+     "kind": "alert",
+     "at": "w:mal à l'épaule"
+    },
+    {
+     "text": "La gêne dans la rue",
+     "at": "w:la gêne"
+    },
+    {
+     "text": "L'angoisse avant la sortie",
+     "at": "w:ce ressenti"
+    },
+    {
+     "text": "Des solutions inadaptées",
+     "kind": "arrow",
+     "at": "w:des solutions"
+    }
+   ]
+  },
+  {
+   "tag": "Tu as tout essayé",
+   "at": "w:et pourtant",
+   "cards": [
+    {
+     "text": "S'arrêter, attendre",
+     "at": "w:tu t'arrêtes"
+    },
+    {
+     "text": "« Au pied ! »",
+     "at": "w:au pied"
+    },
+    {
+     "text": "Abandonner au bout de 2 jours",
+     "at": "w:abandonné"
+    },
+    {
+     "text": "Anti-traction, Halti, licol…",
+     "at": "w:harnais"
+    },
+    {
+     "text": "Les méthodes dures",
+     "kind": "alert",
+     "at": "w:méthodes dures"
+    }
+   ]
+  },
+  {
+   "tag": "Ce n'est pas ta faute",
+   "at": "w:si rien",
+   "cards": [
+    {
+     "text": "La bonne méthode",
+     "kind": "arrow",
+     "at": "w:la bonne méthode"
+    },
+    {
+     "text": "Dans le bon ordre",
+     "kind": "arrow",
+     "at": "w:dans le bon ordre"
+    }
+   ]
+  },
+  {
+   "tag": "Arlo",
+   "at": "w:laisse-moi",
+   "cards": [
+    {
+     "text": "Une pile électrique",
+     "at": "w:pile"
+    },
+    {
+     "text": "Ultra dynamique",
+     "at": "w:ultra"
+    },
+    {
+     "text": "Du mal à gérer ses émotions",
+     "at": "w:gestion"
+    },
+    {
+     "text": "Très sociable",
+     "at": "w:sociable"
+    },
+    {
+     "text": "« Irrécupérable »",
+     "kind": "alert",
+     "at": "w:d'irrécupérable"
+    },
+    {
+     "text": "Tout peut se régler",
+     "kind": "arrow",
+     "at": "w:tout peut"
+    }
+   ]
+  },
+  {
+   "tag": "Avant · Après",
+   "at": "w:je vous peins",
+   "cards": [
+    {
+     "text": "1re séance",
+     "at": "w:première séance"
+    },
+    {
+     "text": "Aujourd'hui",
+     "at": "w:aujourd'hui"
+    },
+    {
+     "text": "Même chien, mêmes rues",
+     "at": "w:le même chien"
+    },
+    {
+     "text": "Même tentation",
+     "at": "w:même tentation"
+    },
+    {
+     "text": "Un protocole précis",
+     "kind": "arrow",
+     "at": "w:protocole précis"
+    }
+   ]
+  },
+  {
+   "tag": "3 modules",
+   "at": "w:dans cette formation",
+   "cards": [
+    {
+     "text": "1 · À la maison",
+     "at": "w:le premier"
+    },
+    {
+     "text": "2 · Extérieur calme",
+     "at": "w:le module 2"
+    },
+    {
+     "text": "3 · Extérieur stimulant",
+     "at": "w:module 3"
+    },
+    {
+     "text": "Explications + démos",
+     "kind": "arrow",
+     "at": "w:explications"
+    }
+   ]
+  },
+  {
+   "tag": "Dans quelques semaines",
+   "at": "w:imagine",
+   "cards": [
+    {
+     "text": "Un chien calme",
+     "at": "w:est calme"
+    },
+    {
+     "text": "Une balade sereine",
+     "at": "w:sereine"
+    },
+    {
+     "text": "Arlo en est la preuve",
+     "at": "w:la preuve"
+    },
+    {
+     "text": "Tu bloques ? Poste ta vidéo",
+     "kind": "arrow",
+     "at": "w:poste"
+    }
+   ]
+  }
+ ],
+ "broll": [
+  {
+   "src": "assets/broll/img-5056.mp4",
+   "at": "w:ton chien tire",
+   "out": "w:il a l'habitude",
+   "media_start": 0.0,
+   "label": "AVANT"
+  },
+  {
+   "src": "assets/broll/img-5055.mp4",
+   "at": "w:il a l'habitude",
+   "out": "w:qui pourrait se dire",
+   "media_start": 0.3,
+   "label": "AVANT",
+   "sfx": null
+  },
+  {
+   "src": "assets/broll/cession-a-la-presse.mp4",
+   "at": "w:je vous peins",
+   "out": "w:et du coup voilà",
+   "media_start": 1.0,
+   "label": "1RE SÉANCE"
+  },
+  {
+   "src": "assets/broll/img-5330.mp4",
+   "at": "w:et du coup voilà",
+   "out": "w:la seule différence",
+   "media_start": 1.5,
+   "label": "AUJOURD'HUI",
+   "sfx": null
+  },
+  {
+   "src": "assets/broll/cession-a-la-presse.mp4",
+   "at": "w:exercices simples",
+   "out": "w:les sorties",
+   "media_start": 12.0,
+   "label": "MODULE 1"
+  },
+  {
+   "src": "assets/broll/marche-en-laisse-interieur.mp4",
+   "at": "w:les sorties",
+   "out": "w:ensuite",
+   "media_start": 2.0,
+   "label": "MODULE 1",
+   "sfx": null
+  },
+  {
+   "src": "assets/broll/img-5331.mp4",
+   "at": "w:tu prends la laisse",
+   "out": "w:et que ça va",
+   "media_start": 1.0,
+   "label": "APRÈS"
+  },
+  {
+   "src": "assets/broll/img-5330.mp4",
+   "at": "w:tout ça c'est possible",
+   "out": "w:poste",
+   "media_start": 16.0,
+   "label": "APRÈS"
+  }
+ ]
+}
